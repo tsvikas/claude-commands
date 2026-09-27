@@ -34,6 +34,25 @@ Two paths deliver skills that no `/plugin` command manages:
 
 The synced set follows the account, not the install, so it differs per person. Sampling twelve accounts' committed manifests, five are universal — `docx`, `pdf`, `pptx`, `xlsx`, `skill-creator` — and `morning` and `import-memory` appear in eleven. The rest track which surfaces an account uses: `computer-use`, `built-in-browser`, `chrome-browser` and `deep-research` in roughly a third, then per-account custom skills.
 
+## Reading a skill's full text
+
+There is no public catalogue. The settings UI on claude.ai shows a truncated
+description, and most of these skills are published nowhere. What you install is
+plain markdown on disk, so read it there:
+
+| kind | where |
+| --- | --- |
+| synced from claude.ai, including the skills of a plugin you added there | `~/.claude/skills/synced/<uuid>_<uuid>/<name>/SKILL.md` |
+| installed from a marketplace | `~/.claude/plugins/cache/<marketplace>/<plugin>/.../skills/<name>/SKILL.md` |
+| your own | `~/.claude/skills/<name>/SKILL.md`, or a project's `.claude/skills/` |
+| bundled | not on disk — it lives inside the binary. The docs table describes it, `asgeirtj/system_prompts_leaks` mirrors the text |
+
+The official marketplace is worth reading as an index in its own right: its
+`.claude-plugin/marketplace.json` lists 314 plugins, most as `git-subdir`
+pointers at the vendor's own repo, so it says where each one really comes from.
+It does not carry the plugins in the claude.ai directory — those reach you only
+by syncing, and several are published nowhere else.
+
 To review your own, read the folder directly, or copy it out and commit it so each sync shows as a diff:
 
 ```
