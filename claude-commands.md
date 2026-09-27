@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.259 (2026-09-02) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.260 (2026-09-03) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -94,7 +94,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ## 5. Capture & share output
 
-- `/diff`: interactive diff viewer for uncommitted changes
+- `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
 - `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
 - `/export [filename]`: export conversation as plain text
 - `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
@@ -124,7 +124,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ## 7. Inspect & diagnose
 
-- `/usage` (`/cost`, `/stats`): session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio, misses, tokens re-cached, warm/cold)
+- `/usage` (`/cost`, `/stats`): session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio, misses, tokens re-cached, warm/cold, and the likely cause of the misses)
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for Claude Code on the web
 - `/doctor` (`/checkup`) ⚡: setup checkup that also fixes — install health, unused skills/MCP/plugins vs their context cost, duplicated or derivable `CLAUDE.md` content, slow hooks. Reports first, asks before changing anything
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
@@ -230,6 +230,7 @@ defaults, `/keybindings` to customize
 - `Ctrl+F`: kill running agents
 - `Ctrl+X` `Ctrl+K` (twice): stop all background subagents
 - `Ctrl+B`: send the running task to the background (like `/background`)
+- `Ctrl+L` / `Cmd+K` (fullscreen): clear the transcript view like a terminal `clear`; scroll up for earlier messages
 - `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
 - `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+]`: reopen the last Artifact
