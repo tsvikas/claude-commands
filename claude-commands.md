@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.267 (2026-09-09) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.268 (2026-09-10) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -169,7 +169,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 - `/mcp [reconnect <server>|enable|disable [<server>|all]]`: manage MCP server connections
 - `/plugin [subcommand]`: manage plugins (list, install, enable, disable)
-- `/reload-plugins [--force]`: reload active plugins
+- `/reload-plugins [--force]`: reload active plugins, when a change didn't take effect on its own
 - `/skills`: list skills, toggle visibility
 - `/reload-skills`: re-scan skill directories
 
