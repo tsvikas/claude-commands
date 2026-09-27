@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.272 (2026-09-15) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.273 (2026-09-15) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
