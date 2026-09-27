@@ -1,7 +1,7 @@
-# Recommended repos
+# Marketplaces worth adding
 
-Where the skills, plugins and agents that Claude Code does not ship come from.
-Companion to `claude-commands.md`, which covers only what is built in.
+The plugin marketplaces I recommend, and why each earns its place. Companion to
+`claude-commands.md`, which covers only what ships in the binary.
 
 Add a marketplace, then install from it:
 
@@ -10,7 +10,7 @@ Add a marketplace, then install from it:
 /plugin install <plugin>@<marketplace-name>
 ```
 
-## Marketplaces
+## Recommended
 
 | marketplace | source | plugins | what it is |
 | --- | --- | --- | --- |
