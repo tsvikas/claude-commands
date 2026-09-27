@@ -36,9 +36,15 @@ The synced set follows the account, not the install, so it differs per person. S
 
 ## Reading a skill's full text
 
-There is no public catalogue. The settings UI on claude.ai shows a truncated
-description, and most of these skills are published nowhere. What you install is
-plain markdown on disk, so read it there:
+There is no public catalogue — most of these skills are published nowhere. Two
+places hold the full text.
+
+Your account's skills, the ones that sync, are readable in full at
+<https://claude.ai/new#customize/skills/yours>. That page does not cover skills
+installed from a marketplace, or bundled ones.
+
+Everything you install is also plain markdown on disk, which is the copy to grep,
+diff across syncs, or read offline:
 
 | kind | where |
 | --- | --- |
