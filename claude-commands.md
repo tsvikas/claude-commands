@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.276 (2026-09-18) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.277 (2026-09-18) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -217,6 +217,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ## Good to know (not commands)
 
+- `CLAUDE.md`: read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there
+- `AGENTS.md`: read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both
 - claude.ai sync: skills and plugins you enable on claude.ai also load in your terminal sessions
 
 ## Keyboard shortcuts
