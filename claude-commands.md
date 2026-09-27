@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.268 (2026-09-10) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.269 (2026-09-11) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -29,6 +29,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). `s` in the picker: this session only. The saved value is per model
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
+- `/output-style [style]`: list output styles or switch to one: default, proactive, concise, explanatory, learning
 
 ### Session only
 
