@@ -279,6 +279,15 @@ Two cross-cutting axes worth asking about any command:
 
 How this sheet is ordered: sections by mid-task lookup frequency, one-time setup near the end; within each subsection, commands go from most-used to most-niche.
 
+## Where this sheet stops
+
+Three surfaces are deliberately not here: they are reference tables that churn or
+run to hundreds of lines, and a summary of one is worse than a link to it.
+
+- the `claude` CLI — flags and subcommands: <https://code.claude.com/docs/en/cli-reference>
+- permission rule syntax — wildcards, `domain:` and MCP forms, what is auto-allowed: <https://code.claude.com/docs/en/permissions>
+- hooks — recipes in <https://code.claude.com/docs/en/hooks-guide>, all the events in <https://code.claude.com/docs/en/hooks>
+
 <!-- Deliberately not listed:
 /agents  - since v2.1.198 it only prints "ask Claude, or edit .claude/agents/"
 /ultraplan, /pr-comments, /vim  - removed upstream, the docs table keeps tombstone rows
