@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.282 (2026-09-24) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.283 (2026-09-25) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -128,6 +128,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/usage` (`/cost`, `/stats`): session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio, misses, tokens re-cached, warm/cold, and the likely cause of the misses)
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
 - `/doctor` (`/checkup`) ⚡: setup checkup that also fixes — install health, unused skills/MCP/plugins vs their context cost, duplicated or derivable `CLAUDE.md` content, slow hooks. Reports first, asks before changing anything
+- `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
 - `/heapdump`: heap snapshot for memory diagnosis
@@ -263,7 +264,7 @@ defaults, `/keybindings` to customize
 
 ### Lists and pickers
 
-- `PgUp`/`PgDn`, `Home`/`End`, `j`/`k`: page and move through most lists
+- `PgUp`/`PgDn`, `Home`/`End`, `j`/`k`: page and move through nearly every list and picker
 - `←`/`→` or `Tab`: switch tabs in tabbed dialogs
 
 ---
