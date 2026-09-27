@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.278 (2026-09-19) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.280 (2026-09-22) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -239,7 +239,6 @@ defaults, `/keybindings` to customize
 - `Ctrl+X` `Ctrl+K` (twice): stop all background subagents
 - `Ctrl+Enter` (or `Ctrl+X` `Ctrl+S`): interrupt the turn and send queued messages now
 - `Ctrl+B`: send the running task to the background (like `/background`)
-- `Ctrl+L` / `Cmd+K` (fullscreen): clear the transcript view like a terminal `clear`; scroll up for earlier messages
 - `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
 - `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+]`: reopen the last Artifact
