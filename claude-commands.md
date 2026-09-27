@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.280 (2026-09-22) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.281 (2026-09-23) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -138,7 +138,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/help`: help and available commands
 - `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
-- `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points
+- `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
 
 ## 9. Play
 
@@ -237,7 +237,7 @@ defaults, `/keybindings` to customize
 - `Esc`: interrupt the current turn
 - `Ctrl+F`: kill running agents
 - `Ctrl+X` `Ctrl+K` (twice): stop all background subagents
-- `Ctrl+Enter` (or `Ctrl+X` `Ctrl+S`): interrupt the turn and send queued messages now
+- `Ctrl+Enter` (or `Ctrl+X` `Ctrl+S`): move running tools to the background and send queued messages now
 - `Ctrl+B`: send the running task to the background (like `/background`)
 - `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
 - `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
@@ -260,6 +260,11 @@ defaults, `/keybindings` to customize
 - `Ctrl+S`: stash prompt
 - `Ctrl+G`: edit prompt in `$EDITOR`
 - hold `Space` (empty prompt): push-to-talk voice
+
+### Lists and pickers
+
+- `PgUp`/`PgDn`, `Home`/`End`, `j`/`k`: page and move through most lists
+- `←`/`→` or `Tab`: switch tabs in tabbed dialogs
 
 ---
 
@@ -304,7 +309,8 @@ Other parts of Claude Code worth getting to know, each with its own reference:
 - environment variables: <https://code.claude.com/docs/en/env-vars>
 
 <!-- Deliberately not listed:
-/agents  - since v2.1.198 it only prints "ask Claude, or edit .claude/agents/"
+/agents  - since v2.1.198 it only prints "ask Claude, or edit .claude/agents/", and
+   since 2.1.281 it is gone from the / menu and /help; typing it still explains
 /ultraplan, /pr-comments, /vim  - removed upstream, the docs table keeps tombstone rows
 
 Registered as bundled skills at 2.1.251, but no user can type them:
