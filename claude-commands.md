@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.274 (2026-09-17) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.275 (2026-09-17) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -19,7 +19,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 10. [Project bootstrap](#10-project-bootstrap) — init, onboarding, design sync
 11. [Set up & configure](#11-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
-Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
+Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [good to know](#good-to-know-not-commands), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
 
 ## 1. Steer the model
 
@@ -215,6 +215,10 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
 - `:name:`: emoji shortcode autocomplete in the prompt (`emojiCompletionEnabled` to disable)
 
+## Good to know (not commands)
+
+- claude.ai sync: skills and plugins you enable on claude.ai also load in your terminal sessions
+
 ## Keyboard shortcuts
 
 defaults, `/keybindings` to customize
@@ -231,6 +235,7 @@ defaults, `/keybindings` to customize
 - `Esc`: interrupt the current turn
 - `Ctrl+F`: kill running agents
 - `Ctrl+X` `Ctrl+K` (twice): stop all background subagents
+- `Ctrl+Enter` (or `Ctrl+X` `Ctrl+S`): interrupt the turn and send queued messages now
 - `Ctrl+B`: send the running task to the background (like `/background`)
 - `Ctrl+L` / `Cmd+K` (fullscreen): clear the transcript view like a terminal `clear`; scroll up for earlier messages
 - `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
