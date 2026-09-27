@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.263 (2026-09-06) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.265 (2026-09-08) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -89,7 +89,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Monitor & control
 
 - `/tasks` (`/bashes`): view everything running in the background, with the model and effort level each subagent ran on
-- `/workflows`: workflow progress view (`p` pause, `x` stop, `s` save as command)
+- `/workflows`: workflow progress view (`p` pause, `x` stop, `s` save as command, `Enter` on an agent: show its tool calls, inputs and results)
 - `/list-agents` (`/peers`): everything Claude can message — subagents, live teammates, other sessions on this machine, your Remote Control sessions elsewhere and cloud sessions (labelled `offline` / `cloud`), with the name to address each one by
 
 ## 5. Capture & share output
@@ -244,6 +244,7 @@ defaults, `/keybindings` to customize
 - `Esc` `Esc` (double tap): clear input
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
+- `Tab` (after a `/` typed mid-prompt): list the matching commands
 - `Ctrl+W`: delete word back
 - `Alt+F`: move to word end
 - `Alt+D`: delete to word end
