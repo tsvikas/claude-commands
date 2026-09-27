@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.252 (2026-08-31) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.257 (2026-09-01) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -25,8 +25,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Saved as default (persist across sessions)
 
-- `/model [model]` (`Opt+P`): switch model. `s` in picker to switch for this session only.
-- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). The saved value is per model
+- `/model [model]` (`Opt+P`): switch model. `s` in the picker: this session only
+- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). `s` in the picker: this session only. The saved value is per model
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
 
@@ -51,7 +51,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Check the work
 
-- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` (`/review`) ⚡: review the local changes, or a PR/branch/path. `--fix` applies findings, `--comment` posts them as inline PR comments. Runs as a background subagent; with no effort level it reuses the last one you typed
+- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` (`/review`) ⚡: review the local changes, or a PR/branch/path. `--fix` applies findings, `--comment` posts them as inline comments on a GitHub PR or GitLab merge request. Runs as a background subagent; with no effort level it reuses the last one you typed
 - `/code-review ultra` (`/ultrareview`, `ultrareview`) ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
 - `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
@@ -72,7 +72,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Start now
 
-- `/btw [question]` ⚡: quick side question, kept out of history (`c` copies the raw markdown answer)
+- `/btw [question]` ⚡: quick side question, kept out of history (`c` copies the raw markdown answer; `Shift+←`/`Shift+→`, or `[`/`]`, step back through recent side questions)
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
 - `/fork [prompt]` ⚡: copy the conversation into a separate background session that goes its own way (own worktree, own row in `claude agents`)
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
@@ -234,7 +234,7 @@ defaults, `/keybindings` to customize
 - `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+]`: reopen the last Artifact
 - `Ctrl+E` (in the verbose transcript): expand all content
-- `Ctrl+E` (in a permission dialog): toggle explanation
+- `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
 
 ### Prompt editing
 
