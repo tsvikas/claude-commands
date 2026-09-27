@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of 2026-08 / v2.1.251 (commands are added often) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.251 (2026-08-28) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -26,7 +26,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Saved as default (persist across sessions)
 
 - `/model [model]` (`Opt+P`): switch model. `s` in picker to switch for this session only.
-- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). The saved default is per model, so each model keeps its own
+- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). The saved value is per model
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
 
@@ -51,7 +51,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Check the work
 
-- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` (`/review`) ⚡: review the local changes, or a PR/branch/path. `--fix` applies findings, `--comment` posts them as inline PR comments. Runs as a background subagent, so findings arrive without eating your context; with no effort level it reuses the last one you typed
+- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` (`/review`) ⚡: review the local changes, or a PR/branch/path. `--fix` applies findings, `--comment` posts them as inline PR comments. Runs as a background subagent; with no effort level it reuses the last one you typed
 - `/code-review ultra` (`/ultrareview`, `ultrareview`) ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
 - `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
@@ -218,7 +218,7 @@ defaults, `/keybindings` to customize
 
 ### Steering
 
-- `Shift+Tab`: cycle permission modes: auto (classifier-adjudicated, the default for new sessions since 2026-08-14), manual (was "default"), auto-accept edits, plan mode (like `/plan`)
+- `Shift+Tab`: cycle permission modes: auto (the default; a classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
 - `Opt+P`: switch model (like `/model`, `←`/`→` in the picker: effort slider)
 - `Opt+O`: toggle fast mode (like `/fast`)
 - `Opt+T`: toggle extended thinking for the session
@@ -309,8 +309,13 @@ Refreshing this file - no single source is complete, use all three:
    missing entirely (there is no w31) - the index at /whats-new lists the real ones.
 
 This file has no changelog section - the git history is the changelog.
-One commit per version: put the version in the subject ("Update for 2.1.251")
-and the behaviour changes as bullets in the body, same style as before.
+One commit per version, in release order, including the quiet ones:
+  Update for 2.1.NNN                       something in here changed
+  Reviewed 2.1.NNN, nothing for the sheet   only the snapshot line moves
+Behaviour changes go in the body as bullets, and anything deliberately left out
+goes there too, so a later pass can tell "not worth a line" from "missed it".
+Line 4 always names the version the file reflects, so git log alone answers
+which releases have been read.
   git log --oneline                 what versions are covered
   git show <commit>                 the notes for one version
   git log -p -- claude-commands.md  when a line last changed, and why
