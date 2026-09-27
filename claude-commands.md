@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.277 (2026-09-18) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.278 (2026-09-19) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -227,7 +227,7 @@ defaults, `/keybindings` to customize
 
 ### Steering
 
-- `Shift+Tab`: cycle permission modes: auto (the default; a classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
+- `Shift+Tab`: cycle permission modes: auto (the default; a server-side classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
 - `Opt+P`: switch model (like `/model`, `←`/`→` in the picker: effort slider)
 - `Opt+O`: toggle fast mode (like `/fast`)
 - `Opt+T`: toggle extended thinking for the session
