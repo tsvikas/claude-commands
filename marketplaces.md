@@ -19,6 +19,7 @@ Add a marketplace, then install from it:
 | `trailofbits` | `trailofbits/skills` | 44 | Trail of Bits' own security and tooling skills |
 | `skills-curated` | `trailofbits/skills-curated` | 29 | Community-vetted, deliberately small. Vetting is the point |
 | `claude-code-workflows` | `wshobson/agents` | 94 | Subagents and workflows by language and domain |
+| `mattpocock` | `mattpocock/skills` | 1 | Matt Pocock's engineering skills — grilling a plan, TDD, spec and ticket flows, code review, merge conflicts. The official marketplace re-ships this as `mattpocock-skills`; adding it here tracks upstream instead, so install from one or the other, not both |
 
 ## Reference, not installable
 
