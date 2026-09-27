@@ -19,7 +19,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 10. [Project bootstrap](#10-project-bootstrap) — init, onboarding, design sync
 11. [Set up & configure](#11-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
-Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [keyboard shortcuts](#keyboard-shortcuts), [what ultracode actually does](#ultracode-the-special-case), and [recently added & changed](#recently-added--changed) — read that one first if you've been away a month.
+Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
 
 ## 1. Steer the model
 
@@ -279,86 +279,6 @@ Two cross-cutting axes worth asking about any command:
 
 How this sheet is ordered: sections by mid-task lookup frequency, one-time setup near the end; within each subsection, commands go from most-used to most-niche.
 
-## Recently added & changed
-
-Newest first. Only what changes how you invoke something — bug fixes and UI polish are left out.
-Numbers are the release a change landed in; `claude --version` to compare against your install.
-
-### August 2026 · 2.1.221–251
-
-New: `/workflow-authoring` — the dynamic-workflow script reference (248) · `/claude-api cost-optimize` — profile and cut API spend (247) · `/design` — draft editable UI artboards on a canvas (233) · `/rate-limit-options` — options when a usage limit blocks you (234) · `/auto-mode-setup` — draft auto-mode environment entries (228) · `/autocompact` — set the compaction threshold (221) · `/list-agents` (`/peers`) — sessions Claude can message (224) · `/claude-api prompt-audit` — flag older-model instructions in your prompts and skills (221)
-
-- `/effort` saves your default level per model, so each model keeps its own (251)
-- `/cost` gained a per-session prompt-cache line — hit ratio, misses, tokens re-cached, warm/cold — plus a `prompt_cache` object for status line scripts (251)
-- `claude --help` now lists `attach`, `logs`, `stop`, `respawn`, `rm`, and `--resume` on a running background session names the exact `claude attach <id>` (251)
-- `CLAUDE_CODE_SUBAGENT_MODEL` is a default now, not an override: an agent definition's `model:` and an explicit per-spawn model win over it (251)
-- `PreModelSwitch` / `PostModelSwitch` hook events can block, confirm or annotate a model switch (251)
-- Claude in Chrome actions go through Claude Code's own permission checks instead of the extension's prompts (251)
-- `/loop`'s self-paced dynamic mode and its no-prompt autonomous default are available everywhere now, Bedrock / Vertex / Foundry included (248)
-- the Workflow tool's description shrank from ~5.7k to ~1k tokens; the script-writing reference moved into `/workflow-authoring` (248)
-- `--restricted` (`CLAUDE_CODE_RESTRICTED=1`) drops the command- and code-running tools plus `WebFetch`, confines file tools to the working directory, and ignores user / project / local settings (248)
-- `/ultrareview <PR#>` checks your GitHub account can reach the repo before launching, instead of failing after the cloud session starts (248)
-- in the agent view's dispatch input, `Shift+Enter` inserts a newline and `Ctrl+Enter` dispatches and attaches (248)
-- Claude can queue a feedback draft when something goes wrong; you review and send it from `/feedback` (`feedbackDrafts: false` to turn off) (247)
-- Bash permission prompts gained a one-keystroke "Yes, and switch to auto mode" (247)
-- messages from your other sessions collapse to a one-line `Message from @sender:` preview; `Ctrl+O` expands the body (247)
-- Sonnet 5's auto-compact threshold now uses its full 1M window — about 967K tokens instead of 934K (247)
-- `/permissions` gained an **Auto mode** tab, for the classifier rules and recent auto-mode denials (246)
-- Claude can start `/code-review` on its own everywhere now — ask in plain language, or point a scheduled task at it (246)
-- `/cd` applies the new directory's project settings, hooks, skills, agents and `.mcp.json` servers right away, instead of at the next `--resume` (246)
-- a subagent that hits its `maxTurns` limit returns partial output plus a hint to continue it via `SendMessage`, instead of looking finished (246)
-- `/usage` gained a Loops breakdown: per-`/loop` runs, tokens, tokens per run, last run (243)
-- `/tasks` and the agent dialogs show the model and effort level each subagent ran on (243)
-- `/status` gained rows for GitHub-connected (for Claude Code on the web) and for managed-settings sources skipped by a higher-precedence one (243)
-- `/login` can sign in with an Anthropic Console account without minting an API key (243)
-- `modelPicker` setting: curate the `/model` picker with your own ordered, labelled list (243)
-- `/goal` check-ins on parked background work back off 30 min → 1 h → 2 h, and stop after three per goal; your next message allows three more (239, 246)
-- `/claude-api upgrade` migrates a Python project from `anthropic` 0.x to 1.x (239)
-- `/list-agents` also lists your live teammates, not just subagents and sessions (239)
-- `keybindingFlavor: "readline"` makes `Ctrl+W` and the word-motion keys behave like Bash (238, 239)
-- new built-in "Concise" output style — result first, no preamble; pick it under Output style in `/config` (237)
-- pressing `Enter` on a slash-command typo now reports Unknown command instead of running the closest fuzzy match; prefixes and aliases still run (236)
-- `ANTHROPIC_DEFAULT_MODEL` sets the model new sessions start on; unlike `ANTHROPIC_MODEL`, a `/model` pick still overrides it and persists (236)
-- cross-session `SendMessage` gained `notify_when_idle` (one notice when that session next goes idle); native Windows got cross-session messaging at all (236, 239)
-- `@` in the prompt now also mentions another *session* by name, and Claude messages it; live sessions on one machine get unique names automatically (232)
-- dialogs no longer wait for the turn to end: `/permissions`, `/add-dir`, `/autocompact`, `/theme`, `/help`, `/config`, `/advisor` (234), `/feedback` and `/bug` (232) open mid-turn
-- `Ctrl+T`'s todo list is empty on Opus 4.8 / Sonnet 5 / Fable 5 and newer — the todo tools are gone unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1` (233)
-- `/goal` now clears itself when a turn dies unrecoverably, and checks in on background tasks that keep it waiting 30+ min (234)
-- `/config` gained "Continue automatically at usage limit" (234) and rows for dialog expiry and inbound messages from your other sessions (232)
-- `/code-review` at high/xhigh/max runs in a background agent too, like the lower levels (232)
-- subagents fork by default (inheriting the conversation and its prompt cache) and spawn in the background (232)
-- `/plugin install plugin@marketplace` refreshes the marketplace first, so a freshly published plugin installs (232)
-- `Esc` in fullscreen keeps a mouse text selection instead of clearing it (234)
-- `/review` is now *only* an alias of `/code-review` with the same arguments, no longer a separate PR-picker command (223)
-- `/code-review` with no effort level reuses the level you typed last (223)
-- `/fork` copies get a worktree of their own instead of sharing your checkout (221)
-- `/plugin` installs activate in the running session when it's safe, no `/reload-plugins` (221)
-- `/status` gained a session-kind row: `interactive`, or background `attached` / `unattended` (221)
-- not a command, but it moves what `Shift+Tab` lands on: auto mode became the default permission mode for new sessions on 2026-08-14
-
-### July 2026 · 2.1.198–220
-
-New: `/dataviz` (198) · `/checkup` as an alias of `/doctor` (205) · `/artifacts` — list and attach your Artifacts (208) · `/subtask` (212) · `/import` from Codex / Gemini (213)
-
-- **`/fork` changed meaning** — it now copies the conversation into a separate background session; the old "subagent that reports back here" is `/subtask` (212)
-- `/doctor` went from a read-only report to a checkup that also fixes (205)
-- `/verify` and `/deep-research` run only when you invoke them; Claude no longer starts them on its own (215, 218) — `/code-review` went back the other way in 246
-- `/code-review` runs as a background subagent, so review work stays out of your context (218)
-- the `/agents` wizard is gone — ask Claude, or edit `.claude/agents/` directly (198)
-- `/fast` dropped Opus 4.7; it applies to Opus 5 and 4.8 (219)
-- bare `/btw` reopens the side panel on your last exchange instead of starting a fresh one (212)
-
-### June 2026 · 2.1.160–197
-
-New: `/cd` — move the session's working directory (169) · `/plugin list` inline, with `--enabled` / `--disabled` (163)
-
-- the dynamic-workflow trigger keyword became `ultracode`; the plain word "workflow" no longer fires one (160)
-- `/config key=value` sets any setting from the prompt, also under `-p` and Remote Control; `/config --help` lists the keys (181, 183)
-- `/rewind` can resume a conversation from before `/clear` was run (191)
-- `/install-github-app` can install just the app and skip the Actions workflow and secrets (187)
-- `/btw` gained `c` to copy the raw markdown answer (163)
-- `/effort` now says when your chosen level will persist as the default for new sessions (162)
-
 <!-- Deliberately not listed:
 /agents  - since v2.1.198 it only prints "ask Claude, or edit .claude/agents/"
 /ultraplan, /pr-comments, /vim  - removed upstream, the docs table keeps tombstone rows
@@ -379,7 +299,10 @@ Refreshing this file - no single source is complete, use all three:
    Weekly digests, good for framing why a change matters. Some weeks are
    missing entirely (there is no w31) - the index at /whats-new lists the real ones.
 
-Month boundaries so far: June 2.1.160, July 2.1.198, August 2.1.221.
-Add a new month block on top; prune blocks older than ~6 months, the body
-above already reflects them.
+This file has no changelog section - the git history is the changelog.
+One commit per version: put the version in the subject ("Update for 2.1.251")
+and the behaviour changes as bullets in the body, same style as before.
+  git log --oneline                 what versions are covered
+  git show <commit>                 the notes for one version
+  git log -p -- claude-commands.md  when a line last changed, and why
 -->
