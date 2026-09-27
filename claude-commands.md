@@ -155,6 +155,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Behavior & safety
 
 - `/config [key=value ...]` (`/settings`): theme, model default, output style, etc.
+- `/update-config [request]` ⚡: edit `settings.json` in free language ("allow npm test", "add a hook that…")
 - `/permissions` (`/allowed-tools`): manage allow/ask/deny rules (user and project scope); the **Auto mode** tab holds the classifier rules and recent auto-mode denials
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
@@ -291,6 +292,16 @@ Other parts of Claude Code worth getting to know, each with its own reference:
 <!-- Deliberately not listed:
 /agents  - since v2.1.198 it only prints "ask Claude, or edit .claude/agents/"
 /ultraplan, /pr-comments, /vim  - removed upstream, the docs table keeps tombstone rows
+
+Registered as bundled skills at 2.1.251, but no user can type them:
+/explain-usage, /setup-cowork  - isEnabled demands CLAUDE_CODE_ENTRYPOINT=remote_cowork
+/plan-artifact  - isEnabled is hardwired to false in that build
+/artifact-components  - gated on the tengu_gable_onyx_sluice flag, off by default
+Re-check by grepping the binary for name:"..." near userInvocable:!0 and isEnabled.
+
+Bundled skills belong in this file, not in a separate skills sheet. The docs
+table marks them **Skill** in the Purpose column; that set is the checklist:
+  grep -F '**[Skill]' commands.md | grep -oE '^\| `/[a-z-]+' | sed 's/| `//'
 
 Refreshing this file - no single source is complete, use all three:
 1. curl -sL https://code.claude.com/docs/en/commands.md
