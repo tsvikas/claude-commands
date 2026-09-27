@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.270 (2026-09-12) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.271 (2026-09-14) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -267,7 +267,9 @@ Intermediate results stay in script variables, only the final answer lands in co
 - Session form (`/effort ultracode`): `xhigh` reasoning + Claude plans a workflow for every substantive task, possibly several per request (understand, change, verify). More tokens and slower per request.
 - Skill form (workflows like `/deep-research`): some bundled skills already are workflows, so they fan out without you opting in.
 - Watch and manage with `/workflows`; `/workflow-authoring` loads the script-API reference before you hand-edit a saved script.
+- Size: a guideline caps the agents per run — small on Pro plans, medium elsewhere (~10 agents, down from 15); change it with Dynamic workflow size in `/config`.
 - Cost: a run can spend far more than the same task in conversation. Gauge on a small slice first, and check `/model` before a large run, agents inherit the session model.
+- Usage limit: a run that hits it pauses and resumes at reset.
 - Workflow subagents always run in acceptEdits mode with your tool allowlist, regardless of session permission mode.
 
 ## Notation & notes
