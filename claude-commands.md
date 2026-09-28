@@ -132,7 +132,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
 - `/heapdump`: heap snapshot for memory diagnosis
-- `/feedback [report]` (`/bug`, `/share`): submit feedback, report a bug, or share the conversation. Claude can queue a draft report here when something goes wrong (`feedbackDrafts: false` to turn off)
+- `/feedback [report]` (`/bug`, `/share`): submit feedback, report a bug, or share the conversation. Claude can queue a draft report here when something goes wrong
 
 ## 8. Learn
 
@@ -212,9 +212,9 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 - `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
-- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn) — `respondToBashCommands: false` for the old silent behavior
+- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
-- `:name:`: emoji shortcode autocomplete in the prompt (`emojiCompletionEnabled` to disable)
+- `:name:`: emoji shortcode autocomplete in the prompt
 
 ## Good to know (not commands)
 
