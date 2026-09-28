@@ -1,6 +1,6 @@
 # Marketplaces to know
 
-These places hold interesting or useful plugins. Not a full list. Companion to
+Interesting or useful marketplaces, not a full list. Companion to
 `claude-commands.md`, which covers only what ships in the binary.
 
 Add a marketplace, then install from it:
