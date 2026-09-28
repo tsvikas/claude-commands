@@ -1,6 +1,6 @@
-# Marketplaces worth adding
+# Marketplaces to know
 
-The plugin marketplaces I recommend, and why each earns its place. Companion to
+These places hold interesting or useful plugins. Not a full list. Companion to
 `claude-commands.md`, which covers only what ships in the binary.
 
 Add a marketplace, then install from it:
@@ -12,14 +12,12 @@ Add a marketplace, then install from it:
 
 ## Recommended
 
-| marketplace | source | plugins | what it is |
-| --- | --- | --- | --- |
-| `claude-plugins-official` | ships with Claude Code, fetched over GCS — no GitHub URL | 314 | Anthropic's own. Already present; `/plugin` browses it |
-| `anthropic-agent-skills` | `anthropics/skills` | 2 | Anthropic's example skills, as `document-skills` (xlsx, docx, pptx, pdf) and `example-skills` (skill-creator, mcp-builder, algorithmic-art, canvas-design, …). 19 skills in the repo. Overlaps what a claude.ai account already syncs — see below |
-| `trailofbits` | `trailofbits/skills` | 44 | Trail of Bits' own security and tooling skills |
-| `skills-curated` | `trailofbits/skills-curated` | 29 | Community-vetted, deliberately small. Vetting is the point |
-| `claude-code-workflows` | `wshobson/agents` | 94 | Subagents and workflows by language and domain |
-| `mattpocock` | `mattpocock/skills` | 1 | Matt Pocock's engineering skills — grilling a plan, TDD, spec and ticket flows, code review, merge conflicts. The official marketplace re-ships this as `mattpocock-skills`; adding it here tracks upstream instead, so install from one or the other, not both |
+- `claude-plugins-official` — Anthropic's own; ships with Claude Code, so it is already present and `/plugin` browses it. Try: `frontend-design`, `pr-review-toolkit`, `pyright-lsp`
+- `anthropic-agent-skills` (`anthropics/skills`) — Anthropic's example skills. Overlaps what a claude.ai account already syncs, see below. Try: `document-skills` (xlsx, docx, pptx, pdf), `example-skills` (skill-creator, mcp-builder, …)
+- `trailofbits` (`trailofbits/skills`) — Trail of Bits' own security and tooling skills. Try: `static-analysis`, `differential-review`, `modern-python`
+- `skills-curated` (`trailofbits/skills-curated`) — community-vetted, deliberately small. Try: `humanizer`, `planning-with-files`, `last30days`
+- `claude-code-workflows` (`wshobson/agents`) — subagents and workflows by language and domain. Try: `python-development`, `comprehensive-review`, `tdd-workflows`
+- `mattpocock` (`mattpocock/skills`) — Matt Pocock's engineering skills: grilling a plan, TDD, code review, merge conflicts. The official marketplace re-ships it as `mattpocock-skills`; install from one or the other, not both
 
 ## Reference, not installable
 
@@ -32,7 +30,7 @@ Two paths deliver skills that no `/plugin` command manages:
 - **Bundled** — inside the binary, listed in `claude-commands.md`. The docs mark them **Skill** in <https://code.claude.com/docs/en/commands>
 - **Synced from claude.ai** — written to `~/.claude/skills/synced/<uuid>_<uuid>/`, one folder per skill plus a `manifest.json` that records each skill's `source` and `updatedAt`. Off with `syncClaudeAiSkills: false`
 
-The synced set follows the account, not the install, so it differs per person. Sampling twelve accounts' committed manifests, five are universal — `docx`, `pdf`, `pptx`, `xlsx`, `skill-creator` — and `morning` and `import-memory` appear in eleven. The rest track which surfaces an account uses: `computer-use`, `built-in-browser`, `chrome-browser` and `deep-research` in roughly a third, then per-account custom skills.
+The synced set follows the account, not the install, so it differs per person.
 
 ## Reading a skill's full text
 
@@ -54,7 +52,7 @@ diff across syncs, or read offline:
 | bundled | not on disk — it lives inside the binary. The docs table describes it, `asgeirtj/system_prompts_leaks` mirrors the text |
 
 The official marketplace is worth reading as an index in its own right: its
-`.claude-plugin/marketplace.json` lists 314 plugins, most as `git-subdir`
+`.claude-plugin/marketplace.json` lists every plugin, most as `git-subdir`
 pointers at the vendor's own repo, so it says where each one really comes from.
 It does not carry the plugins in the claude.ai directory — those reach you only
 by syncing, and several are published nowhere else.
@@ -65,5 +63,3 @@ To review your own, read the folder directly, or copy it out and commit it so ea
 jq -r '.skills[] | "\(.updatedAt)  \(.source)  \(.name)"' ~/.claude/skills/synced/*/manifest.json | sort
 rsync -a ~/.claude/skills/synced/*/ ~/code/synced-skills/
 ```
-
-Edit the files in place and Claude Code will tell you the change is not saved to your account; the next sync overwrites them.
