@@ -1,0 +1,6 @@
+#:schema https://www.schemastore.org/prek.json
+
+[[repos]]
+repo = "https://github.com/hukkin/mdformat"
+rev = "1.0.0"
+hooks = [{ id = "mdformat", args = ["--number"] }]
