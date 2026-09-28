@@ -283,9 +283,9 @@ How this sheet is ordered: sections by mid-task lookup frequency, one-time setup
 
 Other parts of Claude Code worth getting to know, each with its own reference:
 
-- the `claude` CLI — flags and subcommands: <https://code.claude.com/docs/en/cli-reference>
-- permission rules — wildcards, `domain:` and MCP forms, what is auto-allowed: <https://code.claude.com/docs/en/permissions>
-- hooks — recipes in <https://code.claude.com/docs/en/hooks-guide>, all the events in <https://code.claude.com/docs/en/hooks>
+- the `claude` CLI (flags and subcommands): <https://code.claude.com/docs/en/cli-reference>
+- permission rules (wildcards, `domain:` and MCP forms, what is auto-allowed): <https://code.claude.com/docs/en/permissions>
+- hooks: recipes in <https://code.claude.com/docs/en/hooks-guide>, all the events in <https://code.claude.com/docs/en/hooks>
 - environment variables: <https://code.claude.com/docs/en/env-vars>
 
 <!-- Deliberately not listed:
