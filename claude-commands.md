@@ -7,15 +7,15 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
 ## Where to look
 
-1. [Steer the model](#1-steer-the-model) — model, effort, thinking, plan mode
-2. [Manage the context window](#2-manage-the-context-window) — compact, clear, branch, rewind
-3. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs
-4. [Delegate & automate](#4-delegate--automate) — subagents, background & scheduled runs
-5. [Capture & share output](#5-capture--share-output) — diff, copy, export, recap
-6. [Manage the session itself](#6-manage-the-session-itself) — resume, background, move between surfaces
-7. [Inspect & diagnose](#7-inspect--diagnose) — cost, status, doctor, feedback
-8. [Learn](#8-learn) — help, release notes, lessons
-9. [Play](#9-play) — radio, stickers
+01. [Steer the model](#1-steer-the-model) — model, effort, thinking, plan mode
+02. [Manage the context window](#2-manage-the-context-window) — compact, clear, branch, rewind
+03. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs
+04. [Delegate & automate](#4-delegate--automate) — subagents, background & scheduled runs
+05. [Capture & share output](#5-capture--share-output) — diff, copy, export, recap
+06. [Manage the session itself](#6-manage-the-session-itself) — resume, background, move between surfaces
+07. [Inspect & diagnose](#7-inspect--diagnose) — cost, status, doctor, feedback
+08. [Learn](#8-learn) — help, release notes, lessons
+09. [Play](#9-play) — radio, stickers
 10. [Project bootstrap](#10-project-bootstrap) — init, onboarding, design sync
 11. [Set up & configure](#11-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
@@ -267,7 +267,7 @@ defaults, `/keybindings` to customize
 - `PgUp`/`PgDn`, `Home`/`End`, `j`/`k`: page and move through nearly every list and picker
 - `←`/`→` or `Tab`: switch tabs in tabbed dialogs
 
----
+______________________________________________________________________
 
 ## Ultracode, the special case
 
