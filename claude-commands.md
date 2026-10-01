@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.283 (2026-09-25) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.284 (2026-09-28) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -26,7 +26,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Saved as default (persist across sessions)
 
 - `/model [model]` (`Opt+P`): switch model. `s` in the picker: this session only
-- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max/ultracode (max and ultracode are session-only). `s` in the picker: this session only. The saved value is per model
+- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max (max is session-only). `s` in the picker: this session only. The saved value is per model
+- `/effort ultracode [on|off]` (`Tab` in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
 - `/output-style [style]`: list output styles or switch to one: default, proactive, concise, explanatory, learning
@@ -169,7 +170,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Capabilities
 
-- `/mcp [reconnect <server>|enable|disable [<server>|all]]`: manage MCP server connections
+- `/mcp [reconnect|enable|disable [<server>|all]]`: manage MCP server connections
 - `/plugin [subcommand]`: manage plugins (list, install, enable, disable)
 - `/reload-plugins [--force]`: reload active plugins, when a change didn't take effect on its own
 - `/skills`: list skills, toggle visibility
@@ -190,7 +191,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/login` / `/logout`: Anthropic account sign in/out
 - `/upgrade`: switch to higher plan tier
 - `/usage-credits`: configure usage credits for when you hit a limit
-- `/rate-limit-options`: what to do when a usage limit blocks a request — wait and continue automatically at reset, add credits, upgrade (hidden from the menu, type the full name)
+- `/rate-limit-options`: what to do when a usage limit blocks a request — wait and continue automatically at reset, add credits, upgrade
 - `/setup-bedrock`: Amazon Bedrock auth
 - `/setup-vertex`: Google Cloud auth
 - `/passes`: share a free week with friends
@@ -276,7 +277,7 @@ It spawns dozens to hundreds of subagents (16 concurrent, 1000 per run max) whil
 Intermediate results stay in script variables, only the final answer lands in context.
 
 - Keyword form (`ultracode` in a message): run one task as a workflow. Plain "use a workflow" works too.
-- Session form (`/effort ultracode`): `xhigh` reasoning + Claude plans a workflow for every substantive task, possibly several per request (understand, change, verify). More tokens and slower per request.
+- Session form (`/effort ultracode`, or `Tab` in the `/effort` slider): Claude plans a workflow for every substantive task, possibly several per request (understand, change, verify). More tokens and slower per request.
 - Skill form (workflows like `/deep-research`): some bundled skills already are workflows, so they fan out without you opting in.
 - Watch and manage with `/workflows`; `/workflow-authoring` loads the script-API reference before you hand-edit a saved script.
 - Size: a guideline caps the agents per run — small on Pro plans, medium elsewhere (~10 agents, down from 15); change it with Dynamic workflow size in `/config`.
