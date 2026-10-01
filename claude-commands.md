@@ -27,7 +27,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Saved as default (persist across sessions)
 
 - `/model [model]` (`Opt+P`): switch model. `s` in the picker: this session only
-- `/effort [level|auto]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max (max is session-only). `s` in the picker: this session only. The saved value is per model
+- `/effort [level|auto|status]` (`←`/`→` in the model picker): reasoning effort: low/medium/high/xhigh/max (max is session-only). `s` in the picker: this session only. The saved value is per model
 - `/effort ultracode [on|off]` (`Tab` in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
@@ -73,12 +73,15 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Claude API projects
 
-- `/claude-api` ⚡: load Claude API / Managed Agents docs
+- `/claude-api` ⚡: load Claude API / Managed Agents docs for your project's language; also loads on its own when your code imports `anthropic`
 - `/claude-api migrate` ⚡: move existing API code to a newer model
 - `/claude-api upgrade` ⚡: take the SDK across a major version (Python `anthropic` 0.x to 1.x)
 - `/claude-api managed-agents-onboard` ⚡: walk through creating a Managed Agent
-- `/claude-api prompt-audit` ⚡: flag instructions written for older models in prompts and skills
+- `/claude-api prompt-audit` ⚡: flag instructions written for older models in prompts, skills and tool descriptions
 - `/claude-api cost-optimize` ⚡: profile API spend and cut it one measured change at a time
+- `/claude-api build-eval` ⚡: build an eval set for your Claude-powered app
+- `/claude-api hillclimb` ⚡: improve the app step by step against an existing eval
+- `/claude-api preserved-thinking-migration` ⚡: find edits to earlier turns, system prompt or tools that drop preserved thinking, and fix them one at a time
 
 ## 4. Delegate & automate
 
@@ -217,7 +220,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 ### One-time integrations
 
-- `/import [codex|gemini] [--dry-run] [--yes]`: pull instruction files, MCP servers, commands, subagents and skills over from Codex / Gemini CLI
+- `/import [codex|gemini|cursor] [--dry-run] [--yes]`: pull instruction files, MCP servers, commands, subagents and skills over from Codex / Gemini CLI / Cursor
 - `/terminal-setup`: terminal keybindings
 - `/ide`: IDE integrations and status
 - `/chrome`: Claude in Chrome settings
