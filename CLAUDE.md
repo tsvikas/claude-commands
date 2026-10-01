@@ -21,7 +21,10 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - A chord or a repeated key is one code span with a space, as the keybindings file writes it: `Ctrl+X Ctrl+K`, `Esc Esc`.
 - Write `Alt` for the Alt or Option key. The legend says once that it is `Option` on macOS.
 - A line with an optional argument says what the bare command does only when that is something other than running with no input or opening a picker.
-- A key has one home: the section for the task it serves. One that does what a command does goes on that command's line, after a `·`.
+- Describe a command or key in the docs' own short words where they have them: the shortcut table, the keybindings actions table, the first sentence of a command's row.
+- Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen only)" for a requirement or "newer models" for a note about models.
+- A long line that packs several cases is a candidate for one line per case. Suggest the split.
+- A key gets a line for each thing it does, in the section for that task. Most have one, or two next to each other; `Ctrl+C` has three, in three sections. When it does what a command does, it shares that command's line, after a `·`. A command's line may also name the key you press right after running it.
 - Sections go by how often they are looked up mid-task, with one-time setup near the end. Within a subsection, the most-used line comes first.
 - A line says how long an effect lasts (one message, this session, saved, out in the world) and its scope (user `~/.claude/` or project `.claude/`) wherever that is not obvious.
 
@@ -82,13 +85,21 @@ The git history is the sheet's changelog: one commit per release, in release ord
 
 Release numbers skip. When the previous number was never released, the title says so: `Update for 2.1.257 (253-256 never released)`.
 
-The body lists each behaviour change as a bullet, then everything deliberately left out, so a later pass can tell "not worth a line" from "missed it".
+The body of a release commit has one bullet per change in that release that reached the sheet, in the changelog's own words where they fit, then everything deliberately left out, so a later pass can tell "not worth a line" from "missed it".
 A change that belongs to no release gets its own commit, with a lowercase prefix for its kind:
 
 - `meta:` instructions for maintaining the sheet: this file and the sheet's trailing comment.
 - `tidy:` moving or rewording what the sheet already says.
 - `add:` content the sheet never had.
 - `fix:` correcting a line that is wrong.
+
+The body of these says why, what was decided and what was left out. It does not list the lines changed or quote them before and after; the diff shows that.
+
+One kind of change per commit. A release commit holds only what that release changed, and a `tidy:` that moves lines rewords nothing.
+On a large change it can help to put the commits in order: release commits, then `tidy:`, then `fix:`, then `add:`. Suggest it then; it is not a rule.
+An `add:` or a `fix:` holds one fact. Many facts of one kind found together, such as a set of missing keys, may share a commit.
+
+Make each change its own commit, so it can be reviewed alone. Once it is approved, fold it into the commit it corrects or belongs with, so the branch ends with no line written and then rewritten. Ask before rewriting history that is already pushed.
 
 An `add:` or `fix:` title ends with the release its content comes from, in parentheses, when that release is known: the release itself when it is later than 2.1.251, the version the sheet started from, and `pre 2.1.252` when it is earlier.
 
