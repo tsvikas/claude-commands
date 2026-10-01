@@ -13,7 +13,13 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - CLI flags and subcommands stay out; "Beyond slash commands" links to their reference.
 - A command that behaves differently in two situations gets one line per situation, as `/resume` and `/verify` do.
 - Context that is not a command goes as a plain sentence under its heading, above the bullets.
-- Parentheses right after a command hold its other names: `/cmd` (`/alias`).
+- Other names and keys for the same thing follow it, separated by `·`: `/cmd` · `/alias` · `Key`.
+- Before the colon, parentheses hold only a condition on the name they follow: `Key` (on an empty prompt).
+- After the colon, in the description, parentheses are free for an aside: `/clear`: start fresh (also starts a new session).
+- A requirement, such as a plan, a mode or an opt-in, goes in parentheses at the end of the description: `/scroll-speed`: mouse wheel speed (fullscreen only).
+- The main name comes first, then its aliases, then keys. A key leads only when it is the usual way to do the thing, as `Esc Esc` is for rewinding.
+- A chord or a repeated key is one code span with a space, as the keybindings file writes it: `Ctrl+X Ctrl+K`, `Esc Esc`.
+- Write `Alt` for the Alt or Option key. The legend says once that it is `Option` on macOS.
 - A line with an optional argument says what the bare command does only when that is something other than running with no input or opening a picker.
 - A key that does what a command does appears in both places: beside the command, and in Keyboard shortcuts.
 - Sections go by how often they are looked up mid-task, with one-time setup near the end. Within a subsection, the most-used line comes first.
