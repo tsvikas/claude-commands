@@ -324,10 +324,6 @@ Registered as bundled skills at 2.1.251, but no user can type them:
 /artifact-components  - gated on the tengu_gable_onyx_sluice flag, off by default
 Re-check by grepping the binary for name:"..." near userInvocable:!0 and isEnabled.
 
-Bundled skills belong in this file, not in a separate skills sheet. The docs
-table marks them **Skill** in the Purpose column; that set is the checklist:
-  grep -F '**[Skill]' commands.md | grep -oE '^\| `/[a-z-]+' | sed 's/| `//'
-
 This file has no changelog section - the git history is the changelog.
 Line 4 always names the version the file reflects, so git log alone answers
 which releases have been read.
