@@ -12,7 +12,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 02. [Manage the context window](#2-manage-the-context-window) — compact, clear, branch, rewind
 03. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
 04. [Delegate & automate](#4-delegate--automate) — subagents, background & scheduled runs
-05. [Capture & share output](#5-capture--share-output) — diff, copy, export, recap
+05. [Capture & share output](#5-capture--share-output) — diff, copy, export, slides, recap
 06. [Manage the session itself](#6-manage-the-session-itself) — resume, background, move between surfaces
 07. [Inspect & diagnose](#7-inspect--diagnose) — cost, status, doctor, feedback
 08. [Learn](#8-learn) — help, release notes, lessons
@@ -113,6 +113,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
 - `/export [filename]`: export conversation as plain text
 - `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
+- `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
 - `/recap` ⚡: one-line summary of the session
 
 ## 6. Manage the session itself
