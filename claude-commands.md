@@ -31,7 +31,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 ### Saved as default (persist across sessions)
 
 - `/model [model]` · `Alt+P`: switch model. In the picker, `←`/`→` set the effort and `s` keeps the choice to this session
-- `/effort [level|auto|status]` · `←`/`→` (in the model picker): reasoning effort: low/medium/high/xhigh/max (max is session-only). `s` in the picker: this session only. The saved value is per model
+- `/effort [level|auto|status]` · `←`/`→` (in the model picker): set the effort level for the current model: low/medium/high/xhigh/max (max is session-only). `status` prints it. `s` in the picker: this session only
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/fast [on|off]` · `Alt+O`: fast mode toggle
 - `/advisor [model|off]`: second model for guidance
@@ -41,7 +41,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 - `ultrathink`: request deeper reasoning (for this turn only)
 - `Alt+T`: toggle extended thinking (always on for newer models)
-- `Shift+Tab`: cycle permission modes: auto (the default; a server-side classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
+- `Shift+Tab`: cycle permission modes: auto (the default), manual, auto-accept edits, plan (like `/plan`)
 - `/plan`: enter plan mode (read/explore only)
 - `/plan <task>` ⚡: enter plan mode and start planning the task immediately
 
@@ -49,16 +49,16 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 ### Act on the running turn
 
-- `Esc` · `Ctrl+C`: interrupt the current turn
-- `Ctrl+B` · `Ctrl+X Ctrl+B`: send the running task to the background
-- `Ctrl+Enter` · `Ctrl+X Ctrl+S`: move running tools to the background and send queued messages now
+- `Esc` · `Ctrl+C`: interrupt Claude
+- `Ctrl+B` · `Ctrl+X Ctrl+B`: background running tasks
+- `Ctrl+Enter` · `Ctrl+X Ctrl+S`: send queued messages now; running tasks move to the background
 
 ### See what it is doing
 
-- `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
+- `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
-- `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
+- `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+L`: redraw the screen
 
 ## 3. Manage the context window
@@ -68,13 +68,13 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `/autocompact [auto|<tokens>]`: how full context gets before auto-compaction kicks in (e.g. `500k`); saved as a default
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
 - `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
-- `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: pick a past point, then roll code/conversation back to it or summarize the conversation before or after it
+- `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
 
 ## 4. Act on the code
 
 ### Check the work
 
-- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the local changes, or a PR/branch/path. `--fix` applies findings, `--comment` posts them as inline comments on a GitHub PR or GitLab merge request. Runs as a background subagent; with no effort level it reuses the last one you typed
+- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed
 - `/code-review ultra` · `/ultrareview` · `ultrareview` ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
 - `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
@@ -111,9 +111,9 @@ Claude loads these on its own when a task calls for them; type one to load it up
 
 ### Start now
 
-- `/btw [question]` ⚡: quick side question, kept out of history (`c` copies the raw markdown answer; `Shift+←`/`Shift+→`, or `[`/`]`, step back through recent side questions). With no argument, shows your most recent side question
+- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies)
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
-- `/fork [prompt]` ⚡: copy the conversation into a separate background session that goes its own way (own worktree, own row in `claude agents`)
+- `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
 - `ultracode` ⚡: run a single task as a dynamic workflow
 - `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
@@ -131,7 +131,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
 - `Ctrl+F`: kill running agents
 - `Ctrl+X Ctrl+K` (twice): stop all background subagents
-- `/workflows`: workflow progress view (`p` pause, `x` stop, `s` save as command, `Enter` on an agent: show its tool calls, inputs and results)
+- `/workflows`: workflow progress view (`p` pauses, `x` stops, `s` saves as a command, `Enter` opens an agent)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
 
 ## 6. Capture & share output
@@ -157,12 +157,12 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
 - `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
 - `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
-- `/stop`: stop the attached background session (transcript and worktree kept; to detach and leave it running use `/exit`)
+- `/stop`: stop the current background session (keeps the worktree)
 - `Ctrl+C` (twice, nothing running) · `Ctrl+D` (twice, on an empty prompt) · `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
 
 ### Workspace scope
 
-- `/cd <path>`: move session to a new working directory; its project settings, hooks, skills, agents and `.mcp.json` servers take effect right away
+- `/cd <path>`: move the session to a new working directory; its project config takes effect
 - `/add-dir <path>`: add a directory without moving the session
 
 ### Move between surfaces
@@ -187,7 +187,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `Shift+Enter` · `Ctrl+J` · `\ Enter`: newline (`Shift+Enter` needs `/terminal-setup` in some terminals)
 - `Tab` (after a `/` typed mid-prompt): list the matching commands
-- `Space` (hold or tap): push-to-talk voice (needs `/voice` on)
+- `Space` (hold or tap): dictate a prompt (needs `/voice` on)
 - `Ctrl+Shift+-`: undo input edit
 - `Ctrl+V` · `Alt+V` (Windows and WSL) · `Cmd+V` (iTerm2): paste images
 - `Ctrl+S`: stash or restore prompt
@@ -198,14 +198,14 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 ## 9. Inspect & diagnose
 
-- `/usage` · `/cost` · `/stats`: session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio and the likely cause of misses)
+- `/usage` · `/cost` · `/stats`: session cost, plan limits, and breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
-- `/doctor` · `/checkup` ⚡: setup checkup that also fixes — install health, unused skills/MCP/plugins, redundant `CLAUDE.md` content, slow hooks. Asks before changing anything
+- `/doctor` · `/checkup` ⚡: setup checkup that diagnoses issues and can fix them, including unused skills/MCP/plugins, redundant `CLAUDE.md` content and slow hooks
 - `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
 - `/heapdump`: heap snapshot for memory diagnosis
-- `/feedback [report]` · `/bug` · `/share`: submit feedback, report a bug, or share the conversation. Claude can queue a draft report here when something goes wrong
+- `/feedback [report]` · `/bug` · `/share`: send product feedback about Claude Code
 
 ## 10. Learn
 
@@ -237,7 +237,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `/config [key=value ...]` · `/settings`: theme, model default, output style, etc.
 - `/update-config [request]` ⚡: edit `settings.json` in free language ("allow npm test", "add a hook that…")
-- `/permissions` · `/allowed-tools`: manage allow/ask/deny rules (user and project scope); the **Auto mode** tab holds the classifier rules and recent auto-mode denials
+- `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
 - `/sandbox`: toggle sandbox mode (supported platforms only)
