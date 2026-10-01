@@ -50,7 +50,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 ### Act on the running turn
 
 - `Esc`: interrupt the current turn
-- `Ctrl+B`: send the running task to the background (like `/background`)
+- `Ctrl+B`: send the running task to the background
 - `Ctrl+Enter` · `Ctrl+X Ctrl+S`: move running tools to the background and send queued messages now
 
 ### See what it is doing
