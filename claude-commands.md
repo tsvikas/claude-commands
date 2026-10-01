@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.285 (2026-09-29) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.286 (2026-09-30) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -57,7 +57,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/code-review ultra` (`/ultrareview`, `ultrareview`) ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
 - `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
-- `/verify` ⚡: run the project e2e and verify its behavior
+- `/verify` (no project `verify` skill) ⚡: run the project e2e and verify its behavior, then save what worked as a project `verify` skill. Runs only when you call it
+- `/verify` (with a project `verify` skill) ⚡: verify by following the saved recipe. Claude also runs it before committing code changes
 - `/run` ⚡: launch and drive the project to see a change working
 
 ### Design
