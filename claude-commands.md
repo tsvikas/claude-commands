@@ -30,7 +30,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 ### Saved as default (persist across sessions)
 
-- `/model [model]` · `Alt+P`: switch model. `s` in the picker: this session only
+- `/model [model]` · `Alt+P`: switch model. In the picker, `←`/`→` set the effort and `s` keeps the choice to this session
 - `/effort [level|auto|status]` · `←`/`→` (in the model picker): reasoning effort: low/medium/high/xhigh/max (max is session-only). `s` in the picker: this session only. The saved value is per model
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/fast [on|off]` · `Alt+O`: fast mode toggle
@@ -49,8 +49,8 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 ### Act on the running turn
 
-- `Esc`: interrupt the current turn
-- `Ctrl+B`: send the running task to the background
+- `Esc` · `Ctrl+C`: interrupt the current turn
+- `Ctrl+B` · `Ctrl+X Ctrl+B`: send the running task to the background
 - `Ctrl+Enter` · `Ctrl+X Ctrl+S`: move running tools to the background and send queued messages now
 
 ### See what it is doing
@@ -59,6 +59,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
 - `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
+- `Ctrl+L`: redraw the screen
 
 ## 3. Manage the context window
 
@@ -155,8 +156,9 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/rename [name]`: rename current session
 - `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
 - `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
+- `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
 - `/stop`: stop the attached background session (transcript and worktree kept; to detach and leave it running use `/exit`)
-- `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
+- `Ctrl+C` (twice, nothing running) · `Ctrl+D` (twice, on an empty prompt) · `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
 
 ### Workspace scope
 
@@ -181,15 +183,15 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 ### Editing
 
-- `\ Enter`: newline
+- `Shift+Enter` · `Ctrl+J` · `\ Enter`: newline (`Shift+Enter` needs `/terminal-setup` in some terminals)
 - `Tab` (after a `/` typed mid-prompt): list the matching commands
 - `Space` (hold or tap): push-to-talk voice (needs `/voice` on)
 - `Ctrl+Shift+-`: undo input edit
-- `Ctrl+V`: paste images
+- `Ctrl+V` · `Alt+V` (Windows and WSL) · `Cmd+V` (iTerm2): paste images
 - `Ctrl+S`: stash prompt
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
-- `Esc Esc` (with text in the prompt, nothing running): clear input
+- `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
 - `Ctrl+W`: delete word back
 - `Alt+F`: move to word end
 - `Alt+D`: delete to word end
@@ -209,6 +211,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 ## 10. Learn
 
 - `/help`: help and available commands
+- `?` (on an empty prompt): toggle the shortcut help panel
 - `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
 - `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
@@ -260,7 +263,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/scroll-speed`: mouse wheel speed (fullscreen only)
 - `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/keybindings`: open keyboard shortcuts file
-- `/voice [hold|tap|off]`: voice dictation mode. With no argument, toggles it
+- `/voice [hold|tap|off]`: voice dictation mode; once on, use `Space` to dictate. With no argument, toggles it
 
 ### Accounts & backends
 
