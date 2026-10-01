@@ -97,6 +97,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
 - `ultracode` ⚡: run a single task as a dynamic workflow
 - `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
+- `/claude-in-chrome [task]` ⚡: have Claude carry out a task in your browser — test a web app, read console logs, fill forms, extract data from pages
 
 ### Recurring / conditional
 
