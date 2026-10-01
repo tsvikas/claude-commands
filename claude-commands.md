@@ -17,10 +17,10 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 07. [Inspect & diagnose](#7-inspect--diagnose) — cost, status, doctor, feedback
 08. [Learn](#8-learn) — help, release notes, lessons
 09. [Play](#9-play) — radio, stickers
-10. [Project bootstrap](#10-project-bootstrap) — init, onboarding, design sync
+10. [Project knowledge](#10-project-knowledge) — CLAUDE.md, init, memory, design sync
 11. [Set up & configure](#11-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
-Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [good to know](#good-to-know-not-commands), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
+Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
 
 ## 1. Steer the model
 
@@ -108,6 +108,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Lifecycle
 
+Background sessions run without a terminal, so they keep working after you close it.
+
 - `/resume [ended-session]` (`/continue`): switch to a past conversation; the current one is saved and can be resumed later
 - `/resume [background-session]` (`/continue`): attach to a background session that is still running; the current conversation moves to the background
 - `/rename [name]`: rename current session
@@ -150,9 +152,13 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/radio`: Claude FM lo-fi radio
 - `/stickers`: order Claude Code stickers
 
-## 10. Project bootstrap
+## 10. Project knowledge
+
+`CLAUDE.md` is read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there.
+`AGENTS.md` is read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both.
 
 - `/init` ⚡: generate CLAUDE.md for a project
+- `/memory`: edit CLAUDE.md / rules files, toggle auto-memory (project-scoped)
 - `/run-skill-generator` ⚡: teach `/run` and `/verify` how to build, launch and drive this project
 - `/team-onboarding` ⚡: onboarding guide for teammates
 - `/design-sync [hint]` ⚡: sync a React design system to Claude Design
@@ -168,10 +174,11 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
 - `/sandbox`: toggle sandbox mode (supported platforms only)
 - `/hooks`: view/edit hook configurations (user and project scope)
-- `/memory`: edit CLAUDE.md / rules files, toggle auto-memory (project-scoped)
 - `/privacy-settings`: view/update privacy settings
 
 ### Capabilities
+
+Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 - `/mcp [reconnect|enable|disable [<server>|all]]`: manage MCP server connections
 - `/plugin [subcommand]`: manage plugins (list, install, enable, disable)
@@ -219,13 +226,6 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
 - `:name:`: emoji shortcode autocomplete in the prompt
-
-## Good to know (not commands)
-
-- `CLAUDE.md`: read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there
-- `AGENTS.md`: read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both
-- claude.ai sync: skills and plugins you enable on claude.ai also load in your terminal sessions
-- background sessions: run without a terminal, so they keep working after you close it
 
 ## Keyboard shortcuts
 
