@@ -183,6 +183,8 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 ### Editing
 
+The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl+K`/`Ctrl+U`, `Ctrl+W`/`Alt+D`, `Ctrl+Y`/`Alt+Y`.
+
 - `Shift+Enter` · `Ctrl+J` · `\ Enter`: newline (`Shift+Enter` needs `/terminal-setup` in some terminals)
 - `Tab` (after a `/` typed mid-prompt): list the matching commands
 - `Space` (hold or tap): push-to-talk voice (needs `/voice` on)
@@ -192,9 +194,6 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
 - `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
-- `Ctrl+W`: delete word back
-- `Alt+F`: move to word end
-- `Alt+D`: delete to word end
 - `Ctrl+G`: edit prompt in `$EDITOR`
 
 ## 9. Inspect & diagnose
