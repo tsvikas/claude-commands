@@ -1,7 +1,7 @@
 # Claude Code Slash Commands Cheatsheet
 
 Categorized reference for built-in slash commands.
-Snapshot as of v2.1.284 (2026-09-28) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.285 (2026-09-29) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
@@ -106,7 +106,8 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Lifecycle
 
-- `/resume [session]` (`/continue`): resume a previous conversation
+- `/resume [ended-session]` (`/continue`): switch to a past conversation; the current one is saved and can be resumed later
+- `/resume [background-session]` (`/continue`): attach to a background session that is still running; the current conversation moves to the background
 - `/rename [name]`: rename current session
 - `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
 - `/background [prompt]` (`/bg`) ⚡: detach this session to run as a background agent, freeing the terminal (reattach with `claude attach <id>`; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`)
