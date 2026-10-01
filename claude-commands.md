@@ -46,7 +46,7 @@ On older models and on third-party providers, a change of effort costs one uncac
 - `/effort [level|auto|status]` · `←`/`→` (in the model picker): set the effort level for the current model: low/medium/high/xhigh/max (max is session-only). `status` prints it. `s` in the picker: this session only
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/advisor [model|off]`: second model for guidance
-- `/output-style [style]`: switch output style: default, proactive, concise, explanatory, learning
+- `/output-style [style]`: switch output style: default, proactive, concise, explanatory, learning; saved for this project, in `.claude/settings.local.json`
 
 ### What it may do, and where
 
@@ -248,7 +248,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
-- `/sandbox`: toggle sandbox mode (supported platforms only)
+- `/sandbox`: toggle sandbox mode; saved for this project, in `.claude/settings.local.json` (supported platforms only)
 
 ### Capabilities
 
@@ -299,7 +299,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `?` (on an empty prompt): toggle the shortcut help panel
 - `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
-- `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
+- `/insights` ⚡: cross-session report across all projects: project areas, interaction patterns, friction points, prompts auto mode could have spared you
 
 ## Extras
 
