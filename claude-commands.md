@@ -94,7 +94,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 - `/tasks` (`/bashes`): view everything running in the background, with the model and effort level each subagent ran on
 - `/workflows`: workflow progress view (`p` pause, `x` stop, `s` save as command, `Enter` on an agent: show its tool calls, inputs and results)
-- `/list-agents` (`/peers`): everything Claude can message — subagents, live teammates, other sessions on this machine, your Remote Control sessions elsewhere and cloud sessions (labelled `offline` / `cloud`), with the name to address each one by
+- `/list-agents` (`/peers`): list names for everything Claude can message (subagents, teammates, other sessions)
 
 ## 5. Capture & share output
 
@@ -109,12 +109,13 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Lifecycle
 
 Background sessions run without a terminal, so they keep working after you close it.
+From the shell, `claude attach <id>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
 
 - `/resume [ended-session]` (`/continue`): switch to a past conversation; the current one is saved and can be resumed later
 - `/resume [background-session]` (`/continue`): attach to a background session that is still running; the current conversation moves to the background
 - `/rename [name]`: rename current session
 - `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
-- `/background [prompt]` (`/bg`) ⚡: detach this session to run as a background agent, freeing the terminal (reattach with `claude attach <id>`; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`)
+- `/background [prompt]` (`/bg`) ⚡: detach this session to run as a background agent, freeing the terminal
 - `/stop`: stop the attached background session (transcript and worktree kept; to detach and leave it running use `/exit`)
 - `/exit` (`/quit`): exit CLI (in an attached background session: detaches and leaves it running)
 
@@ -131,9 +132,9 @@ Background sessions run without a terminal, so they keep working after you close
 
 ## 7. Inspect & diagnose
 
-- `/usage` (`/cost`, `/stats`): session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio, misses, tokens re-cached, warm/cold, and the likely cause of the misses)
+- `/usage` (`/cost`, `/stats`): session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio and the likely cause of misses)
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
-- `/doctor` (`/checkup`) ⚡: setup checkup that also fixes — install health, unused skills/MCP/plugins vs their context cost, duplicated or derivable `CLAUDE.md` content, slow hooks. Reports first, asks before changing anything
+- `/doctor` (`/checkup`) ⚡: setup checkup that also fixes — install health, unused skills/MCP/plugins, redundant `CLAUDE.md` content, slow hooks. Asks before changing anything
 - `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
