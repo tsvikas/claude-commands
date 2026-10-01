@@ -40,7 +40,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 ### Session only
 
 - `ultrathink`: request deeper reasoning (for this turn only)
-- `Alt+T`: toggle extended thinking
+- `Alt+T`: toggle extended thinking (always on for newer models)
 - `Shift+Tab`: cycle permission modes: auto (the default; a server-side classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
 - `/plan`: enter plan mode (read/explore only)
 - `/plan <task>` ⚡: enter plan mode and start planning the task immediately
@@ -67,7 +67,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `/autocompact [auto|<tokens>]`: how full context gets before auto-compaction kicks in (e.g. `500k`); saved as a default
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
 - `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
-- `Esc Esc` · `/rewind` · `/checkpoint` · `/undo`: pick a past point, then roll code/conversation back to it or summarize the conversation before or after it
+- `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: pick a past point, then roll code/conversation back to it or summarize the conversation before or after it
 
 ## 4. Act on the code
 
@@ -183,13 +183,13 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 - `\ Enter`: newline
 - `Tab` (after a `/` typed mid-prompt): list the matching commands
-- hold `Space` (empty prompt): push-to-talk voice
+- `Space` (hold or tap): push-to-talk voice (needs `/voice` on)
 - `Ctrl+Shift+-`: undo input edit
 - `Ctrl+V`: paste images
 - `Ctrl+S`: stash prompt
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
-- `Esc Esc`: clear input
+- `Esc Esc` (with text in the prompt, nothing running): clear input
 - `Ctrl+W`: delete word back
 - `Alt+F`: move to word end
 - `Alt+D`: delete to word end
