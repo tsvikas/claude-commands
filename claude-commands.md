@@ -10,7 +10,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
 01. [Steer the model](#1-steer-the-model) — model, effort, thinking, plan mode
 02. [Manage the context window](#2-manage-the-context-window) — compact, clear, branch, rewind
-03. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs
+03. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
 04. [Delegate & automate](#4-delegate--automate) — subagents, background & scheduled runs
 05. [Capture & share output](#5-capture--share-output) — diff, copy, export, recap
 06. [Manage the session itself](#6-manage-the-session-itself) — resume, background, move between surfaces
@@ -68,9 +68,17 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Reference (load expertise into context)
 
-- `/claude-api [migrate|upgrade|managed-agents-onboard|prompt-audit|cost-optimize]` ⚡: Claude API / Managed Agents docs. The subcommands act: migrate code to a newer model, upgrade a Python project from `anthropic` 0.x to 1.x, walk through creating a Managed Agent, audit prompts and skills for older-model instructions, profile and cut API spend one measured change at a time
 - `/dataviz [request]` ⚡: chart / dashboard design guidance
 - `/workflow-authoring` ⚡: the dynamic-workflow script reference — API, resume behavior, quality patterns. Claude loads it itself before writing a script; run it by hand before editing a saved one
+
+### Claude API projects
+
+- `/claude-api` ⚡: load Claude API / Managed Agents docs
+- `/claude-api migrate` ⚡: move existing API code to a newer model
+- `/claude-api upgrade` ⚡: take the SDK across a major version (Python `anthropic` 0.x to 1.x)
+- `/claude-api managed-agents-onboard` ⚡: walk through creating a Managed Agent
+- `/claude-api prompt-audit` ⚡: flag instructions written for older models in prompts and skills
+- `/claude-api cost-optimize` ⚡: profile API spend and cut it one measured change at a time
 
 ## 4. Delegate & automate
 
