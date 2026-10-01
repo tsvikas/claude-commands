@@ -10,23 +10,23 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
 ## Where to look
 
-01. [Steer the model](#1-steer-the-model) — model, effort, thinking, plan mode
-02. [While Claude works](#2-while-claude-works) — stop, send now, background, transcript
-03. [Manage the context window](#3-manage-the-context-window) — compact, clear, branch, rewind
-04. [Act on the code](#4-act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
-05. [Delegate & automate](#5-delegate--automate) — subagents, background & scheduled runs
-06. [Capture & share output](#6-capture--share-output) — diff, copy, export, slides, recap
-07. [Manage the session itself](#7-manage-the-session-itself) — resume, background, move between surfaces
-08. [Write the prompt](#8-write-the-prompt) — `@file`, `!cmd`, newline, history, paste, voice
-09. [Inspect & diagnose](#9-inspect--diagnose) — cost, status, doctor, feedback
-10. [Learn](#10-learn) — help, release notes, lessons
-11. [Play](#11-play) — radio, stickers
-12. [Project knowledge](#12-project-knowledge) — CLAUDE.md, init, memory, design sync
-13. [Set up & configure](#13-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
+- [Steer the model](#steer-the-model) — model, effort, thinking, plan mode
+- [While Claude works](#while-claude-works) — stop, send now, background, transcript
+- [Manage the context window](#manage-the-context-window) — compact, clear, branch, rewind
+- [Act on the code](#act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
+- [Delegate & automate](#delegate--automate) — subagents, background & scheduled runs
+- [Capture & share output](#capture--share-output) — diff, copy, export, slides, recap
+- [Manage the session itself](#manage-the-session-itself) — resume, background, move between surfaces
+- [Write the prompt](#write-the-prompt) — `@file`, `!cmd`, newline, history, paste, voice
+- [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
+- [Learn](#learn) — help, release notes, lessons
+- [Play](#play) — radio, stickers
+- [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
+- [Set up & configure](#set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
 Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
-## 1. Steer the model
+## Steer the model
 
 ### Saved as default (persist across sessions)
 
@@ -45,7 +45,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `/plan`: enter plan mode (read/explore only)
 - `/plan <task>` ⚡: enter plan mode and start planning the task immediately
 
-## 2. While Claude works
+## While Claude works
 
 ### Act on the running turn
 
@@ -61,7 +61,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+L`: redraw the screen
 
-## 3. Manage the context window
+## Manage the context window
 
 - `/context [all]`: visualize context usage
 - `/compact [instructions]` ⚡: summarize conversation to free context
@@ -70,7 +70,7 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
 - `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
 
-## 4. Act on the code
+## Act on the code
 
 ### Check the work
 
@@ -107,7 +107,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api hillclimb` ⚡: improve the app step by step against an existing eval
 - `/claude-api preserved-thinking-migration` ⚡: find edits to earlier turns, system prompt or tools that drop preserved thinking, and fix them one at a time
 
-## 5. Delegate & automate
+## Delegate & automate
 
 ### Start now
 
@@ -134,7 +134,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
 
-## 6. Capture & share output
+## Capture & share output
 
 - `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
 - `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
@@ -144,7 +144,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
 - `/recap` ⚡: one-line summary of the session
 
-## 7. Manage the session itself
+## Manage the session itself
 
 ### Lifecycle
 
@@ -171,7 +171,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/teleport` · `/tp`: pull a claude.ai web session into the terminal
 - `/remote-control` · `/rc`: expose this local session to claude.ai
 
-## 8. Write the prompt
+## Write the prompt
 
 ### In the message
 
@@ -196,7 +196,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
 - `Ctrl+G`: edit prompt in `$EDITOR`
 
-## 9. Inspect & diagnose
+## Inspect & diagnose
 
 - `/usage` · `/cost` · `/stats`: session cost, plan limits, and breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
@@ -207,7 +207,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `/heapdump`: heap snapshot for memory diagnosis
 - `/feedback [report]` · `/bug` · `/share`: send product feedback about Claude Code
 
-## 10. Learn
+## Learn
 
 - `/help`: help and available commands
 - `?` (on an empty prompt): toggle the shortcut help panel
@@ -215,12 +215,12 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `/powerup`: interactive lessons
 - `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
 
-## 11. Play
+## Play
 
 - `/radio`: Claude FM lo-fi radio
 - `/stickers`: order Claude Code stickers
 
-## 12. Project knowledge
+## Project knowledge
 
 `CLAUDE.md` is read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there.
 `AGENTS.md` is read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both.
@@ -231,7 +231,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `/team-onboarding` ⚡: onboarding guide for teammates
 - `/design-sync [hint]` ⚡: sync a React design system to Claude Design
 
-## 13. Set up & configure (persistent, survives sessions)
+## Set up & configure (persistent, survives sessions)
 
 ### Behavior & safety
 
