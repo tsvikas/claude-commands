@@ -13,7 +13,10 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - CLI flags and subcommands stay out; "Beyond slash commands" links to their reference.
 - A command that behaves differently in two situations gets one line per situation, as `/resume` and `/verify` do.
 - Context that is not a command goes as a plain sentence under its heading, above the bullets.
+- Parentheses right after a command hold its other names: `/cmd` (`/alias`).
 - A key that does what a command does appears in both places: beside the command, and in Keyboard shortcuts.
+- Sections go by how often they are looked up mid-task, with one-time setup near the end. Within a subsection, the most-used line comes first.
+- A line says how long an effect lasts (one message, this session, saved, out in the world) and its scope (user `~/.claude/` or project `.claude/`) wherever that is not obvious.
 
 Before adding a command, read the "Deliberately not listed" comment at the end of the sheet.
 

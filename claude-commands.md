@@ -4,6 +4,7 @@ Categorized reference for built-in slash commands.
 Snapshot as of v2.1.286 (2026-09-30) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
+`<arg>` is required, `[arg]` is optional.
 
 ## Where to look
 
@@ -287,22 +288,6 @@ Intermediate results stay in script variables, only the final answer lands in co
 - Cost: a run can spend far more than the same task in conversation. Gauge on a small slice first, and check `/model` before a large run, agents inherit the session model.
 - Usage limit: a run that hits it pauses and resumes at reset.
 - Workflow subagents always run in acceptEdits mode with your tool allowlist, regardless of session permission mode.
-
-## Notation & notes
-
-Legend used throughout:
-
-- ⚡ invokes the model, costs tokens (the rest are instant UI commands)
-- ☁️ runs in the cloud on Anthropic infra, needs a claude.ai account
-- `/cmd` (`/alias`): parens right after a command hold its alternative names
-- `<arg>` a required argument, `[arg]` an optional one
-
-Two cross-cutting axes worth asking about any command:
-
-- How long the effect lasts: one message, this session, forever (config), or out in the world.
-- Scope: some config commands manage both user-level (`~/.claude/`) and project-level (`.claude/`) layers.
-
-How this sheet is ordered: sections by mid-task lookup frequency, one-time setup near the end; within each subsection, commands go from most-used to most-niche.
 
 ## Beyond slash commands
 
