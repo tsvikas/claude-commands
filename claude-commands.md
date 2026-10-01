@@ -190,7 +190,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Space` (hold or tap): push-to-talk voice (needs `/voice` on)
 - `Ctrl+Shift+-`: undo input edit
 - `Ctrl+V` · `Alt+V` (Windows and WSL) · `Cmd+V` (iTerm2): paste images
-- `Ctrl+S`: stash prompt
+- `Ctrl+S`: stash or restore prompt
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
 - `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
