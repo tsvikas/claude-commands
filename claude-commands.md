@@ -144,7 +144,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
 - `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
 - `/desktop` · `/app`: continue in the desktop app
-- `/remote-control` · `/rc`: expose this local session to claude.ai
+- `/remote-control [name]` · `/rc`: expose this local session to claude.ai
 
 ### End it
 
