@@ -111,7 +111,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 
 ### Start now
 
-- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies)
+- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
 - `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
@@ -131,7 +131,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
 - `Ctrl+F`: kill running agents
 - `Ctrl+X Ctrl+K` (twice): stop all background subagents
-- `/workflows`: workflow progress view (`p` pauses, `x` stops, `s` saves as a command, `Enter` opens an agent)
+- `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
 
 ## 6. Capture & share output
