@@ -68,8 +68,12 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Reference (load expertise into context)
 
+Claude loads these on its own when a task calls for them; type one to load it up front.
+
 - `/dataviz [request]` ⚡: chart / dashboard design guidance
-- `/workflow-authoring` ⚡: the dynamic-workflow script reference — API, resume behavior, quality patterns. Claude loads it itself before writing a script; run it by hand before editing a saved one
+- `/workflow-authoring` ⚡: the dynamic-workflow script reference — API, resume behavior, quality patterns. Run it by hand before editing a saved one
+- `/artifact-diagramming` ⚡: diagramming guidance for artifacts — when a diagram helps, and inline SVG that reads in light and dark themes
+- `/artifact-capabilities` ⚡: what a published artifact can do at runtime (call your connectors, offer a file download) and which of those your account has
 
 ### Claude API projects
 
@@ -321,6 +325,10 @@ Registered as bundled skills at 2.1.251, but no user can type them:
 /plan-artifact  - isEnabled is hardwired to false in that build
 /artifact-components  - gated on the tengu_gable_onyx_sluice flag, off by default
 Re-check by grepping the binary for name:"..." near userInvocable:!0 and isEnabled.
+
+/artifact-design, /keybindings-help  - bundled skills registered userInvocable:!1
+   at 2.1.286: reference for Claude to load, absent from the docs table and from
+   the / menu until the full name is typed. Ask in plain words instead.
 
 This file has no changelog section - the git history is the changelog.
 Line 4 always names the version the file reflects, so git log alone answers
