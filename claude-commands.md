@@ -174,7 +174,6 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 ### See what is running, and control it
 
 - `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
-- `Ctrl+F`: kill running agents
 - `Ctrl+X Ctrl+K` (twice): stop all background subagents, and turn off artifact auto-replies for the rest of the session
 - `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
