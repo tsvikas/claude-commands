@@ -10,40 +10,71 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 
 ## Where to look
 
-- [Steer the model](#steer-the-model) — model, effort, thinking, plan mode
-- [While Claude works](#while-claude-works) — stop, send now, background, transcript
-- [Manage the context window](#manage-the-context-window) — compact, clear, branch, rewind
-- [Act on the code](#act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
-- [Delegate & automate](#delegate--automate) — subagents, background & scheduled runs
-- [Capture & share output](#capture--share-output) — diff, copy, export, slides, recap
-- [Manage the session itself](#manage-the-session-itself) — resume, background, move between surfaces
-- [Write the prompt](#write-the-prompt) — `@file`, `!cmd`, newline, history, paste, voice
-- [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
-- [Learn](#learn) — help, release notes, lessons
-- [Play](#play) — radio, stickers
+- [Set how Claude runs](#set-how-claude-runs) — model, fast mode, thinking, effort, output style, permission mode, plan mode, working directory
+- [Write the prompt](#write-the-prompt) — `@file`, `!cmd`, `ultrathink`, newline, history, paste, voice
+- [While Claude works](#while-claude-works) — stop, background, send now, side question, transcript, diff, focus view
+- [Check the work](#check-the-work) — reviews, simplify, run, verify, browser tasks
+- [Manage the conversation](#manage-the-conversation) — context, compact, clear, branch, rewind, copy, export
+- [Manage sessions](#manage-sessions) — recap, rename, resume, teleport, background, desktop, Remote Control, exit
+- [Delegate & automate](#delegate--automate) — subagents, forks, workflows, goals, loops, scheduled runs
+- [Artifacts](#artifacts) — artifacts, design, slides
+- [Specialist skills](#specialist-skills) — reference docs, Claude API
 - [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
-- [Set up & configure](#set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
+- [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
+- [Set up & configure](#set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, plugins, skills, look & feel, account, integrations
+- [Learn](#learn) — help, release notes, lessons
+- [Extras](#extras) — radio, stickers, passes
 
 Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
-## Steer the model
+## Set how Claude runs
 
-### Saved as default (persist across sessions)
+### Set at the start
 
 - `/model [model]` · `Alt+P`: switch model. In the picker, `←`/`→` set the effort and `s` keeps the choice to this session
+- `/fast [on|off]` · `Alt+O`: fast mode toggle
+- `Alt+T`: toggle extended thinking (always on for newer models)
+
+### Change any time
+
 - `/effort [level|auto|status]` · `←`/`→` (in the model picker): set the effort level for the current model: low/medium/high/xhigh/max (max is session-only). `status` prints it. `s` in the picker: this session only
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
-- `/fast [on|off]` · `Alt+O`: fast mode toggle
 - `/advisor [model|off]`: second model for guidance
 - `/output-style [style]`: switch output style: default, proactive, concise, explanatory, learning
 
-### Session only
+### What it may do, and where
 
-- `ultrathink`: request deeper reasoning (for this turn only)
-- `Alt+T`: toggle extended thinking (always on for newer models)
 - `Shift+Tab`: cycle permission modes: auto (the default), manual, auto-accept edits, plan (like `/plan`)
 - `/plan`: enter plan mode (read/explore only)
 - `/plan <task>` ⚡: enter plan mode and start planning the task immediately
+- `/cd <path>`: move the session to a new working directory; its project config takes effect
+- `/add-dir <path>`: add a directory without moving the session
+
+## Write the prompt
+
+### In the message
+
+- `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
+- `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
+- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
+- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
+- `ultrathink`: request deeper reasoning (for this turn only)
+- `:name:`: emoji shortcode autocomplete in the prompt
+
+### Editing
+
+The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl+K`/`Ctrl+U`, `Ctrl+W`/`Alt+D`, `Ctrl+Y`/`Alt+Y`.
+
+- `Shift+Enter` · `Ctrl+J` · `\ Enter`: newline (`Shift+Enter` needs `/terminal-setup` in some terminals)
+- `Tab` (after a `/` typed mid-prompt): list the matching commands
+- `Space` (hold or tap): dictate a prompt (needs `/voice` on)
+- `Ctrl+Shift+-`: undo input edit
+- `Ctrl+V` · `Alt+V` (Windows and WSL) · `Cmd+V` (iTerm2): paste images
+- `Ctrl+S`: stash or restore prompt
+- `Up` / `Down`: prompt history
+- `Ctrl+R`: search prompt history
+- `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
+- `Ctrl+G`: edit prompt in `$EDITOR`
 
 ## While Claude works
 
@@ -52,16 +83,35 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `Esc` · `Ctrl+C`: interrupt Claude
 - `Ctrl+B` · `Ctrl+X Ctrl+B`: background running tasks
 - `Ctrl+Enter` · `Ctrl+X Ctrl+S`: send queued messages now; running tasks move to the background
+- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
 
 ### See what it is doing
 
 - `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
+- `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
+- `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+L`: redraw the screen
 
-## Manage the context window
+## Check the work
+
+### Review the change
+
+- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed
+- `/code-review ultra` · `/ultrareview` · `ultrareview` ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
+- `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
+- `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
+
+### Run it
+
+- `/run` ⚡: launch and drive the project to see a change working
+- `/verify` (no project `verify` skill) ⚡: run the project e2e and verify its behavior, then save what worked as a project `verify` skill. Runs only when you call it
+- `/verify` (with a project `verify` skill) ⚡: verify by following the saved recipe. Claude also runs it before committing code changes
+- `/claude-in-chrome [task]` ⚡: have Claude carry out a task in your browser — test a web app, read console logs, fill forms, extract data from pages
+
+## Manage the conversation
 
 - `/context [all]`: visualize context usage
 - `/compact [instructions]` ⚡: summarize conversation to free context
@@ -69,22 +119,74 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
 - `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
 - `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
+- `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
+- `/export [filename]`: export conversation as plain text
 
-## Act on the code
+## Manage sessions
 
-### Check the work
+### Recognize this one
 
-- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed
-- `/code-review ultra` · `/ultrareview` · `ultrareview` ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
-- `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
-- `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
-- `/verify` (no project `verify` skill) ⚡: run the project e2e and verify its behavior, then save what worked as a project `verify` skill. Runs only when you call it
-- `/verify` (with a project `verify` skill) ⚡: verify by following the saved recipe. Claude also runs it before committing code changes
-- `/run` ⚡: launch and drive the project to see a change working
+- `/recap` ⚡: one-line summary of the session
+- `/rename [name]`: rename current session
+- `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
 
-### Design
+### Pick up another
 
+- `/resume [ended-session]` · `/continue`: switch to a past conversation; the current one is saved and can be resumed later
+- `/resume [background-session]` · `/continue`: attach to a background session that is still running; the current conversation moves to the background
+- `/teleport` · `/tp`: pull a claude.ai web session into the terminal
+
+### Move or mirror this one
+
+Background sessions run without a terminal, so they keep working after you close it.
+From the shell, `claude attach <id>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
+
+- `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
+- `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
+- `/desktop` · `/app`: continue in the desktop app
+- `/remote-control` · `/rc`: expose this local session to claude.ai
+
+### End it
+
+- `Ctrl+C` (twice, nothing running) · `Ctrl+D` (twice, on an empty prompt) · `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
+- `/stop`: stop the current background session (keeps the worktree)
+
+## Delegate & automate
+
+### Hand a task to a copy of this conversation
+
+- `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
+- `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
+
+### Fan out to many agents
+
+- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
+- `ultracode` ⚡: run a single task as a dynamic workflow
+- `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
+
+### Keep it working unattended
+
+- `/goal [condition|clear]` ⚡: keep working until a condition is met. With no argument, shows the current goal
+- `/loop [interval] [prompt]` · `/proactive` ⚡: run a prompt on an interval (or self-paced); with no prompt it runs an autonomous check, or `.claude/loop.md`
+- `/schedule [description]` · `/routines` ⚡ ☁️: cron-scheduled cloud agents
+- `/autofix-pr [prompt]` ⚡ ☁️: watch a PR, push fixes when CI fails
+
+### See what is running, and control it
+
+- `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
+- `Ctrl+F`: kill running agents
+- `Ctrl+X Ctrl+K` (twice): stop all background subagents
+- `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
+- `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
+
+## Artifacts
+
+- `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
+- `Ctrl+]`: reopen the last Artifact
 - `/design [brief]` ⚡ ☁️: draft a canvas of editable UI artboards (published as an Artifact), tweak one by hand, then tell Claude which to implement (research preview, Pro/Max/Team/Enterprise)
+- `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
+
+## Specialist skills
 
 ### Reference (load expertise into context)
 
@@ -107,94 +209,16 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api hillclimb` ⚡: improve the app step by step against an existing eval
 - `/claude-api preserved-thinking-migration` ⚡: find edits to earlier turns, system prompt or tools that drop preserved thinking, and fix them one at a time
 
-## Delegate & automate
+## Project knowledge
 
-### Start now
+`CLAUDE.md` is read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there.
+`AGENTS.md` is read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both.
 
-- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
-- `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
-- `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
-- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
-- `ultracode` ⚡: run a single task as a dynamic workflow
-- `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
-- `/claude-in-chrome [task]` ⚡: have Claude carry out a task in your browser — test a web app, read console logs, fill forms, extract data from pages
-
-### Recurring / conditional
-
-- `/loop [interval] [prompt]` · `/proactive` ⚡: run a prompt on an interval (or self-paced); with no prompt it runs an autonomous check, or `.claude/loop.md`
-- `/goal [condition|clear]` ⚡: keep working until a condition is met. With no argument, shows the current goal
-- `/schedule [description]` · `/routines` ⚡ ☁️: cron-scheduled cloud agents
-- `/autofix-pr [prompt]` ⚡ ☁️: watch a PR, push fixes when CI fails
-
-### Monitor & control
-
-- `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
-- `Ctrl+F`: kill running agents
-- `Ctrl+X Ctrl+K` (twice): stop all background subagents
-- `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
-- `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
-
-## Capture & share output
-
-- `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
-- `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
-- `/export [filename]`: export conversation as plain text
-- `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
-- `Ctrl+]`: reopen the last Artifact
-- `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
-- `/recap` ⚡: one-line summary of the session
-
-## Manage the session itself
-
-### Lifecycle
-
-Background sessions run without a terminal, so they keep working after you close it.
-From the shell, `claude attach <id>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
-
-- `/resume [ended-session]` · `/continue`: switch to a past conversation; the current one is saved and can be resumed later
-- `/resume [background-session]` · `/continue`: attach to a background session that is still running; the current conversation moves to the background
-- `/rename [name]`: rename current session
-- `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
-- `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
-- `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
-- `/stop`: stop the current background session (keeps the worktree)
-- `Ctrl+C` (twice, nothing running) · `Ctrl+D` (twice, on an empty prompt) · `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
-
-### Workspace scope
-
-- `/cd <path>`: move the session to a new working directory; its project config takes effect
-- `/add-dir <path>`: add a directory without moving the session
-
-### Move between surfaces
-
-- `/desktop` · `/app`: continue in the desktop app
-- `/teleport` · `/tp`: pull a claude.ai web session into the terminal
-- `/remote-control` · `/rc`: expose this local session to claude.ai
-
-## Write the prompt
-
-### In the message
-
-- `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
-- `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
-- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
-- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
-- `:name:`: emoji shortcode autocomplete in the prompt
-
-### Editing
-
-The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl+K`/`Ctrl+U`, `Ctrl+W`/`Alt+D`, `Ctrl+Y`/`Alt+Y`.
-
-- `Shift+Enter` · `Ctrl+J` · `\ Enter`: newline (`Shift+Enter` needs `/terminal-setup` in some terminals)
-- `Tab` (after a `/` typed mid-prompt): list the matching commands
-- `Space` (hold or tap): dictate a prompt (needs `/voice` on)
-- `Ctrl+Shift+-`: undo input edit
-- `Ctrl+V` · `Alt+V` (Windows and WSL) · `Cmd+V` (iTerm2): paste images
-- `Ctrl+S`: stash or restore prompt
-- `Up` / `Down`: prompt history
-- `Ctrl+R`: search prompt history
-- `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
-- `Ctrl+G`: edit prompt in `$EDITOR`
+- `/init` ⚡: generate CLAUDE.md for a project
+- `/memory`: edit CLAUDE.md / rules files, toggle auto-memory (project-scoped)
+- `/run-skill-generator` ⚡: teach `/run` and `/verify` how to build, launch and drive this project
+- `/team-onboarding` ⚡: onboarding guide for teammates
+- `/design-sync [hint]` ⚡: sync a React design system to Claude Design
 
 ## Inspect & diagnose
 
@@ -207,42 +231,19 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `/heapdump`: heap snapshot for memory diagnosis
 - `/feedback [report]` · `/bug` · `/share`: send product feedback about Claude Code
 
-## Learn
-
-- `/help`: help and available commands
-- `?` (on an empty prompt): toggle the shortcut help panel
-- `/release-notes`: changelog picker
-- `/powerup`: interactive lessons
-- `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
-
-## Play
-
-- `/radio`: Claude FM lo-fi radio
-- `/stickers`: order Claude Code stickers
-
-## Project knowledge
-
-`CLAUDE.md` is read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there.
-`AGENTS.md` is read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both.
-
-- `/init` ⚡: generate CLAUDE.md for a project
-- `/memory`: edit CLAUDE.md / rules files, toggle auto-memory (project-scoped)
-- `/run-skill-generator` ⚡: teach `/run` and `/verify` how to build, launch and drive this project
-- `/team-onboarding` ⚡: onboarding guide for teammates
-- `/design-sync [hint]` ⚡: sync a React design system to Claude Design
-
 ## Set up & configure (persistent, survives sessions)
 
-### Behavior & safety
+### Settings
 
 - `/config [key=value ...]` · `/settings`: theme, model default, output style, etc.
 - `/update-config [request]` ⚡: edit `settings.json` in free language ("allow npm test", "add a hook that…")
+
+### Permissions
+
 - `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
 - `/sandbox`: toggle sandbox mode (supported platforms only)
-- `/hooks`: view/edit hook configurations (user and project scope)
-- `/privacy-settings`: view/update privacy settings
 
 ### Capabilities
 
@@ -253,26 +254,24 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/reload-plugins [--force]`: reload active plugins, when a change didn't take effect on its own
 - `/skills`: list skills, toggle visibility
 - `/reload-skills`: re-scan skill directories
+- `/hooks`: view/edit hook configurations (user and project scope)
 
 ### Look & input
 
 - `/theme`: color theme
 - `/tui [default|fullscreen]`: renderer; relaunches with the conversation intact. With no argument, prints the active one
-- `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `/scroll-speed`: mouse wheel speed (fullscreen only)
 - `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/keybindings`: open keyboard shortcuts file
 - `/voice [hold|tap|off]`: voice dictation mode; once on, use `Space` to dictate. With no argument, toggles it
 
-### Accounts & backends
+### Account & plan
 
 - `/login` / `/logout`: Anthropic account sign in/out
 - `/upgrade`: switch to higher plan tier
 - `/usage-credits`: configure usage credits for when you hit a limit
 - `/rate-limit-options`: what to do when a usage limit blocks a request — wait and continue automatically at reset, add credits, upgrade
-- `/setup-bedrock`: Amazon Bedrock auth
-- `/setup-vertex`: Google Cloud auth
-- `/passes`: share a free week with friends
+- `/privacy-settings`: view/update privacy settings
 
 ### One-time integrations
 
@@ -286,6 +285,22 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/install-github-app`: Claude GitHub App for a repo
 - `/install-slack-app`: Claude Slack app
 - `/design-login`: authorize design-system access for `/design-sync`
+- `/setup-bedrock`: Amazon Bedrock auth
+- `/setup-vertex`: Google Cloud auth
+
+## Learn
+
+- `/help`: help and available commands
+- `?` (on an empty prompt): toggle the shortcut help panel
+- `/release-notes`: changelog picker
+- `/powerup`: interactive lessons
+- `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
+
+## Extras
+
+- `/radio`: Claude FM lo-fi radio
+- `/stickers`: order Claude Code stickers
+- `/passes`: share a free week with friends
 
 ______________________________________________________________________
 
