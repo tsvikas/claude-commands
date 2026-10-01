@@ -114,7 +114,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
 - `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
-- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
+- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
 - `ultracode` ⚡: run a single task as a dynamic workflow
 - `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
 - `/claude-in-chrome [task]` ⚡: have Claude carry out a task in your browser — test a web app, read console logs, fill forms, extract data from pages
