@@ -4,7 +4,7 @@ Categorized reference for built-in slash commands.
 Snapshot as of v2.1.286 (2026-09-30) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
-`<arg>` is required, `[arg]` is optional.
+`<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
 
 ## Where to look
 
@@ -31,7 +31,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/effort ultracode [on|off]` (`Tab` in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
 - `/fast [on|off]` (`Opt+O`): fast mode toggle
 - `/advisor [model|off]`: second model for guidance
-- `/output-style [style]`: list output styles or switch to one: default, proactive, concise, explanatory, learning
+- `/output-style [style]`: switch output style: default, proactive, concise, explanatory, learning
 
 ### Session only
 
@@ -84,7 +84,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 ### Start now
 
-- `/btw [question]` ⚡: quick side question, kept out of history (`c` copies the raw markdown answer; `Shift+←`/`Shift+→`, or `[`/`]`, step back through recent side questions)
+- `/btw [question]` ⚡: quick side question, kept out of history (`c` copies the raw markdown answer; `Shift+←`/`Shift+→`, or `[`/`]`, step back through recent side questions). With no argument, shows your most recent side question
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
 - `/fork [prompt]` ⚡: copy the conversation into a separate background session that goes its own way (own worktree, own row in `claude agents`)
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units, one subagent + worktree + PR each
@@ -94,7 +94,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 ### Recurring / conditional
 
 - `/loop [interval] [prompt]` (`/proactive`) ⚡: run a prompt on an interval (or self-paced); with no prompt it runs an autonomous check, or `.claude/loop.md`
-- `/goal [condition|clear]` ⚡: keep working until a condition is met
+- `/goal [condition|clear]` ⚡: keep working until a condition is met. With no argument, shows the current goal
 - `/schedule [description]` (`/routines`) ⚡ ☁️: cron-scheduled cloud agents
 - `/autofix-pr [prompt]` ⚡ ☁️: watch a PR, push fixes when CI fails
 
@@ -198,12 +198,12 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 ### Look & input
 
 - `/theme`: color theme
-- `/tui [default|fullscreen]`: renderer; relaunches with the conversation intact
+- `/tui [default|fullscreen]`: renderer; relaunches with the conversation intact. With no argument, prints the active one
 - `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `/scroll-speed`: mouse wheel speed (fullscreen only)
 - `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/keybindings`: open keyboard shortcuts file
-- `/voice [hold|tap|off]`: voice dictation mode
+- `/voice [hold|tap|off]`: voice dictation mode. With no argument, toggles it
 
 ### Accounts & backends
 
