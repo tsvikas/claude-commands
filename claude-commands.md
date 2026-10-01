@@ -328,39 +328,7 @@ Bundled skills belong in this file, not in a separate skills sheet. The docs
 table marks them **Skill** in the Purpose column; that set is the checklist:
   grep -F '**[Skill]' commands.md | grep -oE '^\| `/[a-z-]+' | sed 's/| `//'
 
-Refreshing this file - no single source is complete, use all four:
-1. curl -sL https://code.claude.com/docs/en/commands.md
-   The canonical table. Diff the command names against this file:
-     grep -oE '^\| `/[a-z-]+' commands.md | sed 's/| `//' | sort -u
-   Diff the signatures too, not only the names. New arguments and subcommands
-   reach the table without a CHANGELOG line: /import cursor, /effort status and
-   three /claude-api subcommands were all found this way.
-     grep -oE '^\| `/[a-z-]+[^`]*`' commands.md | sed 's/^| //'
-   Compare each against the sheet's line for that command. Subcommand tables
-   live on other pages; /claude-api's is in skills.md.
-   Do NOT read it via a fetch-and-summarize tool, that silently drops and
-   invents rows. Its "Requires vX" clause is the reliable birth date of a
-   command - better than the CHANGELOG, which never mentioned /radio,
-   /list-agents or /peers at all.
-2. https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md
-   Best source for behaviour changes. Has no dates - join on the docs
-   changelog, which carries <Update label="2.1.x" description="date">.
-   Skip bullets starting with "Fixed", they are ~half of it and are noise here.
-3. https://code.claude.com/docs/en/whats-new/2026-wNN
-   Weekly digests, good for framing why a change matters. Some weeks are
-   missing entirely (there is no w31) - the index at /whats-new lists the real ones.
-4. curl -sL https://code.claude.com/docs/en/interactive-mode.md
-   The canonical shortcut table, for the Keyboard shortcuts section. Check what
-   each key does in each state: Ctrl+C interrupts, clears the input, or exits
-   depending on what is running, and Ctrl+B backgrounds a task, not the session.
-   Voice keys are in voice-dictation.md.
-
 This file has no changelog section - the git history is the changelog.
-One commit per version, in release order, including the quiet ones:
-  Update for 2.1.NNN                       something in here changed
-  Reviewed 2.1.NNN, nothing for the sheet   only the snapshot line moves
-Behaviour changes go in the body as bullets, and anything deliberately left out
-goes there too, so a later pass can tell "not worth a line" from "missed it".
 Line 4 always names the version the file reflects, so git log alone answers
 which releases have been read.
   git log --oneline                 what versions are covered
