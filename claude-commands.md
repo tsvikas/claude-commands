@@ -1,6 +1,6 @@
-# Claude Code Slash Commands Cheatsheet
+# Claude Code Commands and Shortcuts Cheatsheet
 
-Categorized reference for built-in slash commands.
+Categorized reference for built-in slash commands and keyboard shortcuts, by task.
 Snapshot as of v2.1.286 (2026-09-30) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
@@ -11,18 +11,20 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 ## Where to look
 
 01. [Steer the model](#1-steer-the-model) — model, effort, thinking, plan mode
-02. [Manage the context window](#2-manage-the-context-window) — compact, clear, branch, rewind
-03. [Act on the code](#3-act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
-04. [Delegate & automate](#4-delegate--automate) — subagents, background & scheduled runs
-05. [Capture & share output](#5-capture--share-output) — diff, copy, export, slides, recap
-06. [Manage the session itself](#6-manage-the-session-itself) — resume, background, move between surfaces
-07. [Inspect & diagnose](#7-inspect--diagnose) — cost, status, doctor, feedback
-08. [Learn](#8-learn) — help, release notes, lessons
-09. [Play](#9-play) — radio, stickers
-10. [Project knowledge](#10-project-knowledge) — CLAUDE.md, init, memory, design sync
-11. [Set up & configure](#11-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
+02. [While Claude works](#2-while-claude-works) — stop, send now, background, transcript
+03. [Manage the context window](#3-manage-the-context-window) — compact, clear, branch, rewind
+04. [Act on the code](#4-act-on-the-code) — reviews, verify, simplify, design, reference docs, Claude API
+05. [Delegate & automate](#5-delegate--automate) — subagents, background & scheduled runs
+06. [Capture & share output](#6-capture--share-output) — diff, copy, export, slides, recap
+07. [Manage the session itself](#7-manage-the-session-itself) — resume, background, move between surfaces
+08. [Write the prompt](#8-write-the-prompt) — `@file`, `!cmd`, newline, history, paste, voice
+09. [Inspect & diagnose](#9-inspect--diagnose) — cost, status, doctor, feedback
+10. [Learn](#10-learn) — help, release notes, lessons
+11. [Play](#11-play) — radio, stickers
+12. [Project knowledge](#12-project-knowledge) — CLAUDE.md, init, memory, design sync
+13. [Set up & configure](#13-set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, look & feel, accounts
 
-Also in here: [in-message directives](#in-message-directives-not-commands) (`@file`, `!cmd`, `ultrathink`…), [keyboard shortcuts](#keyboard-shortcuts), and [what ultracode actually does](#ultracode-the-special-case).
+Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 ## 1. Steer the model
 
@@ -39,11 +41,26 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 
 - `ultrathink`: request deeper reasoning (for this turn only)
 - `Alt+T`: toggle extended thinking
-- `Shift+Tab`: cycle permission modes
+- `Shift+Tab`: cycle permission modes: auto (the default; a server-side classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
 - `/plan`: enter plan mode (read/explore only)
 - `/plan <task>` ⚡: enter plan mode and start planning the task immediately
 
-## 2. Manage the context window
+## 2. While Claude works
+
+### Act on the running turn
+
+- `Esc`: interrupt the current turn
+- `Ctrl+B`: send the running task to the background (like `/background`)
+- `Ctrl+Enter` · `Ctrl+X Ctrl+S`: move running tools to the background and send queued messages now
+
+### See what it is doing
+
+- `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
+- `Ctrl+E` (in the verbose transcript): expand all content
+- `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
+- `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
+
+## 3. Manage the context window
 
 - `/context [all]`: visualize context usage
 - `/compact [instructions]` ⚡: summarize conversation to free context
@@ -52,7 +69,7 @@ Also in here: [in-message directives](#in-message-directives-not-commands) (`@fi
 - `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
 - `Esc Esc` · `/rewind` · `/checkpoint` · `/undo`: pick a past point, then roll code/conversation back to it or summarize the conversation before or after it
 
-## 3. Act on the code
+## 4. Act on the code
 
 ### Check the work
 
@@ -89,7 +106,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api hillclimb` ⚡: improve the app step by step against an existing eval
 - `/claude-api preserved-thinking-migration` ⚡: find edits to earlier turns, system prompt or tools that drop preserved thinking, and fix them one at a time
 
-## 4. Delegate & automate
+## 5. Delegate & automate
 
 ### Start now
 
@@ -111,19 +128,22 @@ Claude loads these on its own when a task calls for them; type one to load it up
 ### Monitor & control
 
 - `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
+- `Ctrl+F`: kill running agents
+- `Ctrl+X Ctrl+K` (twice): stop all background subagents
 - `/workflows`: workflow progress view (`p` pause, `x` stop, `s` save as command, `Enter` on an agent: show its tool calls, inputs and results)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
 
-## 5. Capture & share output
+## 6. Capture & share output
 
 - `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
 - `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
 - `/export [filename]`: export conversation as plain text
 - `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
+- `Ctrl+]`: reopen the last Artifact
 - `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
 - `/recap` ⚡: one-line summary of the session
 
-## 6. Manage the session itself
+## 7. Manage the session itself
 
 ### Lifecycle
 
@@ -149,7 +169,33 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/teleport` · `/tp`: pull a claude.ai web session into the terminal
 - `/remote-control` · `/rc`: expose this local session to claude.ai
 
-## 7. Inspect & diagnose
+## 8. Write the prompt
+
+### In the message
+
+- `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
+- `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
+- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
+- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
+- `:name:`: emoji shortcode autocomplete in the prompt
+
+### Editing
+
+- `\ Enter`: newline
+- `Tab` (after a `/` typed mid-prompt): list the matching commands
+- hold `Space` (empty prompt): push-to-talk voice
+- `Ctrl+Shift+-`: undo input edit
+- `Ctrl+V`: paste images
+- `Ctrl+S`: stash prompt
+- `Up` / `Down`: prompt history
+- `Ctrl+R`: search prompt history
+- `Esc Esc`: clear input
+- `Ctrl+W`: delete word back
+- `Alt+F`: move to word end
+- `Alt+D`: delete to word end
+- `Ctrl+G`: edit prompt in `$EDITOR`
+
+## 9. Inspect & diagnose
 
 - `/usage` · `/cost` · `/stats`: session cost, plan limits, per-skill/agent breakdown, a per-`/loop` breakdown (runs, tokens, tokens per run, last run), and a prompt-cache line (hit ratio and the likely cause of misses)
 - `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
@@ -160,19 +206,19 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/heapdump`: heap snapshot for memory diagnosis
 - `/feedback [report]` · `/bug` · `/share`: submit feedback, report a bug, or share the conversation. Claude can queue a draft report here when something goes wrong
 
-## 8. Learn
+## 10. Learn
 
 - `/help`: help and available commands
 - `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
 - `/insights` ⚡: cross-session report: project areas, interaction patterns, friction points, prompts auto mode could have spared you
 
-## 9. Play
+## 11. Play
 
 - `/radio`: Claude FM lo-fi radio
 - `/stickers`: order Claude Code stickers
 
-## 10. Project knowledge
+## 12. Project knowledge
 
 `CLAUDE.md` is read at launch from the working directory and every directory above it, plus `~/.claude/CLAUDE.md`; a subdirectory's loads when Claude reads a file there.
 `AGENTS.md` is read the same way, but only when no `CLAUDE.md` exists in the working directory or above; Project instructions in `/config` can make Claude read both.
@@ -183,7 +229,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/team-onboarding` ⚡: onboarding guide for teammates
 - `/design-sync [hint]` ⚡: sync a React design system to Claude Design
 
-## 11. Set up & configure (persistent, survives sessions)
+## 13. Set up & configure (persistent, survives sessions)
 
 ### Behavior & safety
 
@@ -238,59 +284,6 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/install-github-app`: Claude GitHub App for a repo
 - `/install-slack-app`: Claude Slack app
 - `/design-login`: authorize design-system access for `/design-sync`
-
-## In-message directives (not commands)
-
-- `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
-- `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
-- `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
-- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
-- `:name:`: emoji shortcode autocomplete in the prompt
-
-## Keyboard shortcuts
-
-defaults, `/keybindings` to customize
-
-### Steering
-
-- `Shift+Tab`: cycle permission modes: auto (the default; a server-side classifier approves each action), manual, auto-accept edits, plan mode (like `/plan`)
-- `Alt+P`: switch model (like `/model`, `←`/`→` in the picker: effort slider)
-- `Alt+O`: toggle fast mode (like `/fast`)
-- `Alt+T`: toggle extended thinking for the session
-
-### While Claude works
-
-- `Esc`: interrupt the current turn
-- `Ctrl+F`: kill running agents
-- `Ctrl+X Ctrl+K` (twice): stop all background subagents
-- `Ctrl+Enter` · `Ctrl+X Ctrl+S`: move running tools to the background and send queued messages now
-- `Ctrl+B`: send the running task to the background (like `/background`)
-- `Ctrl+O`: toggle verbose transcript (also expands a collapsed `Message from @sender` preview)
-- `Ctrl+T`: toggle the todo list (nothing to show on Opus 4.8 / Sonnet 5 / Fable 5 and newer — todo tools are off there unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
-- `Ctrl+]`: reopen the last Artifact
-- `Ctrl+E` (in the verbose transcript): expand all content
-- `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
-
-### Prompt editing
-
-- `\ Enter`: newline
-- `Esc Esc`: clear input
-- `Up` / `Down`: prompt history
-- `Ctrl+R`: search prompt history
-- `Tab` (after a `/` typed mid-prompt): list the matching commands
-- `Ctrl+W`: delete word back
-- `Alt+F`: move to word end
-- `Alt+D`: delete to word end
-- `Ctrl+Shift+-`: undo input edit
-- `Ctrl+V`: paste images
-- `Ctrl+S`: stash prompt
-- `Ctrl+G`: edit prompt in `$EDITOR`
-- hold `Space` (empty prompt): push-to-talk voice
-
-### Lists and pickers
-
-- `PgUp`/`PgDn`, `Home`/`End`, `j`/`k`: page and move through nearly every list and picker
-- `←`/`→` · `Tab`: switch tabs in tabbed dialogs
 
 ______________________________________________________________________
 

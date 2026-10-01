@@ -21,7 +21,7 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - A chord or a repeated key is one code span with a space, as the keybindings file writes it: `Ctrl+X Ctrl+K`, `Esc Esc`.
 - Write `Alt` for the Alt or Option key. The legend says once that it is `Option` on macOS.
 - A line with an optional argument says what the bare command does only when that is something other than running with no input or opening a picker.
-- A key that does what a command does appears in both places: beside the command, and in Keyboard shortcuts.
+- A key has one home: the section for the task it serves. One that does what a command does goes on that command's line, after a `·`.
 - Sections go by how often they are looked up mid-task, with one-time setup near the end. Within a subsection, the most-used line comes first.
 - A line says how long an effect lasts (one message, this session, saved, out in the world) and its scope (user `~/.claude/` or project `.claude/`) wherever that is not obvious.
 
@@ -66,7 +66,7 @@ No single source is complete, so each refresh reads all five:
 3. The weekly digests: `https://code.claude.com/docs/en/whats-new/2026-wNN`
    - Good for why a change matters. They trail the releases by a few weeks, and some weeks are missing (there is no w31); the index at `/whats-new` lists the real ones.
 4. The docs shortcut table: `curl -sL https://code.claude.com/docs/en/interactive-mode.md`
-   - The source for the Keyboard shortcuts section. Voice keys are in `voice-dictation.md`.
+   - The source for every key in the sheet. Voice keys are in `voice-dictation.md`.
    - Check what each key does in each state: `Ctrl+C` interrupts, clears the input, or exits depending on what is running, and `Ctrl+B` backgrounds a task, not the session.
 5. The installed binary: `readlink -f "$(which claude)"`
    - The tie-breaker when the docs and the CHANGELOG are vague: a command's usage string, which context a key is bound in, whether a skill is registered `userInvocable`.
