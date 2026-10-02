@@ -2,6 +2,9 @@
 
 `claude-commands.md` is a cheatsheet of Claude Code's built-in slash commands and keyboard shortcuts.
 Line 4 of the sheet names the Claude Code version it reflects and that version's release date.
+`claude-commands-outline.md` lists every command and key by section and group. `tools/outline.py` generates it from the sheet and `prek` runs it, so edit the sheet and never the outline.
+`tools/page.py` generates a web page from the sheet; see "The web page" below.
+The root holds what a reader opens; the scripts that generate from the sheet live in `tools/`.
 
 ## What belongs in the sheet
 
@@ -77,6 +80,23 @@ No single source is complete, so each refresh reads all five:
    - It is about 240 MB. Search it with `/usr/bin/grep -a -o` and a short context, or with `bytes.find` in Python. Inside a Claude Code session plain `grep` is a wrapper that fails on it, and a regex with wide context times out.
    - It shows what this version does, not the documented workflow. When the two disagree, say so in the commit body.
 
+## The web page
+
+`tools/page.py` writes `_site/index.html` from the sheet, with `tools/page.css` and `tools/page.js` inlined. The Pages workflow runs it on every push to main.
+To look at it, run `python3 tools/page.py` and open the file. `_site/` is not committed.
+Change the look in `page.css` and the behaviour in `page.js`; the content comes only from the sheet.
+
+How a sheet line reaches the page:
+
+- A row shows the names and the short part of the description, and a press opens the rest.
+  The short part ends at the first `.`, `;` or `:` that a space follows, or the first em dash with a space on each side, outside code spans and parentheses. A parenthesis that closes the short part goes with the rest.
+- A name that starts with a capital letter, an arrow, `?` or `\` is drawn as a key. Any other name is drawn as typed text.
+- Arguments longer than 22 characters show as `[…]` until the row is opened.
+- A sentence under a heading shows in full above the rows of that heading.
+- The sections after the rule show as plain text, with nothing to open.
+
+`page.py` stops with a message when it cannot read a line, and the workflow builds the page on every pull request, so such a line fails there.
+
 ## Commits
 
 The git history is the sheet's changelog: one commit per release, in release order, including the quiet ones.
@@ -105,3 +125,4 @@ Make each change its own commit, so it can be reviewed alone. Once it is approve
 An `add:` or `fix:` title ends with the release its content comes from, in parentheses, when that release is known: the release itself when it is later than 2.1.251, the version the sheet started from, and `pre 2.1.252` when it is earlier.
 
 Run `prek run --all-files` before each commit; a fresh clone has no git hook installed.
+It regenerates the outline and formats the Markdown. When it reports a file as modified, stage that file and run it again.

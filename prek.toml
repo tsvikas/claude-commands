@@ -1,6 +1,12 @@
 #:schema https://www.schemastore.org/prek.json
 
 [[repos]]
+repo = "local"
+hooks = [
+  { id = "outline", name = "outline", entry = "python3 tools/outline.py", language = "system", files = '^(claude-commands\.md|tools/outline\.py)$', pass_filenames = false },
+]
+
+[[repos]]
 repo = "https://github.com/hukkin/mdformat"
 rev = "1.0.0"
 hooks = [{ id = "mdformat", args = ["--number"] }]

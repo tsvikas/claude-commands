@@ -1,0 +1,251 @@
+/* Structure first: the colours and the type are placeholders until the visual pass. */
+:root {
+  --ground: #f3f4f6;
+  --card: #fff;
+  --ink: #16181d;
+  --dim: #474d59;
+  --muted: #5b6270;
+  --line: #d5d9e0;
+  --edge: #c5cad3;
+  --keyline: #b9bec7;
+  --tint: #eceef2;
+  --hover: #eef0f3;
+  --tip: #16181d;
+  --tip-ink: #f3f4f6;
+  --tip-dim: #b6bcc8;
+  --tip-tint: #2f333c;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --gap: 16px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 13px/19px var(--sans);
+}
+a { color: inherit; }
+a:hover { color: var(--muted); }
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  background: var(--tint);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+.sprite { position: absolute; width: 0; height: 0; }
+.i {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.page { padding: 28px 32px 64px; }
+
+/* The top: title, filter, expand all, legend. */
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.brand h1 { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.brand p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 18px; }
+.filter {
+  flex: 1 1 280px;
+  max-width: 380px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 500;
+}
+.filter input, .ghost {
+  height: 34px;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+}
+.filter input { flex: 1 1 auto; min-width: 0; padding: 0 12px; }
+.ghost { padding: 0 14px; cursor: pointer; }
+.ghost:hover { border-color: var(--ink); }
+.legend {
+  flex: 1 1 320px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 18px;
+}
+.legend .i { vertical-align: -1px; }
+.legend .name { font-size: 12px; color: var(--ink); }
+
+/* The board: page.js sorts the cards into as many columns as fit. */
+#board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr));
+  gap: var(--gap);
+  align-items: start;
+}
+.col { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
+#empty { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* A card is a section. A thick dark rule under its title; a thin one between its groups. */
+.sec {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.sec > h2 {
+  margin: 0 -16px;
+  padding: 0 16px 9px;
+  border-bottom: 2px solid var(--ink);
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+}
+.note { margin: 0; color: var(--dim); font-size: 12px; line-height: 17px; }
+.grp { margin: 0 -16px; padding: 0 16px; }
+.grp:not([hidden]) ~ .grp { padding-top: 12px; border-top: 1px solid var(--line); }
+.grp > h3 {
+  width: fit-content;
+  margin: 0 0 6px -8px;
+  padding: 2px 8px;
+  background: var(--tint);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.grp > .note { margin-bottom: 5px; }
+
+/* A row is one run of text. Opened, it is the whole sheet line. */
+.row {
+  position: relative;
+  display: flow-root;
+  margin: 0 -6px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+.row:hover { background: var(--hover); }
+.row.can { cursor: pointer; }
+.side {
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 19px;
+  margin-left: 8px;
+  color: var(--muted);
+}
+.name { font: 600 12.5px/19px var(--mono); overflow-wrap: anywhere; }
+button.name {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: inherit;
+  text-align: left;
+}
+.args { font: 11.5px/19px var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.alt { font: 12px/19px var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.cond { font-size: 12px; color: var(--muted); }
+.name.key, .alt.key {
+  padding: 0 4px;
+  background: var(--card);
+  border: 1px solid var(--keyline);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.rest { color: var(--dim); }
+.more, .rest { display: none; }
+.row.open .more, .row.open .rest, .filtering .more, .filtering .rest { display: inline; }
+.row.open .less, .filtering .less { display: none; }
+
+/* The mark says a row holds more. With a mouse the tooltip says so, so it shows only once open. */
+.mark { display: none; font: 14px/19px var(--mono); }
+.row.can .mark::before { content: "+"; }
+.row.open .mark::before { content: "\2212"; }
+.row.open .mark { display: inline; }
+@media (hover: none) {
+  .row.can .mark { display: inline; }
+}
+
+/* The tooltip opens beside the row, over the next column, so it never covers the rows below. */
+.tip {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 3px;
+  padding: 10px 12px 11px;
+  background: var(--tip);
+  color: var(--tip-ink);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(22, 24, 29, 0.24);
+  font-size: 12.5px;
+  line-height: 18px;
+  pointer-events: none;
+}
+.tip-right .tip, .tip-left .tip { top: -6px; margin-top: 0; width: 100%; }
+.tip-right .tip { left: calc(100% + 12px); right: auto; }
+.tip-left .tip { left: auto; right: calc(100% + 12px); }
+.tip .use { font-family: var(--mono); overflow-wrap: anywhere; }
+.tip .dim { color: var(--tip-dim); }
+.tip p { margin: 6px 0 0; }
+.tip p + .dim { margin-top: 6px; font-size: 11.5px; }
+.tip code { background: var(--tip-tint); }
+@media (hover: hover) {
+  .row:hover > .tip, .row:focus-within > .tip { display: block; }
+}
+.row.open > .tip, .filtering .tip, .filtering .note { display: none; }
+
+/* The prose after the board: nothing to open. */
+.extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: var(--gap);
+  align-items: start;
+  margin-top: var(--gap);
+}
+.prose p, .prose ul { margin: 0; }
+.prose ul { padding-left: 18px; }
+.prose li { margin: 3px 0; overflow-wrap: anywhere; }
+footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; overflow-wrap: anywhere; }
+
+/* Without the script nothing can be opened or sorted, so everything is open and the browser makes the columns. */
+.no-js .filter, .no-js #all, .no-js .tip { display: none; }
+.no-js .more, .no-js .rest { display: inline; }
+.no-js .less { display: none; }
+.no-js #board { display: block; columns: 290px; column-gap: var(--gap); }
+.no-js .sec { break-inside: avoid; margin-bottom: var(--gap); }
+
+@media (max-width: 640px) {
+  .page { padding: 16px 12px 48px; }
+}
