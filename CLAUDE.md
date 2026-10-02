@@ -112,7 +112,8 @@ Release numbers skip. When the previous number was never released, the title say
 The body of a release commit has one bullet per change in that release that reached the sheet, in the changelog's own words where they fit, then everything deliberately left out, so a later pass can tell "not worth a line" from "missed it".
 A change that belongs to no release gets its own commit, with a lowercase prefix for its kind:
 
-- `meta:` instructions for maintaining the sheet: this file and the sheet's trailing comment.
+- `meta:` instructions for maintaining the sheet: this file and the sheet's trailing comment. Also the tooling around the sheet: the scripts, the hooks, the workflow.
+- `look:` how the web page looks: its colours, type, spacing and layout. What the page shows and how it is built is `meta:`.
 - `tidy:` moving or rewording what the sheet already says.
 - `add:` content the sheet never had.
 - `fix:` correcting a line that is wrong.
