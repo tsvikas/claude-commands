@@ -1,12 +1,13 @@
 /* The greys and the type are placeholders until the visual pass.
-   The accent is on the rule under each section title and, as a pale tint, behind each group
-   label, where the eye looks for a section or a group. It is also on what can be pressed or
-   followed: a link, the focus ring, the mark of a row that opens, the controls at the top.
-   Every row hovers in the same grey. Everything else stays grey. */
+   The accent is on what can be pressed or followed: a link, the focus ring, the mark of a row
+   that opens, the controls at the top. A second, warm colour sits behind each group label, like
+   a highlighter, so a group can be found at a glance. Every row hovers in the same grey.
+   Everything else stays grey. */
 :root {
   --accent: #2a4fd0;
   --accent-strong: #1f3da6;
   --accent-tint: #e3e9fb;
+  --label-tint: #fbe8bd;
   --ground: #f3f4f6;
   --card: #fff;
   --ink: #16181d;
@@ -131,7 +132,7 @@ code {
 .sec > h2 {
   margin: 0 -16px;
   padding: 0 16px 9px;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--ink);
   font-size: 17px;
   line-height: 22px;
   font-weight: 700;
@@ -143,7 +144,7 @@ code {
   width: fit-content;
   margin: 0 0 6px -8px;
   padding: 2px 8px;
-  background: var(--accent-tint);
+  background: var(--label-tint);
   border-radius: 4px;
   font-size: 11px;
   line-height: 16px;
