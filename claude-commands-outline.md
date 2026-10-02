@@ -7,7 +7,7 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 - **Set at the start:** `/model`, `/fast`, `Alt+T`
 - **Change any time:** `/effort`, `/effort ultracode`, `/advisor`, `/output-style`
-- **What it may do, and where:** `Shift+Tab`, `/plan`, `/plan <task>`, `/cd`, `/add-dir`
+- **What Claude may do, and where:** `Shift+Tab`, `/plan`, `/plan <task>`, `/cd`, `/add-dir`
 
 ## [Write the prompt](claude-commands.md#write-the-prompt)
 
@@ -38,8 +38,8 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 ## [Delegate & automate](claude-commands.md#delegate--automate)
 
 - **Hand a task to a copy of this conversation:** `/subtask`, `/fork`
-- **Fan out to many agents:** `/batch`, `ultracode`, `/deep-research`
-- **Keep it working unattended:** `/goal`, `/loop`, `/schedule`, `/autofix-pr`
+- **Run agents in parallel:** `/batch`, `ultracode`, `/deep-research`
+- **Keep Claude working unattended:** `/goal`, `/loop`, `/schedule`, `/autofix-pr`
 - **See what is running, and control it:** `/tasks`, `Ctrl+X Ctrl+K`, `/workflows`, `/list-agents`
 
 ## [Artifacts](claude-commands.md#artifacts)
@@ -48,7 +48,7 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 ## [Specialist skills](claude-commands.md#specialist-skills)
 
-- **Reference (load expertise into context):** `/dataviz`, `/workflow-authoring`, `/artifact-diagramming`, `/artifact-capabilities`
+- **Reference:** `/dataviz`, `/workflow-authoring`, `/artifact-diagramming`, `/artifact-capabilities`
 - **Claude API projects:** `/claude-api`, `/claude-api migrate`, `/claude-api upgrade`, `/claude-api managed-agents-onboard`, `/claude-api prompt-audit`, `/claude-api cost-optimize`, `/claude-api build-eval`, `/claude-api hillclimb`, `/claude-api preserved-thinking-migration`
 
 ## [Project knowledge](claude-commands.md#project-knowledge)
@@ -59,11 +59,11 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 - `/usage`, `/status`, `/doctor`, `/doctor prompt-audit`, `/skill-doctor`, `/debug`, `/heapdump`, `/feedback`
 
-## [Set up & configure](claude-commands.md#set-up--configure)
+## [Configure](claude-commands.md#configure)
 
 - **Settings:** `/config`, `/update-config`
 - **Permissions:** `/permissions`, `/fewer-permission-prompts`, `/auto-mode-setup`, `/sandbox`
-- **Capabilities:** `/mcp`, `/plugin`, `/reload-plugins`, `/skills`, `/reload-skills`, `/hooks`
+- **Extensions:** `/mcp`, `/plugin`, `/reload-plugins`, `/skills`, `/reload-skills`, `/hooks`
 - **Look & input:** `/theme`, `/tui`, `/scroll-speed`, `/statusline`, `/keybindings`, `/voice`
 - **Account & plan:** `/login` / `/logout`, `/upgrade`, `/usage-credits`, `/rate-limit-options`, `/privacy-settings`
 - **One-time integrations:** `/import`, `/terminal-setup`, `/ide`, `/chrome`, `/mobile`, `/web-setup`, `/remote-env`, `/install-github-app`, `/install-slack-app`, `/design-login`, `/setup-bedrock`, `/setup-vertex`

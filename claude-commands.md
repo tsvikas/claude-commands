@@ -21,11 +21,11 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 - [Specialist skills](#specialist-skills) — reference docs, Claude API
 - [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
 - [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
-- [Set up & configure](#set-up--configure) — settings, permissions, MCP, plugins, skills, look & feel, account, integrations
+- [Configure](#configure) — settings, permissions, sandbox, MCP, plugins, skills, look & feel, account, integrations
 - [Learn](#learn) — help, release notes, lessons
 - [Extras](#extras) — radio, stickers, passes
 
-Also in here: [what ultracode actually does](#ultracode-the-special-case).
+Also in here: [what ultracode actually does](#what-ultracode-does).
 
 ## Set how Claude runs
 
@@ -48,7 +48,7 @@ On older models and on third-party providers, a change of effort costs one uncac
 - `/advisor [model|off]`: second model for guidance
 - `/output-style [style]`: switch output style: default, proactive, concise, explanatory, learning; saved for this project, in `.claude/settings.local.json`
 
-### What it may do, and where
+### What Claude may do, and where
 
 - `Shift+Tab`: cycle permission modes: auto (the default), manual, auto-accept edits, plan (like `/plan`)
 - `/plan`: enter plan mode (read/explore only)
@@ -164,13 +164,13 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/subtask <task>` ⚡: forked subagent — inherits the full conversation, runs in the background, returns its result *here*
 - `/fork [prompt]` ⚡: copy the conversation into a new background session and keep working here; the copy edits in its own worktree
 
-### Fan out to many agents
+### Run agents in parallel
 
 - `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
 - `ultracode` ⚡: run a single task as a dynamic workflow
 - `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
 
-### Keep it working unattended
+### Keep Claude working unattended
 
 - `/goal [condition|clear]` ⚡: keep working until a condition is met. With no argument, shows the current goal
 - `/loop [interval] [prompt]` · `/proactive` ⚡: run a prompt on an interval (or self-paced); with no prompt it runs an autonomous check, or `.claude/loop.md`
@@ -193,7 +193,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 ## Specialist skills
 
-### Reference (load expertise into context)
+### Reference
 
 Claude loads these on its own when a task calls for them; type one to load it up front.
 
@@ -236,7 +236,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/heapdump`: heap snapshot for memory diagnosis
 - `/feedback [report]` · `/bug` · `/share`: send product feedback about Claude Code
 
-## Set up & configure
+## Configure
 
 What you set here is persistent between sessions.
 
@@ -252,7 +252,7 @@ What you set here is persistent between sessions.
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
 - `/sandbox`: set up sandbox mode; saved for this project, in `.claude/settings.local.json`
 
-### Capabilities
+### Extensions
 
 Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
@@ -311,7 +311,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 ______________________________________________________________________
 
-## Ultracode, the special case
+## What ultracode does
 
 `ultracode` opts into *dynamic workflows*: instead of working turn by turn, Claude writes a JavaScript orchestration script and a runtime executes it in the background.
 It spawns dozens to hundreds of subagents (16 concurrent, 1000 per run max) while the session stays responsive.
