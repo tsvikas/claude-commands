@@ -25,7 +25,8 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen only)" for a requirement or "newer models" for a note about models.
 - A long line that packs several cases is a candidate for one line per case. Suggest the split.
 - A key gets a line for each thing it does, in the section for that task. Most have one, or two next to each other; `Ctrl+C` has three, in three sections. When it does what a command does, it shares that command's line, after a `·`. A command's line may also name the key you press right after running it.
-- Sections go by how often they are looked up mid-task, with one-time setup near the end. Within a subsection, the most-used line comes first.
+- Sections follow one task and then widen: set how Claude runs, write the prompt, watch it work, check the result; then the conversation and the sessions around it; then other kinds of work; then the project and the tool itself; last what is read once. Within a subsection, the most-used line comes first.
+- Headings carry no numbers, so a section can move without changing any other heading or link.
 - A line says how long an effect lasts (one message, this session, saved, out in the world) and its scope (user `~/.claude/` or project `.claude/`) wherever that is not obvious.
 
 Before adding a command, read the "Deliberately not listed" comment at the end of the sheet.
