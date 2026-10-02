@@ -51,6 +51,10 @@ code {
 
 .page { padding: 28px 32px 64px; }
 
+/* Only the staging copy has this bar, so the two copies cannot be mistaken for each other. */
+.staging { margin: 0; padding: 6px 32px; background: var(--ink); color: var(--tip-ink); font-size: 12.5px; }
+.staging a, .staging a:hover { color: inherit; }
+
 /* The top: title, filter, expand all, legend. */
 .top {
   display: flex;

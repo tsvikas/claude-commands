@@ -1,13 +1,15 @@
 """Write _site/index.html: the sheet as a web page, one card per section.
 
-Run by the Pages workflow on every push to main, and by hand to look at the result.
+Run by the Pages workflow on every push to main or staging, and by hand to look at the result.
 The page is generated; edit the sheet, `page.css` or `page.js`, not the page.
 Beside it goes _site/badge.json, which the README's badge reads for the sheet's version and date.
+With `--staging` the page says it is the staging copy and asks search engines to skip it.
 """
 
 import html
 import json
 import re
+import sys
 from pathlib import Path
 from string import Template
 
@@ -33,14 +35,14 @@ TEMPLATE = Template("""\
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title</title>
-<meta name="description" content="$intro">
+<meta name="description" content="$intro">$robots
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
 $css</style>
 </head>
-<body>
+<body>$banner
 <svg class="sprite" aria-hidden="true">
 <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
 <symbol id="cloud" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 11.5 3.75 3.75 0 0 0 7 19h10.5z"/></symbol>
@@ -251,10 +253,16 @@ def badge(text):
     return json.dumps({"schemaVersion": 1, "label": "updated for", "message": f"v{version} · {date}", "color": "blueviolet"})
 
 
-def render(text):
+STAGING_ROBOTS = '\n<meta name="robots" content="noindex">'
+STAGING_BANNER = '\n<p class="staging">Staging copy, for checking a change before it is live. <a href="../">The live page</a></p>'
+
+
+def render(text, staging=False):
     top, tasks, after = sheet(text)
     version, date, canonical = snapshot(top)
     return TEMPLATE.substitute(
+        robots=STAGING_ROBOTS if staging else "",
+        banner=STAGING_BANNER if staging else "",
         title=html.escape(top[0].removeprefix("# ")),
         intro=html.escape(top[2]),
         version=version,
@@ -270,5 +278,5 @@ def render(text):
 
 if __name__ == "__main__":
     PAGE.parent.mkdir(exist_ok=True)
-    PAGE.write_text(render(SHEET.read_text()))
+    PAGE.write_text(render(SHEET.read_text(), staging="--staging" in sys.argv[1:]))
     BADGE.write_text(badge(SHEET.read_text()))
