@@ -21,6 +21,10 @@ The sheet covers what ships in the binary and that a user types or presses: slas
 - Before the colon, parentheses hold only a condition on the name they follow: `Key` (on an empty prompt).
 - After the colon, in the description, parentheses are free for an aside: `/clear`: start fresh (also starts a new session).
 - A requirement, such as a plan, a mode or an opt-in, goes in parentheses at the end of the description: `/scroll-speed`: mouse wheel speed (fullscreen only).
+- A description opens with a phrase that stands on its own, in about 70 characters or fewer. The web page shows that phrase and keeps the rest until the row is pressed.
+  When more follows, end the phrase at a `;`, `:` or `.` that a space follows, or at an em dash with a space on each side: `/cd <path>`: move the session to a new working directory; its project config takes effect.
+  A parenthesis that closes the phrase counts as the rest. One in the middle of it hides the break from the page, so put that aside after the break.
+  Leave a longer phrase whole when a break would cut a single thought in two.
 - The main name comes first, then its aliases, then keys. A key leads only when it is the usual way to do the thing, as `Esc Esc` is for rewinding.
 - A chord or a repeated key is one code span with a space, as the keybindings file writes it: `Ctrl+X Ctrl+K`, `Esc Esc`.
 - Write `Alt` for the Alt or Option key. The legend says once that it is `Option` on macOS.
