@@ -2,9 +2,11 @@
 
 Run by the Pages workflow on every push to main, and by hand to look at the result.
 The page is generated; edit the sheet, `page.css` or `page.js`, not the page.
+Beside it goes _site/badge.json, which the README's badge reads for the sheet's version and date.
 """
 
 import html
+import json
 import re
 from pathlib import Path
 from string import Template
@@ -13,6 +15,7 @@ from outline import SHEET, anchor, short, spans, top_level
 
 HERE = Path(__file__).parent
 PAGE = HERE.parent / "_site" / "index.html"
+BADGE = PAGE.parent / "badge.json"
 REPO = "https://github.com/tsvikas/claude-commands"
 
 # a description is cut at the first of these, and the page shows the rest only on request
@@ -233,17 +236,30 @@ def prose(title, groups):
     return "\n".join(out + ["</section>"])
 
 
+def snapshot(top):
+    """The version, its date and the canonical link that the sheet names above "Where to look"."""
+    found = re.search(r"v([\d.]+) \((\d{4}-\d\d-\d\d)\).*<(\S+)>", "\n".join(top))
+    if not found:
+        raise SystemExit("page.py: no version, date and canonical link above \"Where to look\"")
+    return found.groups()
+
+
+def badge(text):
+    """What the README's badge shows, in the shape shields.io's endpoint badge reads."""
+    version, date, _ = snapshot(sheet(text)[0])
+    # not blue, the colour of the npm badge beside it, and not green or amber, which would read as a verdict
+    return json.dumps({"schemaVersion": 1, "label": "updated for", "message": f"v{version} · {date}", "color": "blueviolet"})
+
+
 def render(text):
     top, tasks, after = sheet(text)
-    snapshot = re.search(r"v([\d.]+) \((\d{4}-\d\d-\d\d)\).*<(\S+)>", "\n".join(top))
-    if not snapshot:
-        raise SystemExit("page.py: no version, date and canonical link above \"Where to look\"")
+    version, date, canonical = snapshot(top)
     return TEMPLATE.substitute(
         title=html.escape(top[0].removeprefix("# ")),
         intro=html.escape(top[2]),
-        version=snapshot.group(1),
-        date=snapshot.group(2),
-        canonical=html.escape(snapshot.group(3)),
+        version=version,
+        date=date,
+        canonical=html.escape(canonical),
         repo=REPO,
         css=(HERE / "page.css").read_text(),
         js=(HERE / "page.js").read_text(),
@@ -255,3 +271,4 @@ def render(text):
 if __name__ == "__main__":
     PAGE.parent.mkdir(exist_ok=True)
     PAGE.write_text(render(SHEET.read_text()))
+    BADGE.write_text(badge(SHEET.read_text()))

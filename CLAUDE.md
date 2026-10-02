@@ -85,6 +85,7 @@ No single source is complete, so each refresh reads all five:
 
 `tools/page.py` writes `_site/index.html` from the sheet, with `tools/page.css` and `tools/page.js` inlined. The Pages workflow runs it on every push to main.
 To look at it, run `python3 tools/page.py` and open the file. `_site/` is not committed.
+It also writes `_site/badge.json` from line 4 of the sheet. The first badge in the README reads it, so that badge changes when the page is deployed, not when the README is edited. The second badge reads the latest Claude Code release from npm.
 Change the look in `page.css` and the behaviour in `page.js`; the content comes only from the sheet.
 
 How a sheet line reaches the page:
