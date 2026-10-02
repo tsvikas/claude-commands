@@ -4,6 +4,7 @@
 Line 4 of the sheet names the Claude Code version it reflects and that version's release date.
 `claude-commands-outline.md` lists every command and key by section and group. `tools/outline.py` generates it from the sheet and `prek` runs it, so edit the sheet and never the outline.
 `tools/page.py` generates a web page from the sheet; see "The web page" below.
+`README.md` points a reader to the sheet, the page and the outline.
 The root holds what a reader opens; the scripts that generate from the sheet live in `tools/`.
 
 ## What belongs in the sheet
