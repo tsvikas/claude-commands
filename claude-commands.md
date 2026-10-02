@@ -21,7 +21,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 - [Specialist skills](#specialist-skills) — reference docs, Claude API
 - [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
 - [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
-- [Set up & configure](#set-up--configure-persistent-survives-sessions) — settings, permissions, MCP, plugins, skills, look & feel, account, integrations
+- [Set up & configure](#set-up--configure) — settings, permissions, MCP, plugins, skills, look & feel, account, integrations
 - [Learn](#learn) — help, release notes, lessons
 - [Extras](#extras) — radio, stickers, passes
 
@@ -123,7 +123,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `/compact [instructions]` ⚡: summarize conversation to free context
 - `/autocompact [auto|<tokens>]`: how full context gets before auto-compaction kicks in (e.g. `500k`); saved as a default
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
-- `/branch [name]`: fork the conversation here to try a different direction; return to the original with `/resume`
+- `/branch [name]`: branch the conversation: you switch to a new session (with that name); the original is preserved (return to it with `/resume`)
 - `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
 - `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
 - `/export [filename]`: export conversation as plain text
@@ -236,7 +236,9 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/heapdump`: heap snapshot for memory diagnosis
 - `/feedback [report]` · `/bug` · `/share`: send product feedback about Claude Code
 
-## Set up & configure (persistent, survives sessions)
+## Set up & configure
+
+What you set here is persistent between sessions.
 
 ### Settings
 
@@ -248,7 +250,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
 - `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
-- `/sandbox`: toggle sandbox mode; saved for this project, in `.claude/settings.local.json` (supported platforms only)
+- `/sandbox`: set up sandbox mode; saved for this project, in `.claude/settings.local.json`
 
 ### Capabilities
 
