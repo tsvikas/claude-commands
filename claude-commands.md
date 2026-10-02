@@ -63,7 +63,7 @@ On older models and on third-party providers, a change of effort costs one uncac
 - `@file` / `@dir` / `@server:resource`: inline a file's content, a directory listing, or an MCP resource
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
-- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message, the trailing text goes to each
+- `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message; the trailing text goes to each
 - `ultrathink`: request deeper reasoning (for this turn only)
 - `:name:`: emoji shortcode autocomplete in the prompt
 
@@ -89,7 +89,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Esc` · `Ctrl+C`: interrupt Claude
 - `Ctrl+B` · `Ctrl+X Ctrl+B`: background running tasks
 - `Ctrl+Enter` · `Ctrl+X Ctrl+S`: send queued messages now; running tasks move to the background
-- `/btw [question]` ⚡: ask a side question without adding to the conversation, or open previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
+- `/btw [question]` ⚡: ask a side question without adding to the conversation. With no argument, opens previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
 
 ### See what it is doing
 
@@ -113,7 +113,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 ### Run it
 
 - `/run` ⚡: launch and drive the project to see a change working
-- `/verify` (no project `verify` skill) ⚡: run the project e2e and verify its behavior, then save what worked as a project `verify` skill. Runs only when you call it
+- `/verify` (no project `verify` skill) ⚡: run the project e2e and verify its behavior; then save what worked as a project `verify` skill. Runs only when you call it
 - `/verify` (with a project `verify` skill) ⚡: verify by following the saved recipe. Claude also runs it before committing code changes
 - `/claude-in-chrome [task]` ⚡: have Claude carry out a task in your browser — test a web app, read console logs, fill forms, extract data from pages
 
@@ -134,7 +134,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `/recap` ⚡: one-line summary of the session
 - `/rename [name]`: rename current session
-- `/color`: set the prompt bar color for this session (syncs to claude.ai), handy for telling concurrent sessions apart
+- `/color`: set the prompt bar color for this session; syncs to claude.ai, handy for telling concurrent sessions apart
 
 ### Pick up another
 
@@ -179,17 +179,17 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 ### See what is running, and control it
 
-- `/tasks` · `/bashes`: view everything running in the background, with the model and effort level each subagent ran on
-- `Ctrl+X Ctrl+K` (twice): stop all background subagents, and turn off artifact auto-replies for the rest of the session
+- `/tasks` · `/bashes`: view everything running in the background; shows the model and effort level each subagent ran on
+- `Ctrl+X Ctrl+K` (twice): stop all background subagents; also turns off artifact auto-replies for the rest of the session
 - `/workflows`: workflow progress view (`p` pauses or resumes, `x` stops, `r` restarts an agent, `s` saves as a command, `Enter` opens an agent)
 - `/list-agents` · `/peers`: list names for everything Claude can message (subagents, teammates, other sessions)
 
 ## Artifacts
 
-- `/artifacts`: list Artifacts you own or that were shared with you, then attach one to the session (`Enter`), open it in the browser, or copy its link
+- `/artifacts`: list Artifacts you own or that were shared with you; then attach one to the session (`Enter`), open it in the browser, or copy its link
 - `Ctrl+]`: reopen the last Artifact
-- `/design [brief]` ⚡ ☁️: draft a canvas of editable UI artboards (published as an Artifact), tweak one by hand, then tell Claude which to implement (research preview, Pro/Max/Team/Enterprise)
-- `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact you edit and present in the browser
+- `/design [brief]` ⚡ ☁️: draft a canvas of editable UI artboards, published as an Artifact; tweak one by hand, then tell Claude which to implement (research preview, Pro/Max/Team/Enterprise)
+- `/slides [brief]` ⚡ ☁️: turn a brief into a slide deck, published as an Artifact; you edit and present it in the browser
 
 ## Specialist skills
 
@@ -200,7 +200,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/dataviz [request]` ⚡: chart / dashboard design guidance
 - `/workflow-authoring` ⚡: the dynamic-workflow script reference — API, resume behavior, quality patterns. Run it by hand before editing a saved one
 - `/artifact-diagramming` ⚡: diagramming guidance for artifacts — when a diagram helps, and inline SVG that reads in light and dark themes
-- `/artifact-capabilities` ⚡: what a published artifact can do at runtime (call your connectors, offer a file download) and which of those your account has
+- `/artifact-capabilities` ⚡: what a published artifact can do at runtime: call your connectors, offer a file download; also which of those your account has
 
 ### Claude API projects
 
@@ -212,7 +212,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api cost-optimize` ⚡: profile API spend and cut it one measured change at a time
 - `/claude-api build-eval` ⚡: build an eval set for your Claude-powered app
 - `/claude-api hillclimb` ⚡: improve the app step by step against an existing eval
-- `/claude-api preserved-thinking-migration` ⚡: find edits to earlier turns, system prompt or tools that drop preserved thinking, and fix them one at a time
+- `/claude-api preserved-thinking-migration` ⚡: find edits that drop preserved thinking, and fix them one at a time; covers edits to earlier turns, system prompt or tools
 
 ## Project knowledge
 
@@ -227,9 +227,9 @@ Claude loads these on its own when a task calls for them; type one to load it up
 
 ## Inspect & diagnose
 
-- `/usage` · `/cost` · `/stats`: session cost, plan limits, and breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio
-- `/status`: version, model, account, connectivity, session kind, whether GitHub is connected for cloud sessions
-- `/doctor` · `/checkup` ⚡: setup checkup that diagnoses issues and can fix them, including unused skills/MCP/plugins, redundant `CLAUDE.md` content and slow hooks
+- `/usage` · `/cost` · `/stats`: session cost and plan limits; also breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio
+- `/status`: version, model, account, connectivity; also session kind and whether GitHub is connected for cloud sessions
+- `/doctor` · `/checkup` ⚡: setup checkup that diagnoses issues and can fix them; they include unused skills/MCP/plugins, redundant `CLAUDE.md` content and slow hooks
 - `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
@@ -249,7 +249,7 @@ What you set here is persistent between sessions.
 
 - `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
-- `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions, review, then save them to user settings (Pro/Max/Team)
+- `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions; review, then save them to user settings (Pro/Max/Team)
 - `/sandbox`: set up sandbox mode; saved for this project, in `.claude/settings.local.json`
 
 ### Extensions
@@ -282,7 +282,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 ### One-time integrations
 
-- `/import [codex|gemini|cursor] [--dry-run] [--yes]`: pull instruction files, MCP servers, commands, subagents and skills over from Codex / Gemini CLI / Cursor
+- `/import [codex|gemini|cursor] [--dry-run] [--yes]`: bring configuration over from Codex / Gemini CLI / Cursor: instruction files, MCP servers, commands, subagents and skills
 - `/terminal-setup`: terminal keybindings
 - `/ide`: IDE integrations and status
 - `/chrome`: Claude in Chrome settings
