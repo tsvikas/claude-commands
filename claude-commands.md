@@ -31,11 +31,17 @@ Also in here: [what ultracode actually does](#ultracode-the-special-case).
 
 ### Set at the start
 
+Changing one of these mid-conversation makes the next turn slower.
+Switching model, or turning fast mode on for the first time, also re-reads the whole conversation with no prompt-cache hits, so that turn costs more.
+
 - `/model [model]` · `Alt+P`: switch model. In the picker, `←`/`→` set the effort and `s` keeps the choice to this session
 - `/fast [on|off]` · `Alt+O`: fast mode toggle
 - `Alt+T`: toggle extended thinking (always on for newer models)
 
 ### Change any time
+
+`/advisor` and `/output-style` keep the prompt cache, and so does `/effort` on newer models.
+On older models and on third-party providers, a change of effort costs one uncached turn.
 
 - `/effort [level|auto|status]` · `←`/`→` (in the model picker): set the effort level for the current model: low/medium/high/xhigh/max (max is session-only). `status` prints it. `s` in the picker: this session only
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
