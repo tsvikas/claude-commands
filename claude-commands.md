@@ -93,11 +93,11 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 ### See what it is doing
 
+- `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
+- `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
-- `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
-- `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+L`: redraw the screen
 
@@ -107,8 +107,8 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed
 - `/code-review ultra` · `/ultrareview` · `ultrareview` ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
-- `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
+- `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
 
 ### Run it
 
@@ -147,8 +147,8 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 Background sessions run without a terminal, so they keep working after you close it.
 From the shell, `claude attach <id>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
 
-- `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
 - `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
+- `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
 - `/desktop` · `/app`: continue in the desktop app
 - `/remote-control [name]` · `/rc`: expose this local session to claude.ai; it runs here and the conversation is mirrored both ways
 
@@ -166,8 +166,8 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 
 ### Run agents in parallel
 
-- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
 - `ultracode` ⚡: run a single task as a dynamic workflow
+- `/batch <instruction>` ⚡: split a codebase-wide change into 5–30 units; once you approve the plan, one subagent + worktree per unit
 - `/deep-research <question>` ⚡: fan out web searches, cross-check sources, synthesize a cited report
 
 ### Keep Claude working unattended
@@ -256,19 +256,19 @@ What you set here is persistent between sessions.
 
 Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
-- `/mcp [reconnect|enable|disable [<server>|all]]`: manage MCP server connections
 - `/plugin [subcommand]`: manage plugins (list, install, enable, disable)
 - `/reload-plugins [--force]`: reload active plugins, when a change didn't take effect on its own
 - `/skills`: list skills, toggle visibility
 - `/reload-skills`: re-scan skill directories
+- `/mcp [reconnect|enable|disable [<server>|all]]`: manage MCP server connections
 - `/hooks`: view/edit hook configurations (user and project scope)
 
 ### Look & input
 
+- `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/theme`: color theme
 - `/tui [default|fullscreen]`: renderer; relaunches with the conversation intact. With no argument, prints the active one
 - `/scroll-speed`: mouse wheel speed (fullscreen only)
-- `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/keybindings`: open keyboard shortcuts file
 - `/voice [hold|tap|off]`: voice dictation mode; once on, use `Space` to dictate. With no argument, toggles it
 
@@ -297,8 +297,8 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 ## Learn
 
-- `/help`: help and available commands
 - `?` (on an empty prompt): toggle the shortcut help panel
+- `/help`: help and available commands
 - `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
 - `/insights` ⚡: cross-session report across all projects: project areas, interaction patterns, friction points, prompts auto mode could have spared you

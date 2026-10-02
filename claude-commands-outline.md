@@ -17,11 +17,11 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 ## [While Claude works](claude-commands.md#while-claude-works)
 
 - **Act on the running turn:** `Esc`, `Ctrl+B`, `Ctrl+Enter`, `/btw`
-- **See what it is doing:** `Ctrl+O`, `Ctrl+E` (in the verbose transcript), `Ctrl+E` (in a permission dialog), `/diff`, `/focus`, `Ctrl+T`, `Ctrl+L`
+- **See what it is doing:** `/diff`, `/focus`, `Ctrl+O`, `Ctrl+E` (in the verbose transcript), `Ctrl+E` (in a permission dialog), `Ctrl+T`, `Ctrl+L`
 
 ## [Check the work](claude-commands.md#check-the-work)
 
-- **Review the change:** `/code-review`, `/code-review ultra`, `/security-review`, `/simplify`
+- **Review the change:** `/code-review`, `/code-review ultra`, `/simplify`, `/security-review`
 - **Run it:** `/run`, `/verify` (no project `verify` skill), `/verify` (with a project `verify` skill), `/claude-in-chrome`
 
 ## [Manage the conversation](claude-commands.md#manage-the-conversation)
@@ -32,13 +32,13 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 - **Recognize this one:** `/recap`, `/rename`, `/color`
 - **Pick up another:** `/resume [ended-session]`, `/resume [background-session]`, `/teleport`
-- **Move or mirror this one:** `/background`, `←`, `/desktop`, `/remote-control`
+- **Move or mirror this one:** `←`, `/background`, `/desktop`, `/remote-control`
 - **End it:** `Ctrl+C` · `/exit`, `/stop`
 
 ## [Delegate & automate](claude-commands.md#delegate--automate)
 
 - **Hand a task to a copy of this conversation:** `/subtask`, `/fork`
-- **Run agents in parallel:** `/batch`, `ultracode`, `/deep-research`
+- **Run agents in parallel:** `ultracode`, `/batch`, `/deep-research`
 - **Keep Claude working unattended:** `/goal`, `/loop`, `/schedule`, `/autofix-pr`
 - **See what is running, and control it:** `/tasks`, `Ctrl+X Ctrl+K`, `/workflows`, `/list-agents`
 
@@ -63,14 +63,14 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 - **Settings:** `/config`, `/update-config`
 - **Permissions:** `/permissions`, `/fewer-permission-prompts`, `/auto-mode-setup`, `/sandbox`
-- **Extensions:** `/mcp`, `/plugin`, `/reload-plugins`, `/skills`, `/reload-skills`, `/hooks`
-- **Look & input:** `/theme`, `/tui`, `/scroll-speed`, `/statusline`, `/keybindings`, `/voice`
+- **Extensions:** `/plugin`, `/reload-plugins`, `/skills`, `/reload-skills`, `/mcp`, `/hooks`
+- **Look & input:** `/statusline`, `/theme`, `/tui`, `/scroll-speed`, `/keybindings`, `/voice`
 - **Account & plan:** `/login` / `/logout`, `/upgrade`, `/usage-credits`, `/rate-limit-options`, `/privacy-settings`
 - **One-time integrations:** `/import`, `/terminal-setup`, `/ide`, `/chrome`, `/mobile`, `/web-setup`, `/remote-env`, `/install-github-app`, `/install-slack-app`, `/design-login`, `/setup-bedrock`, `/setup-vertex`
 
 ## [Learn](claude-commands.md#learn)
 
-- `/help`, `?`, `/release-notes`, `/powerup`, `/insights`
+- `?`, `/help`, `/release-notes`, `/powerup`, `/insights`
 
 ## [Extras](claude-commands.md#extras)
 
