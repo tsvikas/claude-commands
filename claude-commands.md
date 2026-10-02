@@ -140,7 +140,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `/resume [ended-session]` · `/continue`: switch to a past conversation; the current one is saved and can be resumed later
 - `/resume [background-session]` · `/continue`: attach to a background session that is still running; the current conversation moves to the background
-- `/teleport` · `/tp`: pull a claude.ai web session into the terminal
+- `/teleport` · `/tp`: copy a claude.ai web session into the terminal (not synced)
 
 ### Move or mirror this one
 
@@ -150,7 +150,7 @@ From the shell, `claude attach <id>` reattaches to one; `claude --help` also lis
 - `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
 - `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
 - `/desktop` · `/app`: continue in the desktop app
-- `/remote-control [name]` · `/rc`: expose this local session to claude.ai
+- `/remote-control [name]` · `/rc`: expose this local session to claude.ai; it runs here and the conversation is mirrored both ways
 
 ### End it
 
