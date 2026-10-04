@@ -199,6 +199,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 
 - `/dataviz [request]` ⚡: chart / dashboard design guidance
 - `/workflow-authoring` ⚡: the dynamic-workflow script reference — API, resume behavior, quality patterns. Run it by hand before editing a saved one
+- `/plugin-authoring` ⚡: the reference for writing a mod; a mod is a plugin that adds panes, commands and tool-call rules
 - `/artifact-diagramming` ⚡: diagramming guidance for artifacts — when a diagram helps, and inline SVG that reads in light and dark themes
 - `/artifact-capabilities` ⚡: what a published artifact can do at runtime: call your connectors, offer a file download; also which of those your account has
 

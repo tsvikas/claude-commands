@@ -48,7 +48,7 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 ## [Specialist skills](claude-commands.md#specialist-skills)
 
-- **Reference:** `/dataviz`, `/workflow-authoring`, `/artifact-diagramming`, `/artifact-capabilities`
+- **Reference:** `/dataviz`, `/workflow-authoring`, `/plugin-authoring`, `/artifact-diagramming`, `/artifact-capabilities`
 - **Claude API projects:** `/claude-api`, `/claude-api migrate`, `/claude-api upgrade`, `/claude-api managed-agents-onboard`, `/claude-api prompt-audit`, `/claude-api cost-optimize`, `/claude-api build-eval`, `/claude-api hillclimb`, `/claude-api preserved-thinking-migration`
 
 ## [Project knowledge](claude-commands.md#project-knowledge)
