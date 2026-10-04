@@ -5,11 +5,13 @@ The page is generated; edit the sheet, `page.css` or `page.js`, not the page.
 Beside it goes _site/badge.json, which the README's badge reads for the sheet's version and date.
 With `--staging` the page says it is the staging copy and asks search engines to skip it.
 Both copies count their visits with GoatCounter.
+Beside it too goes _site/card.png, the picture a pasted link to the page shows.
 """
 
 import html
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 from string import Template
@@ -20,6 +22,10 @@ HERE = Path(__file__).parent
 PAGE = HERE.parent / "_site" / "index.html"
 BADGE = PAGE.parent / "badge.json"
 REPO = "https://github.com/tsvikas/claude-commands"
+# where the page is served; a link preview needs whole addresses, and the staging copy adds staging/
+SITE = "https://tsvikas.github.io/claude-commands/"
+# a screenshot of card.html, copied beside the page
+CARD = HERE / "card.png"
 # the GoatCounter site that counts visits; it sets no cookie and keeps nothing that identifies a visitor
 GOATCOUNTER = "tsvikas"
 
@@ -39,6 +45,16 @@ TEMPLATE = Template("""\
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title</title>
 <meta name="description" content="$intro">$robots
+<link rel="canonical" href="$url">
+<meta property="og:type" content="website">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$intro">
+<meta property="og:url" content="$url">
+<meta property="og:image" content="$url$card">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="$title: two sections of the page, each a list of commands and keys">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
@@ -269,6 +285,8 @@ def render(text, staging=False):
         banner=STAGING_BANNER if staging else "",
         title=html.escape(top[0].removeprefix("# ")),
         intro=html.escape(top[2]),
+        url=SITE + ("staging/" if staging else ""),
+        card=CARD.name,
         version=version,
         date=date,
         canonical=html.escape(canonical),
@@ -285,3 +303,4 @@ if __name__ == "__main__":
     PAGE.parent.mkdir(exist_ok=True)
     PAGE.write_text(render(SHEET.read_text(), staging="--staging" in sys.argv[1:]))
     BADGE.write_text(badge(SHEET.read_text()))
+    shutil.copy(CARD, PAGE.parent)

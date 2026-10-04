@@ -112,6 +112,14 @@ It also writes `_site/badge.json` from line 4 of the sheet. The first badge in t
 Change the look in `page.css` and the behaviour in `page.js`; the content comes only from the sheet.
 The page counts its visits with GoatCounter, which sets no cookie and shows how many came, from which country and from which link, never who. The site's code is `GOATCOUNTER` in `page.py`, and the numbers are at `https://<code>.goatcounter.com`.
 The staging copy counts too, under the path `/claude-commands/staging/`. A deployed copy is the only place to check the counter: GoatCounter ignores a page opened from a file or from localhost. To keep your own visits out, open the page once with `#toggle-goatcounter` at the end of its address, in each browser you use.
+A pasted link to the page shows its title, the sheet's opening sentence and a picture, `tools/card.png`, which `page.py` copies beside the page. The picture is a screenshot of `tools/card.html` and names no version, so a release leaves it alone. Its rows are copied by hand from the sheet; after changing it, take the screenshot again and commit both files:
+
+```sh
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --hide-scrollbars --force-device-scale-factor=1 \
+  --window-size=1200,630 --virtual-time-budget=8000 --screenshot="$PWD/tools/card.png" "file://$PWD/tools/card.html"
+```
+
+A site that shows a preview keeps the picture it fetched first, so check a new one on the staging copy, whose tags point at its own address.
 
 How a sheet line reaches the page:
 

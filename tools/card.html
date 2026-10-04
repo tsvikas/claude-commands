@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- The picture a pasted link to the page shows, 1200 by 630. card.png is a screenshot of this file; CLAUDE.md says how to take it. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap">
+<style>
+/* the page's colours and type, at the size a preview is read at */
+:root {
+  --ground: #f3f4f6;
+  --card: #fff;
+  --ink: #16181d;
+  --dim: #474d59;
+  --muted: #5b6270;
+  --line: #d5d9e0;
+  --keyline: #b9bec7;
+  --tint: #eceef2;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 460px minmax(0, 1fr);
+  gap: 48px;
+  padding: 60px 56px 60px 64px;
+  background: var(--ground);
+  color: var(--ink);
+  font: 22px/34px var(--sans);
+}
+.brand { display: flex; flex-direction: column; }
+h1 { margin: 0; font-size: 62px; line-height: 68px; font-weight: 700; letter-spacing: -0.015em; }
+.brand p { margin: 26px 0 0; color: var(--dim); font-size: 29px; line-height: 40px; }
+.where { margin-top: auto; font: 500 23px/30px var(--mono); color: var(--muted); }
+.board { display: flex; flex-direction: column; gap: 22px; justify-content: center; }
+.sec { padding: 20px 26px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+h2 { margin: 0 -26px 12px; padding: 0 26px 12px; border-bottom: 3px solid var(--ink); font-size: 27px; line-height: 32px; font-weight: 700; }
+.row { padding: 5px 0; white-space: nowrap; overflow: hidden; }
+.name { font: 600 22px/34px var(--mono); }
+.alt { font: 500 21px/34px var(--mono); color: var(--muted); }
+.key { padding: 1px 8px; background: var(--card); border: 1.5px solid var(--keyline); border-bottom-width: 3px; border-radius: 7px; font-weight: 500; color: var(--ink); }
+.short { margin-left: 8px; color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="brand">
+<h1>Claude Code commands and shortcuts</h1>
+<p>Built-in slash commands and keys, grouped by task. Updated every release.</p>
+<div class="where">tsvikas.github.io/claude-commands</div>
+</div>
+<div class="board">
+<section class="sec">
+<h2>While Claude works</h2>
+<div class="row"><span class="name key">Ctrl+B</span> <span class="short">background running tasks</span></div>
+<div class="row"><span class="name">/btw</span> <span class="short">ask a side question</span></div>
+<div class="row"><span class="name key">Ctrl+O</span> <span class="short">toggle the verbose transcript</span></div>
+</section>
+<section class="sec">
+<h2>Manage the conversation</h2>
+<div class="row"><span class="name">/context</span> <span class="short">visualize context usage</span></div>
+<div class="row"><span class="name">/compact</span> <span class="short">summarize conversation to free context</span></div>
+<div class="row"><span class="name key">Esc Esc</span> <span class="alt">/rewind</span> <span class="short">rewind to a previous point</span></div>
+</section>
+</div>
+</body>
+</html>
