@@ -25,9 +25,11 @@ Keep lines short so the whole sheet stays readable.
 The sheet covers what ships in the binary and that a user types, presses or asks for: slash commands, bundled skills, keyboard shortcuts, message syntax, and the curated tastes the mission names.
 
 - A bundled skill belongs when the docs command table lists it. One the table omits is for Claude to load, and stays out.
-- A setting stays out. An opt-in that unlocks something stays in.
+- A setting stays out, and so does UI the screen already explains. An opt-in that unlocks something stays in.
 - Behaviour tied to no command or key stays out, such as a time limit on background commands. A built-in tool you can ask Claude to use is a capability, not behaviour, and belongs in the mission's curated taste.
 - Of the CLI, only the launch flags the mission names belong; "Beyond slash commands" links to the rest.
+- Telemetry, gateway and enterprise administration, performance work, and changelog entries tagged `[VSCode]`, `[Claude Tag]` or cloud-session stay out. They go in the release commit's list of what was left out.
+- A documented behaviour change that leaves a line still true goes in the commit body only.
 - A command that behaves differently in two situations gets one line per situation, as `/resume` and `/verify` do.
 - Context that is not a command goes as a plain sentence under its heading, above the bullets.
 - Other names and keys for the same thing follow it, separated by `·`: `/cmd` · `/alias` · `Key`.
@@ -43,8 +45,11 @@ The sheet covers what ships in the binary and that a user types, presses or asks
 - Write `Alt` for the Alt or Option key. The legend says once that it is `Option` on macOS.
 - A line with an optional argument says what the bare command does only when that is something other than running with no input or opening a picker.
 - Describe a command or key in the docs' own short words where they have them: the shortcut table, the keybindings actions table, the first sentence of a command's row.
+- A description says what the thing does, not why it is useful or how it works inside.
+- Name a command's options and mark the default, rather than giving an example.
 - Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen only)" for a requirement or "newer models" for a note about models.
 - A long line that packs several cases is a candidate for one line per case. Suggest the split.
+- A substantial addition gets its own line, stated as its gist, rather than a clause on an existing line.
 - A key gets a line for each thing it does, in the section for that task. Most have one, or two next to each other; `Ctrl+C` has three, in three sections. When it does what a command does, it shares that command's line, after a `·`. A command's line may also name the key you press right after running it.
 - Sections follow one task and then widen: set how Claude runs, write the prompt, watch it work, check the result; then the conversation and the sessions around it; then other kinds of work; then the project and the tool itself; last what is read once. Within a subsection, the most-used line comes first.
 - Headings carry no numbers, so a section can move without changing any other heading or link.
