@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.287 (2026-10-01) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.288 (2026-10-02) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -79,7 +79,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Ctrl+S`: stash or restore prompt
 - `Up` / `Down`: prompt history
 - `Ctrl+R`: search prompt history
-- `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input
+- `Esc Esc` (with text in the prompt, nothing running) · `Ctrl+C` (nothing running): clear input; `Up` to recover
 - `Ctrl+G`: edit prompt in `$EDITOR`
 
 ## While Claude works
@@ -105,7 +105,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 ### Review the change
 
-- `/code-review [effort-level] [--fix] [--comment] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed
+- `/code-review [effort-level] [--fix] [--comment] [--max-findings n|all|default] [pr#|branch|path]` · `/review` ⚡: review the current diff, or a PR/branch/path, for bugs. Runs as a background subagent. `--fix` applies findings, `--comment` posts them on the PR. With no effort level it reuses the last one you typed. `--max-findings` reports more or fewer findings than the usual limit, and is reused until you pass `default`
 - `/code-review ultra` · `/ultrareview` · `ultrareview` ☁️: deeper review, multi-agent cloud run (usage credits). On a github.com PR target, `--post` preselects posting the findings to the PR
 - `/simplify [target]` ⚡: simplify the code (runs 4 parallel agents: reuse, simplify, efficiency, abstraction level)
 - `/security-review` ⚡: review the local changes for injection / auth / data-exposure risks
@@ -121,7 +121,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 - `/context [all]`: visualize context usage
 - `/compact [instructions]` ⚡: summarize conversation to free context
-- `/autocompact [auto|<tokens>]`: how full context gets before auto-compaction kicks in (e.g. `500k`); saved as a default
+- `/autocompact [auto|<tokens>]`: how full context gets before auto-compaction kicks in (e.g. `500k`); saved for the current model, so each model keeps its own
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
 - `/branch [name]`: branch the conversation: you switch to a new session (with that name); the original is preserved (return to it with `/resume`)
 - `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
