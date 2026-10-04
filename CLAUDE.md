@@ -7,14 +7,27 @@ Line 4 of the sheet names the Claude Code version it reflects and that version's
 `README.md` points a reader to the sheet, the page and the outline.
 The root holds what a reader opens; the scripts that generate from the sheet live in `tools/`.
 
+## Mission
+
+Make Claude Code's day-to-day surface visible, so you learn what the tool can do and keep learning as new pieces ship almost weekly. Mostly it's read to learn; sometimes it's a reference while you work. The release-by-release history is the second way in: a diff of what's new that's worth learning.
+
+What gets a line:
+
+- **Complete:** every slash command, every key (except the ones every text box has), and every piece of message syntax. These are what you touch while working, and they expose the most UI.
+- **Curated, a taste of the most useful:** surfaces too big to list in full, such as `claude` launch flags (`-c`, `-r`, `-w`, `-p`, `claude agents`, starting with a first request) and what you can ask Claude to do through its built-in tools (watch a log, remind you later, message another session).
+- **One line and a pointer:** a mode with its own key set, such as vim mode ("turn it on with ...").
+- **Linked, not listed:** what you set once and forget: settings, env vars, and subsystem internals like hooks and permissions.
+
+Keep lines short so the whole sheet stays readable.
+
 ## What belongs in the sheet
 
-The sheet covers what ships in the binary and that a user types or presses: slash commands, bundled skills, keyboard shortcuts.
+The sheet covers what ships in the binary and that a user types, presses or asks for: slash commands, bundled skills, keyboard shortcuts, message syntax, and the curated tastes the mission names.
 
 - A bundled skill belongs when the docs command table lists it. One the table omits is for Claude to load, and stays out.
 - A setting stays out. An opt-in that unlocks something stays in.
-- Behaviour tied to no command or key stays out, such as a time limit on background commands.
-- CLI flags and subcommands stay out; "Beyond slash commands" links to their reference.
+- Behaviour tied to no command or key stays out, such as a time limit on background commands. A built-in tool you can ask Claude to use is a capability, not behaviour, and belongs in the mission's curated taste.
+- Of the CLI, only the launch flags the mission names belong; "Beyond slash commands" links to the rest.
 - A command that behaves differently in two situations gets one line per situation, as `/resume` and `/verify` do.
 - Context that is not a command goes as a plain sentence under its heading, above the bullets.
 - Other names and keys for the same thing follow it, separated by `·`: `/cmd` · `/alias` · `Key`.
