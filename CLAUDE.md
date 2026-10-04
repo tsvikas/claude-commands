@@ -110,6 +110,8 @@ To look at it, run `python3 tools/page.py` and open the file. `_site/` is not co
 To look at a change on a phone before it is live, push it to the `staging` branch. The workflow publishes that branch under `/staging/` on the same site, with a bar that says so. When it is right, fast-forward main to it. The branch stays; between rounds it equals main.
 It also writes `_site/badge.json` from line 4 of the sheet. The first badge in the README reads it, so that badge changes when the page is deployed, not when the README is edited. The second badge reads the latest Claude Code release from npm.
 Change the look in `page.css` and the behaviour in `page.js`; the content comes only from the sheet.
+The page counts its visits with GoatCounter, which sets no cookie and shows how many came, from which country and from which link, never who. The site's code is `GOATCOUNTER` in `page.py`, and the numbers are at `https://<code>.goatcounter.com`.
+The staging copy counts too, under the path `/claude-commands/staging/`. A deployed copy is the only place to check the counter: GoatCounter ignores a page opened from a file or from localhost. To keep your own visits out, open the page once with `#toggle-goatcounter` at the end of its address, in each browser you use.
 
 How a sheet line reaches the page:
 

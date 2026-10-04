@@ -4,6 +4,7 @@ Run by the Pages workflow on every push to main or staging, and by hand to look 
 The page is generated; edit the sheet, `page.css` or `page.js`, not the page.
 Beside it goes _site/badge.json, which the README's badge reads for the sheet's version and date.
 With `--staging` the page says it is the staging copy and asks search engines to skip it.
+Both copies count their visits with GoatCounter.
 """
 
 import html
@@ -19,6 +20,8 @@ HERE = Path(__file__).parent
 PAGE = HERE.parent / "_site" / "index.html"
 BADGE = PAGE.parent / "badge.json"
 REPO = "https://github.com/tsvikas/claude-commands"
+# the GoatCounter site that counts visits; it sets no cookie and keeps nothing that identifies a visitor
+GOATCOUNTER = "tsvikas"
 
 # a description is cut at the first of these, and the page shows the rest only on request
 BREAKS = [". ", "; ", ": ", " — "]
@@ -78,6 +81,7 @@ canonical list: <a href="$canonical">$canonical</a>
 </div>
 <script>
 $js</script>
+<script data-goatcounter="https://$goatcounter.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
 """)
@@ -269,6 +273,7 @@ def render(text, staging=False):
         date=date,
         canonical=html.escape(canonical),
         repo=REPO,
+        goatcounter=GOATCOUNTER,
         css=(HERE / "page.css").read_text(),
         js=(HERE / "page.js").read_text(),
         cards="\n".join(card(title, groups) for title, groups in tasks),
