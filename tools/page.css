@@ -11,6 +11,7 @@
   --edge: light-dark(#c5cad3, #4d5462);
   --keyline: light-dark(#b9bec7, #636b7a);
   --tint: light-dark(#eceef2, #313640);
+  --label: light-dark(#eceef2, #464d5c);
   --hover: light-dark(#eef0f3, #282c35);
   --tip: light-dark(#16181d, #e8eaee);
   --tip-ink: light-dark(#f3f4f6, #16181d);
@@ -157,7 +158,7 @@ code {
   width: fit-content;
   margin: 0 0 6px -8px;
   padding: 2px 8px;
-  background: var(--tint);
+  background: var(--label);
   border-radius: 4px;
   font-size: 11px;
   line-height: 16px;
