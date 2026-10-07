@@ -1,23 +1,27 @@
 /* Structure first: the colours and the type are placeholders until the visual pass. */
+/* Each colour is light-dark(light, dark). The page follows the system until the toggle sets data-theme. */
 :root {
-  --ground: #f3f4f6;
-  --card: #fff;
-  --ink: #16181d;
-  --dim: #474d59;
-  --muted: #5b6270;
-  --line: #d5d9e0;
-  --edge: #c5cad3;
-  --keyline: #b9bec7;
-  --tint: #eceef2;
-  --hover: #eef0f3;
-  --tip: #16181d;
-  --tip-ink: #f3f4f6;
-  --tip-dim: #b6bcc8;
-  --tip-tint: #2f333c;
+  color-scheme: light dark;
+  --ground: light-dark(#f3f4f6, #111317);
+  --card: light-dark(#fff, #1a1d23);
+  --ink: light-dark(#16181d, #e8eaee);
+  --dim: light-dark(#474d59, #b3b9c4);
+  --muted: light-dark(#5b6270, #969dab);
+  --line: light-dark(#d5d9e0, #2c3038);
+  --edge: light-dark(#c5cad3, #3a3f49);
+  --keyline: light-dark(#b9bec7, #4a505b);
+  --tint: light-dark(#eceef2, #262a31);
+  --hover: light-dark(#eef0f3, #22262d);
+  --tip: light-dark(#16181d, #e8eaee);
+  --tip-ink: light-dark(#f3f4f6, #16181d);
+  --tip-dim: light-dark(#b6bcc8, #474d59);
+  --tip-tint: light-dark(#2f333c, #d5d9e0);
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --sans: "IBM Plex Sans", system-ui, sans-serif;
   --gap: 16px;
 }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -244,7 +248,7 @@ button.name {
 footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; overflow-wrap: anywhere; }
 
 /* Without the script nothing can be opened or sorted, so everything is open and the browser makes the columns. */
-.no-js .filter, .no-js #all, .no-js .tip { display: none; }
+.no-js .filter, .no-js #all, .no-js #theme, .no-js .tip { display: none; }
 .no-js .more, .no-js .rest { display: inline; }
 .no-js .less { display: none; }
 .no-js #board { display: block; columns: 290px; column-gap: var(--gap); }

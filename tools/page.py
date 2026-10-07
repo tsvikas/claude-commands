@@ -60,6 +60,7 @@ TEMPLATE = Template("""\
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
 $css</style>
+<script>try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch{}</script>
 </head>
 <body>$banner
 <svg class="sprite" aria-hidden="true">
@@ -74,6 +75,7 @@ $css</style>
 </div>
 <label class="filter">Filter <input id="q" type="search" placeholder="a command, a key, or a word" autocomplete="off"></label>
 <button id="all" class="ghost" type="button" aria-pressed="false">Expand all details</button>
+<button id="theme" class="ghost" type="button">Dark theme</button>
 <ul class="legend">
 <li><svg class="i"><use href="#bolt"/></svg> costs tokens</li>
 <li><svg class="i"><use href="#cloud"/></svg> runs in the cloud</li>
