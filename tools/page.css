@@ -1,23 +1,28 @@
 /* Structure first: the colours and the type are placeholders until the visual pass. */
+/* Each colour is light-dark(light, dark). The page follows the system until the switch sets data-theme. */
 :root {
-  --ground: #f3f4f6;
-  --card: #fff;
-  --ink: #16181d;
-  --dim: #474d59;
-  --muted: #5b6270;
-  --line: #d5d9e0;
-  --edge: #c5cad3;
-  --keyline: #b9bec7;
-  --tint: #eceef2;
-  --hover: #eef0f3;
-  --tip: #16181d;
-  --tip-ink: #f3f4f6;
-  --tip-dim: #b6bcc8;
-  --tip-tint: #2f333c;
+  color-scheme: light dark;
+  --ground: light-dark(#f3f4f6, #0b0c0f);
+  --card: light-dark(#fff, #1c1f26);
+  --ink: light-dark(#16181d, #e8eaee);
+  --dim: light-dark(#474d59, #b3b9c4);
+  --muted: light-dark(#5b6270, #8f96a4);
+  --line: light-dark(#d5d9e0, #373d48);
+  --edge: light-dark(#c5cad3, #4d5462);
+  --keyline: light-dark(#b9bec7, #636b7a);
+  --tint: light-dark(#eceef2, #313640);
+  --label: light-dark(#eceef2, #464d5c);
+  --hover: light-dark(#eef0f3, #282c35);
+  --tip: light-dark(#16181d, #e8eaee);
+  --tip-ink: light-dark(#f3f4f6, #16181d);
+  --tip-dim: light-dark(#b6bcc8, #474d59);
+  --tip-tint: light-dark(#2f333c, #d5d9e0);
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --sans: "IBM Plex Sans", system-ui, sans-serif;
   --gap: 16px;
 }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -55,8 +60,10 @@ code {
 .staging { margin: 0; padding: 6px 32px; background: var(--ink); color: var(--tip-ink); font-size: 12.5px; }
 .staging a, .staging a:hover { color: inherit; }
 
-/* The top: title, filter, expand all, legend. */
+/* The top: title, filter, expand all, legend. The theme switch sits in its right corner, out of the flow. */
 .top {
+  position: relative;
+  padding-right: 84px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px 28px;
@@ -84,6 +91,23 @@ code {
 .filter input { flex: 1 1 auto; min-width: 0; padding: 0 12px; }
 .ghost { padding: 0 14px; cursor: pointer; }
 .ghost:hover { border-color: var(--ink); }
+/* Both sides always show; color-scheme fills the one that is on, so the script only keeps aria-checked. */
+.theme {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.theme:hover { border-color: var(--ink); }
+.theme .i { box-sizing: content-box; width: 14px; height: 14px; padding: 5px 8px; border-radius: 999px; }
+.theme .i:first-child { background: light-dark(var(--ink), transparent); color: light-dark(var(--card), var(--muted)); }
+.theme .i:last-child { background: light-dark(transparent, var(--ink)); color: light-dark(var(--muted), var(--card)); }
 .legend {
   flex: 1 1 320px;
   display: flex;
@@ -134,7 +158,7 @@ code {
   width: fit-content;
   margin: 0 0 6px -8px;
   padding: 2px 8px;
-  background: var(--tint);
+  background: var(--label);
   border-radius: 4px;
   font-size: 11px;
   line-height: 16px;
@@ -244,7 +268,7 @@ button.name {
 footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; overflow-wrap: anywhere; }
 
 /* Without the script nothing can be opened or sorted, so everything is open and the browser makes the columns. */
-.no-js .filter, .no-js #all, .no-js .tip { display: none; }
+.no-js .filter, .no-js #all, .no-js #theme, .no-js .tip { display: none; }
 .no-js .more, .no-js .rest { display: inline; }
 .no-js .less { display: none; }
 .no-js #board { display: block; columns: 290px; column-gap: var(--gap); }
@@ -252,4 +276,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; overflow-wrap
 
 @media (max-width: 640px) {
   .page { padding: 16px 12px 48px; }
+  .top { padding-right: 0; }
+  .brand { padding-right: 84px; }
+  .theme { top: 0; }
 }
