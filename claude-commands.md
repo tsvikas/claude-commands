@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.289 (2026-10-03) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.290 (2026-10-05) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -145,7 +145,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 ### Move or mirror this one
 
 Background sessions run without a terminal, so they keep working after you close it.
-From the shell, `claude attach <id>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
+From the shell, `claude attach <id|name>` reattaches to one; `claude --help` also lists `logs`, `stop`, `respawn`, `rm`.
 
 - `←` (on an empty prompt): background or detach the session, then open agent view (your background sessions)
 - `/background [prompt]` · `/bg` ⚡: detach this session to run as a background agent, freeing the terminal
@@ -209,6 +209,8 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api migrate` ⚡: move existing API code to a newer model
 - `/claude-api upgrade` ⚡: take the SDK across a major version (Python `anthropic` 0.x to 1.x)
 - `/claude-api managed-agents-onboard` ⚡: walk through creating a Managed Agent
+- `/claude-api managed-agents-onboard <url>` ⚡: set up the Managed Agents pattern a page describes, as `ant apply` files
+- `/claude-api managed-agents-onboard <quickstart-name>` ⚡: build a Console quickstart template, such as `deep-researcher`, with the `ant` CLI
 - `/claude-api prompt-audit` ⚡: flag instructions written for older models in prompts, skills and tool descriptions
 - `/claude-api cost-optimize` ⚡: profile API spend and cut it one measured change at a time
 - `/claude-api build-eval` ⚡: build an eval set for your Claude-powered app
