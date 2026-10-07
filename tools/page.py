@@ -66,6 +66,8 @@ $css</style>
 <svg class="sprite" aria-hidden="true">
 <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
 <symbol id="cloud" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 11.5 3.75 3.75 0 0 0 7 19h10.5z"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
 </svg>
 <div class="page">
 <header class="top">
@@ -73,9 +75,9 @@ $css</style>
 <h1>$title</h1>
 <p>v$version · $date</p>
 </div>
+<button id="theme" class="theme" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><svg class="i"><use href="#sun"/></svg><svg class="i"><use href="#moon"/></svg></button>
 <label class="filter">Filter <input id="q" type="search" placeholder="a command, a key, or a word" autocomplete="off"></label>
 <button id="all" class="ghost" type="button" aria-pressed="false">Expand all details</button>
-<button id="theme" class="ghost" type="button">Dark theme</button>
 <ul class="legend">
 <li><svg class="i"><use href="#bolt"/></svg> costs tokens</li>
 <li><svg class="i"><use href="#cloud"/></svg> runs in the cloud</li>

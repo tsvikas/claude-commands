@@ -86,12 +86,12 @@
     layout(true);
   });
 
-  // The page follows the system until the toggle is pressed; then the choice is kept in this browser.
+  // The page follows the system until the switch is pressed; then the choice is kept in this browser.
   // The script in the head applies a kept choice before the first paint.
   const theme = document.getElementById("theme");
   const system = matchMedia("(prefers-color-scheme: dark)");
   const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : system.matches);
-  const label = () => (theme.textContent = isDark() ? "Light theme" : "Dark theme");
+  const mark = () => theme.setAttribute("aria-checked", isDark());
   theme.addEventListener("click", () => {
     root.dataset.theme = isDark() ? "light" : "dark";
     try {
@@ -99,10 +99,10 @@
     } catch {
       // a private window may refuse; the choice then lasts until the page is closed
     }
-    label();
+    mark();
   });
-  system.addEventListener("change", label);
-  label();
+  system.addEventListener("change", mark);
+  mark();
 
   // A filter shows the matching rows whole, and hides the sentences that belong to no row.
   const query = document.getElementById("q");
