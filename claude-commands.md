@@ -93,6 +93,8 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 
 ### See what it is doing
 
+A mod draws in a band above the prompt and in panes; a built-in mod draws the diff panel.
+
 - `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
 - `Ctrl+X B` (in the diff panel): change what the panel compares against: this session's changes, your uncommitted changes, or everything since the branch split. Remembered for each repository
 - `Ctrl+↑`/`Ctrl+↓` · `Alt+↑`/`Alt+↓` (in the diff panel): scroll its file list
@@ -104,6 +106,11 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Ctrl+L`: redraw the screen
 - `PgUp`/`PgDn`: scroll the conversation half a screen (fullscreen mode)
 - `Ctrl+Home`/`Ctrl+End`: jump to the start of the conversation, or to the latest message (fullscreen mode)
+- `Ctrl+X Tab`: move focus into the band, then to each open pane, then back to the prompt
+- `Ctrl+X Ctrl+A`: collapse the band to a one-row hint, or expand it again
+- `Ctrl+X ←` · `Ctrl+X ↑` (in a pane): give the pane more room: width beside the conversation, height above the prompt
+- `Ctrl+X →` · `Ctrl+X ↓` (in a pane): give the pane less room
+- `Ctrl+X X` (in a pane): close the pane
 
 ## Check the work
 
