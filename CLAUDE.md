@@ -35,7 +35,7 @@ The sheet covers what ships in the binary and that a user types, presses or asks
 - Other names and keys for the same thing follow it, separated by `·`: `/cmd` · `/alias` · `Key`.
 - Before the colon, parentheses hold only a condition on the name they follow: `Key` (on an empty prompt).
 - After the colon, in the description, parentheses are free for an aside: `/clear`: start fresh (also starts a new session).
-- A requirement, such as a plan, a mode or an opt-in, goes in parentheses at the end of the description: `/scroll-speed`: mouse wheel speed (fullscreen only).
+- A requirement, such as a plan, a mode or an opt-in, goes in parentheses at the end of the description: `/scroll-speed`: mouse wheel speed (fullscreen mode).
 - A description opens with a phrase that stands on its own, in about 70 characters or fewer. The web page shows that phrase and keeps the rest until the row is pressed.
   When more follows, end the phrase at a `;`, `:` or `.` that a space follows, or at an em dash with a space on each side: `/cd <path>`: move the session to a new working directory; its project config takes effect.
   A parenthesis that closes the phrase counts as the rest. One in the middle of it hides the break from the page, so put that aside after the break.
@@ -47,7 +47,7 @@ The sheet covers what ships in the binary and that a user types, presses or asks
 - Describe a command or key in the docs' own short words where they have them: the shortcut table, the keybindings actions table, the first sentence of a command's row.
 - A description says what the thing does, not why it is useful or how it works inside.
 - Name a command's options and mark the default, rather than giving an example.
-- Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen only)" for a requirement or "newer models" for a note about models.
+- Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen mode)" for a requirement or "newer models" for a note about models.
 - A long line that packs several cases is a candidate for one line per case. Suggest the split.
 - A substantial addition gets its own line, stated as its gist, rather than a clause on an existing line.
 - A key gets a line for each thing it does, in the section for that task. Most have one, or two next to each other; `Ctrl+C` has three, in three sections. When it does what a command does, it shares that command's line, after a `·`. A command's line may also name the key you press right after running it.
