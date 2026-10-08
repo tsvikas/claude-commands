@@ -102,6 +102,8 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
 - `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
 - `Ctrl+L`: redraw the screen
+- `PgUp`/`PgDn`: scroll the conversation half a screen (fullscreen mode)
+- `Ctrl+Home`/`Ctrl+End`: jump to the start of the conversation, or to the latest message (fullscreen mode)
 
 ## Check the work
 
