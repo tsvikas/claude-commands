@@ -98,7 +98,7 @@ A mod draws in a band above the prompt and in panes; a built-in mod draws the di
 - `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
 - `Ctrl+X B` (in the diff panel): change what the panel compares against: this session's changes, your uncommitted changes, or everything since the branch split. Remembered for each repository
 - `Ctrl+↑`/`Ctrl+↓` · `Alt+↑`/`Alt+↓` (in the diff panel): scroll its file list
-- `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
+- `/focus`: focus view: last prompt + tool summary + response (fullscreen mode, persists via `viewMode`)
 - `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
@@ -282,7 +282,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/statusline` ⚡: configure the status line (describe it, or auto-configure from your shell prompt)
 - `/theme`: color theme
 - `/tui [default|fullscreen]`: renderer; relaunches with the conversation intact. With no argument, prints the active one
-- `/scroll-speed`: mouse wheel speed (fullscreen only)
+- `/scroll-speed`: mouse wheel speed (fullscreen mode)
 - `/keybindings`: open keyboard shortcuts file
 - `/voice [hold|tap|off]`: voice dictation mode; once on, use `Space` to dictate. With no argument, toggles it
 
