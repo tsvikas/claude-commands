@@ -94,6 +94,8 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 ### See what it is doing
 
 - `/diff`: interactive diff viewer for uncommitted changes; in fullscreen, a live panel beside the conversation
+- `Ctrl+X B` (in the diff panel): change what the panel compares against: this session's changes, your uncommitted changes, or everything since the branch split. Remembered for each repository
+- `Ctrl+↑`/`Ctrl+↓` · `Alt+↑`/`Alt+↓` (in the diff panel): scroll its file list
 - `/focus`: focus view: last prompt + tool summary + response (fullscreen only, persists via `viewMode`)
 - `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content

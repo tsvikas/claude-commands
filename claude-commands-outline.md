@@ -17,7 +17,7 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 ## [While Claude works](claude-commands.md#while-claude-works)
 
 - **Act on the running turn:** `Esc`, `Ctrl+B`, `Ctrl+Enter`, `/btw`
-- **See what it is doing:** `/diff`, `/focus`, `Ctrl+O`, `Ctrl+E` (in the verbose transcript), `Ctrl+E` (in a permission dialog), `Ctrl+T`, `Ctrl+L`
+- **See what it is doing:** `/diff`, `Ctrl+X B`, `Ctrl+↑` / `Ctrl+↓`, `/focus`, `Ctrl+O`, `Ctrl+E` (in the verbose transcript), `Ctrl+E` (in a permission dialog), `Ctrl+T`, `Ctrl+L`
 
 ## [Check the work](claude-commands.md#check-the-work)
 
