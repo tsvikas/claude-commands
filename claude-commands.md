@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.294 (2026-10-08) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.295 (2026-10-08) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -136,7 +136,7 @@ Mods draw in a band above the prompt and in panes; a built-in mod draws the diff
 - `/clear [name]` · `/reset` · `/new`: start fresh (also starts a new session)
 - `/branch [name]`: branch the conversation: you switch to a new session (with that name); the original is preserved (return to it with `/resume`)
 - `Esc Esc` (on an empty prompt, nothing running) · `/rewind` · `/checkpoint` · `/undo`: rewind the conversation/code to a previous point, or summarize from or up to it
-- `/copy [N]`: copy Nth-latest response (pick code blocks interactively)
+- `/copy [N]`: copy Nth-latest response (pick code blocks or quoted text interactively)
 - `/export [filename]`: export conversation as plain text
 
 ## Manage sessions
