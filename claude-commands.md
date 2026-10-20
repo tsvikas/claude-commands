@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.303 (2026-10-18) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.304 (2026-10-19) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -222,6 +222,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api managed-agents-onboard` ⚡: walk through creating a Managed Agent
 - `/claude-api managed-agents-onboard <url>` ⚡: set up the Managed Agents pattern a page describes, as `ant apply` files
 - `/claude-api managed-agents-onboard <quickstart-name>` ⚡: build a Console quickstart template, such as `deep-researcher`, with the `ant` CLI
+- `/claude-api managed-agents-secure` ⚡: compare a Managed Agent's settings with Anthropic's security guide, without changing anything
 - `/claude-api prompt-audit` ⚡: flag instructions written for older models in prompts, skills and tool descriptions
 - `/claude-api cost-optimize` ⚡: profile API spend and cut it one measured change at a time
 - `/claude-api build-eval` ⚡: build an eval set for your Claude-powered app
@@ -263,7 +264,7 @@ What you set here is persistent between sessions.
 
 - `/permissions` · `/allowed-tools`: manage allow, ask and deny rules for tool permissions
 - `/fewer-permission-prompts` ⚡: scan transcripts, add a read-only allowlist to project settings
-- `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions; review, then save them to user settings (Pro/Max/Team)
+- `/auto-mode-setup` ⚡: draft `autoMode.environment` entries from your project and recent sessions; review, then save them to user settings
 - `/sandbox`: set up sandbox mode; saved for this project, in `.claude/settings.local.json`
 
 ### Extensions
