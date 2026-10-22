@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.306 (2026-10-21) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.307 (2026-10-21) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -219,6 +219,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/claude-api` ⚡: load Claude API / Managed Agents docs for your project's language; also loads on its own when your code imports `anthropic`
 - `/claude-api migrate` ⚡: move existing API code to a newer model
 - `/claude-api upgrade` ⚡: take the SDK across a major version (Python `anthropic` 0.x to 1.x)
+- `/claude-api api-version` ⚡: move Claude API code to the newest API version
 - `/claude-api managed-agents-onboard` ⚡: walk through creating a Managed Agent
 - `/claude-api managed-agents-onboard <url>` ⚡: set up the Managed Agents pattern a page describes, as `ant apply` files
 - `/claude-api managed-agents-onboard <quickstart-name>` ⚡: build a Console quickstart template, such as `deep-researcher`, with the `ant` CLI
