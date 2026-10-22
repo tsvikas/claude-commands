@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.304 (2026-10-19) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.305 (2026-10-20) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -242,7 +242,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 
 ## Inspect & diagnose
 
-- `/usage` · `/cost` · `/stats`: session cost and plan limits; also breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio
+- `/usage` · `/cost` · `/stats`: session cost and plan limits; also breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio. `f` applies the fixes its warnings name
 - `/status`: version, model, account, connectivity; also session kind and whether GitHub is connected for cloud sessions
 - `/doctor` · `/checkup` ⚡: setup checkup that diagnoses issues and can fix them; they include unused skills/MCP/plugins, redundant `CLAUDE.md` content and slow hooks
 - `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
