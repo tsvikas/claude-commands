@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.305 (2026-10-20) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.306 (2026-10-21) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
