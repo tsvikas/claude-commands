@@ -308,6 +308,8 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/install-github-app`: Claude GitHub App for a repo
 - `/install-slack-app`: Claude Slack app
 - `/design-login`: authorize design-system access for `/design-sync`
+- `/design consent`: grant Claude access to your Claude Design projects (saved to your account)
+- `/design revoke`: withdraw that access
 - `/setup-bedrock`: Amazon Bedrock auth
 - `/setup-vertex`: Google Cloud auth
 
