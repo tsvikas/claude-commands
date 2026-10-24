@@ -93,6 +93,8 @@ No single source is complete, so each refresh reads all five:
 2. The CHANGELOG: <https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md>
    - The source for behaviour changes. Skip bullets starting with "Fixed"; they are about half of it.
    - It has no dates. Take them from the `<Update label="2.1.x" description="date">` tags in <https://code.claude.com/docs/en/changelog.md>.
+     That page dropped the tags for 2.1.309 and 2.1.310 (fetched 2026-10-24); check for them first, since they may return.
+     When they are missing, take the date from npm: `npm view @anthropic-ai/claude-code time --json`, which gives UTC timestamps.
 3. The weekly digests: `https://code.claude.com/docs/en/whats-new/2026-wNN`
    - Good for why a change matters. They trail the releases by a few weeks, and some weeks are missing (there is no w31); the index at `/whats-new` lists the real ones.
 4. The docs shortcut table: `curl -sL https://code.claude.com/docs/en/interactive-mode.md`
