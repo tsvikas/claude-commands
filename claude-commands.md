@@ -145,7 +145,7 @@ Mods draw in a band above the prompt and in panes; a built-in mod draws the diff
 
 - `/recap` ⚡: one-line summary of the session
 - `/rename [name]`: rename current session
-- `/color`: set the prompt bar color for this session; syncs to claude.ai, handy for telling concurrent sessions apart
+- `/color [color|default]`: set the prompt bar color for this session; red, blue, green, yellow, purple, orange, pink or cyan, `default` resets it, none picks one at random; syncs to claude.ai, handy for telling concurrent sessions apart
 
 ### Pick up another
 
