@@ -33,7 +33,7 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 - **Recognize this one:** `/recap`, `/rename`, `/color`
 - **Pick up another:** `/resume [ended-session]`, `/resume [background-session]`, `/teleport`
 - **Move or mirror this one:** `←`, `/background`, `/desktop`, `/remote-control`
-- **End it:** `Ctrl+C` · `/exit`, `/stop`
+- **End it:** `Ctrl+C` · `/exit`, `/stop`, `Ctrl+Z`
 
 ## [Delegate & automate](claude-commands.md#delegate--automate)
 

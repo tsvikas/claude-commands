@@ -167,6 +167,7 @@ From the shell, `claude attach <id|name>` reattaches to one; `claude --help` als
 
 - `Ctrl+C` (twice, nothing running) · `Ctrl+D` (twice, on an empty prompt) · `/exit` · `/quit`: exit CLI (in an attached background session: detaches and leaves it running)
 - `/stop`: stop the current background session (keeps the worktree)
+- `Ctrl+Z`: suspend Claude Code to your shell; `fg` resumes it (Unix)
 
 ## Delegate & automate
 
