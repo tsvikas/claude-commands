@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.310 (2026-10-23) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.311 (2026-10-26) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -64,7 +64,7 @@ On older models and on third-party providers, a change of effort costs one uncac
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message; the trailing text goes to each
-- `ultrathink`: request deeper reasoning (for this turn only)
+- `ultrathink`: run this turn at xhigh effort (newer models); typed while Claude works, it raises the rest of that turn
 - `:name:`: emoji shortcode autocomplete in the prompt
 
 ### Editing
