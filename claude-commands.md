@@ -248,7 +248,7 @@ Claude loads these on its own when a task calls for them; type one to load it up
 - `/usage` · `/cost` · `/stats`: session cost and plan limits; also breakdowns per skill, agent and `/loop`, plus prompt-cache hit ratio. `f` applies the fixes its warnings name
 - `/status`: version, model, account, connectivity; also session kind and whether GitHub is connected for cloud sessions
 - `/doctor` · `/checkup` ⚡: setup checkup that diagnoses issues and can fix them; they include unused skills/MCP/plugins, redundant `CLAUDE.md` content and slow hooks
-- `/doctor prompt-audit` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
+- `/doctor prompt-audit [path]` ⚡: audit CLAUDE.md files, skills, agents and commands for prompting written for older models
 - `/skill-doctor`: which of your loaded skills go unused and what each costs in context, so you can prune them (needs feature-flag fetching)
 - `/debug [description]` ⚡: enable debug logging and troubleshoot
 - `/heapdump`: heap snapshot for memory diagnosis
