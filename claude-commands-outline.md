@@ -70,11 +70,11 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 
 ## [Updates](claude-commands.md#updates)
 
-- `/restart`
+- `/release-notes`, `/restart`
 
 ## [Learn](claude-commands.md#learn)
 
-- `?`, `/help`, `/release-notes`, `/powerup`, `/insights`
+- `?`, `/help`, `/powerup`, `/insights`
 
 ## [Extras](claude-commands.md#extras)
 

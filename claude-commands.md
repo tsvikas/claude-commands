@@ -22,8 +22,8 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 - [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
 - [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
 - [Configure](#configure) — settings, permissions, sandbox, MCP, plugins, skills, look & feel, account, integrations
-- [Updates](#updates) — restart to apply an update
-- [Learn](#learn) — help, release notes, lessons
+- [Updates](#updates) — release notes, restart to apply an update
+- [Learn](#learn) — help, lessons
 - [Extras](#extras) — radio, stickers, passes
 
 Also in here: [what ultracode actually does](#what-ultracode-does).
@@ -317,13 +317,13 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 
 ## Updates
 
+- `/release-notes`: changelog picker
 - `/restart` · `/update`: restart Claude Code to apply an installed update; this session resumes (Pro, Max or Ultra plan; native install on macOS or Linux)
 
 ## Learn
 
 - `?` (on an empty prompt): toggle the shortcut help panel
 - `/help`: help and available commands
-- `/release-notes`: changelog picker
 - `/powerup`: interactive lessons
 - `/insights` ⚡: cross-session report across all projects: project areas, interaction patterns, friction points, prompts auto mode could have spared you
 
