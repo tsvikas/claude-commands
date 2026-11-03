@@ -92,9 +92,10 @@ No single source is complete, so each refresh reads all five:
      The CHANGELOG never mentioned `/radio`, `/list-agents` or `/peers` at all.
 2. The CHANGELOG: <https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md>
    - The source for behaviour changes. Skip bullets starting with "Fixed"; they are about half of it.
-   - It has no dates. Take them from the `<Update label="2.1.x" description="date">` tags in <https://code.claude.com/docs/en/changelog.md>.
-     That page dropped the tags for 2.1.309 and 2.1.310 (fetched 2026-10-24); check for them first, since they may return.
-     When they are missing, take the date from npm: `npm view @anthropic-ai/claude-code time --json`, which gives UTC timestamps.
+   - It has no dates. Take them from <https://code.claude.com/docs/en/changelog.md>, where each release is a bold `**2.1.x**` line followed by a date such as `November 3, 2026`.
+     That format replaced the `<Update label="2.1.x" description="date">` tags (fetched 2026-11-03); look for either.
+     When a release has no date there, take it from npm: `npm view @anthropic-ai/claude-code time --json`, which gives UTC timestamps.
+     npm may also list a version the CHANGELOG skips, as it does 2.1.315; the next release's title says so: `(315 has no changelog entry)`.
 3. The weekly digests: `https://code.claude.com/docs/en/whats-new/2026-wNN`
    - Good for why a change matters. They trail the releases by a few weeks, and some weeks are missing (there is no w31); the index at `/whats-new` lists the real ones.
 4. The docs shortcut table: `curl -sL https://code.claude.com/docs/en/interactive-mode.md`
