@@ -22,6 +22,7 @@ Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 - [Project knowledge](#project-knowledge) — CLAUDE.md, init, memory, design sync
 - [Inspect & diagnose](#inspect--diagnose) — cost, status, doctor, feedback
 - [Configure](#configure) — settings, permissions, sandbox, MCP, plugins, skills, look & feel, account, integrations
+- [Updates](#updates) — restart to apply an update
 - [Learn](#learn) — help, release notes, lessons
 - [Extras](#extras) — radio, stickers, passes
 
@@ -313,6 +314,10 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 - `/design revoke`: withdraw that access
 - `/setup-bedrock`: Amazon Bedrock auth
 - `/setup-vertex`: Google Cloud auth
+
+## Updates
+
+- `/restart` · `/update`: restart Claude Code to apply an installed update; this session resumes (Pro, Max or Ultra plan; native install on macOS or Linux)
 
 ## Learn
 

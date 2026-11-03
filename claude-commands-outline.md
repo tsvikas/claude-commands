@@ -68,6 +68,10 @@ Generated from it by `tools/outline.py`; edit the sheet, not this file.
 - **Account & plan:** `/login` / `/logout`, `/upgrade`, `/usage-credits`, `/rate-limit-options`, `/privacy-settings`
 - **One-time integrations:** `/import`, `/terminal-setup`, `/ide`, `/chrome`, `/mobile`, `/web-setup`, `/remote-env`, `/install-github-app`, `/install-slack-app`, `/design-login`, `/design consent`, `/design revoke`, `/setup-bedrock`, `/setup-vertex`
 
+## [Updates](claude-commands.md#updates)
+
+- `/restart`
+
 ## [Learn](claude-commands.md#learn)
 
 - `?`, `/help`, `/release-notes`, `/powerup`, `/insights`
