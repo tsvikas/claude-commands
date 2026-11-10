@@ -65,7 +65,7 @@ Switching model, or turning fast mode on for the first time, also re-reads the w
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message; the trailing text goes to each
-- `ultrathink`: run this turn at xhigh effort
+- `ultrathink`: ask for deeper reasoning and run this turn at xhigh effort
 - `:name:`: emoji shortcode autocomplete in the prompt
 
 ### Editing
