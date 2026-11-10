@@ -65,7 +65,7 @@ Switching model, or turning fast mode on for the first time, also re-reads the w
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message; the trailing text goes to each
-- `ultrathink`: run this turn at xhigh effort; typed while Claude works, it raises the rest of that turn
+- `ultrathink`: run this turn at xhigh effort
 - `:name:`: emoji shortcode autocomplete in the prompt
 
 ### Editing
@@ -90,6 +90,7 @@ The usual Bash line-editing keys work: `Ctrl+A`/`Ctrl+E`, `Alt+B`/`Alt+F`, `Ctrl
 - `Esc` · `Ctrl+C`: interrupt Claude
 - `Ctrl+B` · `Ctrl+X Ctrl+B`: background running tasks
 - `Ctrl+Enter` · `Ctrl+X Ctrl+S`: send queued messages now; running tasks move to the background
+- `ultrathink` (typed while Claude works): raise the rest of the running turn to xhigh effort
 - `/btw [question]` ⚡: ask a side question without adding to the conversation. With no argument, opens previous answers (`Shift+←`/`Shift+→` browse, `c` copies, `f` forks)
 
 ### See what it is doing
