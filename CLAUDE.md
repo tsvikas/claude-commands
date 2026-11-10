@@ -47,12 +47,15 @@ The sheet covers what ships in the binary and that a user types, presses or asks
 - Describe a command or key in the docs' own short words where they have them: the shortcut table, the keybindings actions table, the first sentence of a command's row.
 - A description says what the thing does, not why it is useful or how it works inside.
 - Name a command's options and mark the default, rather than giving an example.
-- Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen mode)" for a requirement or "newer models" for a note about models.
+- Before writing a line, find how the sheet already says that kind of thing and fit the pattern, such as "(fullscreen mode)" for a requirement.
 - A long line that packs several cases is a candidate for one line per case. Suggest the split.
 - A substantial addition gets its own line, stated as its gist, rather than a clause on an existing line.
 - A key gets a line for each thing it does, in the section for that task. Most have one, or two next to each other; `Ctrl+C` has three, in three sections. When it does what a command does, it shares that command's line, after a `·`. A command's line may also name the key you press right after running it.
 - Sections follow one task and then widen: set how Claude runs, write the prompt, watch it work, check the result; then the conversation and the sessions around it; then other kinds of work; then the project and the tool itself; last what is read once. Within a subsection, the most-used line comes first.
 - Headings carry no numbers, so a section can move without changing any other heading or link.
+- Write for the latest Opus, Sonnet, Haiku and Fable models through Anthropic's API; the legend says once that older models and other providers may differ.
+  Mention older models only on a line that exists because of them, and say so in the short phrase, so the page's collapsed row doesn't promise something the latest models lack: `Alt+T`: toggle extended thinking on older models; the latest always think.
+  Write it in words: a parenthesis that closes the short phrase is hidden with the rest.
 - A line says how long an effect lasts (one message, this session, saved, out in the world) and its scope (user `~/.claude/` or project `.claude/`) wherever that is not obvious.
 
 Before adding a command, read the "Deliberately not listed" comment at the end of the sheet.
