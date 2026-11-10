@@ -6,6 +6,7 @@ Snapshot as of v2.1.322 (2026-11-10) — canonical list: <https://code.claude.co
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
 `·` separates other names and keys for the same thing; parentheses hold a condition.
+Lines describe the latest Opus, Sonnet, Haiku and Fable models through Anthropic's API; older models and other providers may differ.
 `Alt` is `Option` on macOS.
 
 ## Where to look
@@ -37,12 +38,11 @@ Switching model, or turning fast mode on for the first time, also re-reads the w
 
 - `/model [model]` · `Alt+P`: switch model. In the picker, `←`/`→` set the effort and `s` keeps the choice to this session
 - `/fast [on|off]` · `Alt+O`: fast mode toggle
-- `Alt+T`: toggle extended thinking (always on for newer models)
+- `Alt+T`: toggle extended thinking on older models; the latest always think
 
 ### Change any time
 
-`/advisor` and `/output-style` keep the prompt cache, and so does `/effort` on newer models.
-On older models and on third-party providers, a change of effort costs one uncached turn.
+`/advisor`, `/output-style` and `/effort` keep the prompt cache.
 
 - `/effort [level|auto|status]` · `←`/`→` (in the model picker): set the effort level for the current model: low/medium/high/xhigh/max (max is session-only). `status` prints it. `s` in the picker: this session only
 - `/effort ultracode [on|off]` · `Tab` (in the `/effort` slider): plan a workflow for every substantive task, at the current effort level (session-only)
@@ -65,7 +65,7 @@ On older models and on third-party providers, a change of effort costs one uncac
 - `@session-name`: mention another Claude Code session; Claude then reaches it with `SendMessage`
 - `!<cmd>` (message prefix): run a shell command directly. Output lands in the conversation *and* Claude responds to it (costs a turn)
 - `/skill-a /skill-b <text>`: stack up to 6 skills at the start of a message; the trailing text goes to each
-- `ultrathink`: run this turn at xhigh effort (newer models); typed while Claude works, it raises the rest of that turn
+- `ultrathink`: run this turn at xhigh effort; typed while Claude works, it raises the rest of that turn
 - `:name:`: emoji shortcode autocomplete in the prompt
 
 ### Editing
@@ -103,7 +103,7 @@ Mods draw in a band above the prompt and in panes; a built-in mod draws the diff
 - `Ctrl+O`: toggle the verbose transcript
 - `Ctrl+E` (in the verbose transcript): expand all content
 - `Ctrl+E` (in a permission dialog): toggle explanation (not in Bash / PowerShell prompts)
-- `Ctrl+T`: toggle the todo list (off for newer models unless `CLAUDE_CODE_ENABLE_TODO_TOOLS=1`)
+- `Ctrl+T`: toggle Claude's to-do checklist on older models; `CLAUDE_CODE_ENABLE_TODO_TOOLS=1` brings it back on the latest
 - `Ctrl+L`: redraw the screen
 - `PgUp`/`PgDn`: scroll the conversation (fullscreen mode)
 - `Ctrl+Home`/`Ctrl+End`: jump to the conversation's start or end (fullscreen mode)
