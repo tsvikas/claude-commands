@@ -1,7 +1,7 @@
 # Claude Code Commands and Shortcuts Cheatsheet
 
 Categorized reference for built-in slash commands and keyboard shortcuts, by task.
-Snapshot as of v2.1.322 (2026-11-10) — canonical list: <https://code.claude.com/docs/en/commands.md>
+Snapshot as of v2.1.323 (2026-11-12) — canonical list: <https://code.claude.com/docs/en/commands.md>
 
 Symbols: ⚡ costs tokens · ☁️ runs in the cloud.
 `<arg>` is required, `[arg]` is optional: without it a command runs with no input or opens a picker, unless its line says otherwise.
@@ -332,7 +332,7 @@ Skills and plugins you enable on claude.ai also load in your terminal sessions.
 ## Extras
 
 - `/radio`: Claude FM lo-fi radio
-- `/stickers`: order Claude Code stickers
+- `/stickers`: check Claude Code sticker availability; for now they are all claimed
 - `/passes`: share a free week with friends
 
 ______________________________________________________________________
